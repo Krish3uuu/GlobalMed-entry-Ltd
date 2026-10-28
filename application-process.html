@@ -57,6 +57,29 @@
             }
         };
     </script>
+        <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GlobalMed Entry Ltd" />
+    <meta property="og:title" content="Step-by-Step Application Process | GlobalMed Entry Ltd" />
+    <meta property="og:description" content="Follow our clear 5-stage medical admissions timeline from initial evaluation to white coat ceremony and GMC-compliant graduation." />
+    <meta property="og:image" content="images/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://globalmedentry.com/application-process" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Step-by-Step Application Process | GlobalMed Entry Ltd" />
+    <meta name="twitter:description" content="Follow our clear 5-stage medical admissions timeline from initial evaluation to white coat ceremony and GMC-compliant graduation." />
+    <meta name="twitter:image" content="images/og-image.png" />
 </head>
 
 <body
@@ -127,34 +150,41 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Refined Executive Expert Card matching services.html -->
+                    <!-- Right Column: Doctor-Led Expert Consultation Card -->
                     <div class="lg:col-span-5 flex">
-                        <div class="relative w-full bg-gradient-to-br from-[#172554] via-[#1E3A8A] to-[#1E293B] text-white rounded-[5px] p-8 sm:p-10 text-center shadow-executive border border-blue-900/50 overflow-hidden flex flex-col justify-between">
-                            <!-- FREE Ribbon Badge -->
-                            <div class="absolute -top-1 -right-1">
-                                <div class="bg-primary text-white text-[10px] font-black px-4 py-1 rotate-45 transform translate-x-3 translate-y-2 shadow-xs">
-                                    FREE
+                        <div class="relative w-full bg-[#172554] text-white rounded-[5px] overflow-hidden shadow-executive border border-blue-900/50 flex flex-col justify-between">
+                            <!-- Medical Consultation Image -->
+                            <div class="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Doctor-Led Medical Admissions Consultation" 
+                                     class="w-full h-full object-cover object-center" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#172554] via-[#172554]/40 to-transparent"></div>
+                                <div class="absolute top-3 right-3">
+                                    <div class="bg-emerald-500 text-white text-xs font-black px-3 py-1 rounded-[5px] shadow-xs">
+                                        FREE CONSULTATION
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-3 left-4 right-4">
+                                    <span class="text-xs font-bold text-blue-200">Doctor-Led Strategy Session</span>
                                 </div>
                             </div>
 
-                            <div class="w-12 h-12 rounded-[5px] bg-white/10 text-white flex items-center justify-center mx-auto mb-4 border border-white/15">
-                                <span class="material-symbols-outlined text-[26px]">support_agent</span>
-                            </div>
+                            <div class="p-6 sm:p-8 text-center space-y-4">
+                                <div>
+                                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+                                        Speak To A Doctor
+                                    </h3>
+                                    <p class="text-sm text-blue-100 font-normal max-w-xs mx-auto leading-relaxed">
+                                        Receive a free 1-on-1 strategy call with practising UK clinicians and discuss your university options.
+                                    </p>
+                                </div>
 
-                            <div>
-                                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
-                                    Speak To An Expert
-                                </h3>
-                                <p class="text-xs sm:text-sm text-blue-100 font-normal mb-6 max-w-xs mx-auto leading-relaxed">
-                                    Receive a FREE consultation with us and discuss your options.
-                                </p>
-                            </div>
-
-                            <div>
-                                <a href="#consultation"
-                                    class="inline-block px-8 py-3 rounded-[5px] bg-white text-primary font-bold text-xs uppercase tracking-wider hover:bg-blue-50 transition-colors shadow-md">
-                                    Click Here
-                                </a>
+                                <div>
+                                    <a href="contact.html#consultation-form"
+                                        class="inline-block px-8 py-3.5 rounded-[5px] bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-md">
+                                        Book Free Consultation
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -184,11 +214,11 @@
                             <div class="w-12 h-12 rounded-[5px] bg-blue-50 text-primary border border-blue-100 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-xs">
                                 <span class="material-symbols-outlined text-[26px]">assignment</span>
                             </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-primary block mb-1">Pre-Arrival Stage</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary block mb-1">Pre-Arrival Stage</span>
                             <h3 class="text-lg font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Phase I: Admissions Support
                             </h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-6">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
                                 Experienced advisors specialising in providing the right help to students applying to study abroad.
                             </p>
                         </div>
@@ -204,11 +234,11 @@
                             <div class="w-12 h-12 rounded-[5px] bg-blue-50 text-primary border border-blue-100 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-xs">
                                 <span class="material-symbols-outlined text-[26px]">flight_takeoff</span>
                             </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-primary block mb-1">Arrival Stage</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary block mb-1">Arrival Stage</span>
                             <h3 class="text-lg font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Phase II: Relocation Support
                             </h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-6">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
                                 We know our cities inside out, making sure you are relocated with ease and with comfort.
                             </p>
                         </div>
@@ -224,11 +254,11 @@
                             <div class="w-12 h-12 rounded-[5px] bg-blue-50 text-primary border border-blue-100 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-xs">
                                 <span class="material-symbols-outlined text-[26px]">home</span>
                             </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-primary block mb-1">Academic Years 1–6</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary block mb-1">Academic Years 1–6</span>
                             <h3 class="text-lg font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Phase III: Ongoing Support
                             </h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-6">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
                                 Student representatives available 24/7 at each university for any help you need during the course.
                             </p>
                         </div>
@@ -244,11 +274,11 @@
                             <div class="w-12 h-12 rounded-[5px] bg-blue-50 text-primary border border-blue-100 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-xs">
                                 <span class="material-symbols-outlined text-[26px]">school</span>
                             </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-primary block mb-1">Post-Graduation</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary block mb-1">Post-Graduation</span>
                             <h3 class="text-lg font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Phase IV: Alumni Support
                             </h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-6">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
                                 Help and support in obtaining your medical or dental license and starting your career in the UK.
                             </p>
                         </div>
@@ -283,14 +313,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-emerald-600 tracking-tight">01</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-[5px] border border-emerald-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-[5px] border border-emerald-200">
                                     Initiation
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Online Submission
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 We will email you our application forms and terms of service agreement/contract for you to fill out within a timely manner.
                             </p>
                         </div>
@@ -307,14 +337,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-primary tracking-tight">02</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-primary bg-blue-50 px-2.5 py-1 rounded-[5px] border border-blue-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-primary bg-blue-50 px-2.5 py-1 rounded-[5px] border border-blue-200">
                                     Dossier Assembly
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Submit The Forms
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 After completing the forms, send them back to us alongside a scanned copy of your passport and educational certificates for us to process until we receive the hard copies necessary for submission.
                             </p>
                         </div>
@@ -331,14 +361,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-purple-600 tracking-tight">03</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-[5px] border border-purple-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-[5px] border border-purple-200">
                                     Quality Audit
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Review Submission
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 Our specialised team will verify the forms are in order and let you know if any changes need to be made in order to continue the application. At this point, we will also provide further details such as entrance exam dates to choose.
                             </p>
                         </div>
@@ -355,14 +385,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-rose-500 tracking-tight">04</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-1 rounded-[5px] border border-rose-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-1 rounded-[5px] border border-rose-200">
                                     Legalisation
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Gather Necessary Documents
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 Whilst you are preparing for the entrance exam using our online portal, gather all the relevant documents that our team advises you will need to submit to the university.
                             </p>
                         </div>
@@ -379,14 +409,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-sky-500 tracking-tight">05</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-[5px] border border-sky-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-[5px] border border-sky-200">
                                     Examination
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Entrance Exam/Interview
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 Travel to the country of your university choice to sit the entrance exam or to take an interview if required. Our team will be by your side to assist at all times.
                             </p>
                         </div>
@@ -403,14 +433,14 @@
                         <div>
                             <div class="flex items-center justify-between mb-5">
                                 <span class="text-3xl sm:text-4xl font-black text-emerald-600 tracking-tight">06</span>
-                                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-[5px] border border-emerald-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-[5px] border border-emerald-200">
                                     Enrolment
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-bold text-slate-950 mb-3 group-hover:text-primary transition-colors">
                                 Last Decision
                             </h3>
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                                 You will be given a date when the university rankings are released to know if you have been successful and have received an admission. At this point, you should be ready to relocate abroad!
                             </p>
                         </div>
@@ -484,7 +514,7 @@
                                 </div>
                                 <div class="space-y-1">
                                     <h4 class="text-base font-bold text-white tracking-tight">Virtual Open Days</h4>
-                                    <p class="text-xs text-slate-300 leading-snug">
+                                    <p class="text-sm sm:text-base text-slate-300 leading-snug">
                                         Register to join our next open day and get a chance to speak to real students and graduates from Europe!
                                     </p>
                                 </div>
@@ -503,7 +533,7 @@
                                 </div>
                                 <div class="space-y-1">
                                     <h4 class="text-base font-bold text-white tracking-tight">Your University Selector</h4>
-                                    <p class="text-xs text-slate-300 leading-snug">
+                                    <p class="text-sm sm:text-base text-slate-300 leading-snug">
                                         Unsure about which university to pick? Use our free selector app to find the right university for you!
                                     </p>
                                 </div>
@@ -522,7 +552,7 @@
                                 </div>
                                 <div class="space-y-1">
                                     <h4 class="text-base font-bold text-white tracking-tight">Living Cost Calculator</h4>
-                                    <p class="text-xs text-slate-300 leading-snug">
+                                    <p class="text-sm sm:text-base text-slate-300 leading-snug">
                                         Use our living cost calculator to find out how much it costs to live in the cities that offer the best medical schools in Europe.
                                     </p>
                                 </div>
@@ -549,7 +579,7 @@
                     Thinking About Applying This Year?
                 </h2>
 
-                <p class="text-xs sm:text-sm text-blue-100 font-normal max-w-xl mx-auto leading-relaxed">
+                <p class="text-sm sm:text-base text-blue-100 font-normal max-w-xl mx-auto leading-relaxed">
                     Why not book a FREE consultation with an expert advisor.
                 </p>
 
