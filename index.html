@@ -31,12 +31,20 @@
                         "3xl": "5px"
                     },
                     colors: {
+                        brand: '#1d4ed8',
+                        ink: '#10234b',
+                        muted: '#5b6f91',
+                        mint: '#08a878',
                         primary: "#1D4ED8",
                         "primary-dark": "#173fa8",
                         "primary-light": "#EFF6FF",
                         "surface-muted": "#F8FAFD",
                         "surface-card": "#FFFFFF",
                         "border-clean": "#E2E8F0"
+                    },
+                    boxShadow: {
+                        soft: '0 24px 70px rgba(29, 78, 216, .14)',
+                        card: '0 18px 45px rgba(16, 35, 75, .16)'
                     },
                     textColor: {
                         "slate-950": "#192F59",
@@ -71,8 +79,8 @@
     <meta property="og:title" content="GlobalMed Entry Ltd | Study Medicine, Dentistry & Veterinary in Europe" />
     <meta property="og:description" content="Leading UK advisory for studying medicine and dentistry abroad in top European universities. GMC-aligned, 100% English-taught programs with comprehensive relocation & entrance support." />
     <meta property="og:image" content="images/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="576" />
     <meta property="og:url" content="https://globalmedentry.com/" />
 
     <!-- Twitter Card -->
@@ -91,115 +99,147 @@
     <div id="site-mobile-drawer"></div>
 
     <main class="w-full pt-16 sm:pt-20">
-        <!-- 1. HERO SECTION: Study Medicine In Europe -->
-        <section class="relative bg-gradient-to-b from-[#0F172A] via-[#172554] to-[#1E3A8A] text-white pt-14 sm:pt-20 lg:pt-24 pb-24 sm:pb-32 overflow-hidden" id="home">
-            <!-- Subtle ambient grid and glow -->
-            <div class="absolute inset-0 bg-isometric-grid pointer-events-none opacity-20"></div>
-            <div class="absolute -top-32 -left-20 w-[550px] h-[550px] rounded-full bg-blue-500/15 blur-3xl pointer-events-none"></div>
-            <div class="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-cyan-400/10 blur-3xl pointer-events-none"></div>
+        <!-- 1. HERO SECTION: Study Medicine In Europe (StudyMed Europe Hero) -->
+        <section class="hero-bg relative isolate overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-32" id="home">
+            <!-- soft decorative shapes -->
+            <div aria-hidden="true" class="pointer-events-none absolute -right-24 top-32 h-[30rem] w-[30rem] rounded-full bg-blue-100/50 blur-3xl"></div>
+            <div aria-hidden="true" class="pointer-events-none absolute -bottom-44 -left-24 h-96 w-[42rem] rounded-full bg-blue-100/70 blur-3xl"></div>
+            <div aria-hidden="true" class="dot-pattern pointer-events-none absolute right-[3.5%] top-[29%] hidden h-24 w-24 opacity-60 lg:block"></div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-                    <!-- Hero Left: Content -->
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <!-- Top Eyebrow Pill -->
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[5px] bg-blue-500/15 border border-blue-400/30 text-blue-200 font-bold text-xs sm:text-sm tracking-wide shadow-xs">
-                            <span class="material-symbols-outlined text-[16px] text-blue-400">school</span>
-                            <span>Join Over 1,000+ Students</span>
+            <div class="relative mx-auto flex max-w-[1440px] items-center px-5 py-6 sm:px-8 lg:px-12 xl:px-16">
+                <div class="grid w-full items-center gap-12 lg:grid-cols-[1.18fr_.82fr] xl:grid-cols-[1.22fr_.78fr] lg:gap-8 xl:gap-14">
+                    <!-- Left content (expanded container for optimal text fit) -->
+                    <div class="relative z-10 w-full max-w-none lg:max-w-3xl xl:max-w-4xl">
+                        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-brand shadow-sm">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Join Over 1,000+ Students
                         </div>
 
-                        <!-- Main Headline -->
-                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-                            Study Medicine In Europe
+                        <h1 class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-ink sm:text-6xl xl:text-[72px]">
+                            Study Medicine In<br />
+                            <span class="relative inline-block text-brand mt-1 pb-1">
+                                Europe<span class="text-blue-300">.</span>
+                                <!-- Hand-drawn pen stroke scribble underline (matching reference) -->
+                                <svg class="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 text-brand overflow-visible pointer-events-none" viewBox="0 0 260 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Main sweeping pen stroke under Europe (left to 'p') -->
+                                    <path d="M 2 12.5 C 45 7.5, 100 4.5, 168 8" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                                    <!-- Pen stroke continuation after 'p' descender (under 'e') -->
+                                    <path d="M 183 6 C 205 7.5, 230 9.5, 256 11.5" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                                    <!-- Authentic pen scribble loop under 'o-p' -->
+                                    <path d="M 116 15.5 C 132 15.8, 145 16.5, 156 18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+                                </svg>
+                            </span>
                         </h1>
 
-                        <!-- Subtitle -->
-                        <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                            The number 1 UK medical consultancy for studying abroad. Enquire today for free.
+                        <p class="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
+                            The number 1 UK medical consultancy for studying abroad.
+                            Enquire today for free.
                         </p>
 
-                        <!-- 3 Action Buttons -->
-                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
-                            <a href="contact.html#consultation-form"
-                                class="px-6 sm:px-7 py-3.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md shadow-blue-600/30 active:scale-95">
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                            <a href="contact.html#consultation-form" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-brand px-7 py-4 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-200">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M16 3v4M8 3v4M3.5 10h17M8 14h3"/></svg>
                                 Free Consultation
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="ml-1 h-5 w-5 fill-none stroke-current" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                             </a>
-                            <a href="services.html"
-                                class="px-6 sm:px-7 py-3.5 rounded-[5px] bg-white/10 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/20 transition-all border border-white/25 active:scale-95">
+                            <a href="services.html" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-blue-200 bg-white/80 px-7 py-4 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-brand hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current" stroke-width="1.8"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>
                                 Our Services &amp; Packages
                             </a>
-                            <a href="application-process.html"
-                                class="px-6 sm:px-7 py-3.5 rounded-[5px] bg-blue-600/25 text-blue-100 font-bold text-xs uppercase tracking-wider hover:bg-blue-600/35 transition-all border border-blue-400/30 active:scale-95">
-                                Application Process
+                        </div>
+
+                        <!-- service highlights -->
+                        <div id="services-highlight" class="mt-9 grid gap-4 border-b border-blue-100 pb-7 sm:grid-cols-3 sm:gap-0">
+                            <a href="contact.html#consultation-form" class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:pr-4 group transition-colors">
+                                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 4a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.4Z"/><path d="M8 12h8M8 9h5"/></svg>
+                                </span>
+                                <div><p class="font-bold text-ink group-hover:text-brand transition-colors">Free Consultation</p><p class="mt-0.5 text-sm text-muted">No hidden fees</p></div>
+                            </a>
+                            <a href="services.html" class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:px-4 group transition-colors">
+                                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></svg>
+                                </span>
+                                <div><p class="font-bold text-ink group-hover:text-brand transition-colors">Services &amp; Packages</p><p class="mt-0.5 text-sm text-muted">Tailored to your goals</p></div>
+                            </a>
+                            <a href="application-process.html" class="flex items-center gap-3 sm:pl-4 group transition-colors">
+                                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current" stroke-width="1.8"><path d="m2 8 10-5 10 5-10 5L2 8Z"/><path d="M6 10v6c3.5 3 8.5 3 12 0v-6M22 8v7"/></svg>
+                                </span>
+                                <div><p class="font-bold text-ink group-hover:text-brand transition-colors">Application Process</p><p class="mt-0.5 text-sm text-muted">Simple &amp; guided</p></div>
                             </a>
                         </div>
 
-                        <!-- Trustpilot Rating Sub-bar -->
-                        <div class="inline-flex items-center gap-2 text-xs text-blue-200 font-medium pt-3 border-t border-white/10">
-                            <span class="font-bold text-white">Rated Excellent</span>
-                            <span class="text-emerald-400 font-black">★ 4.9</span>
-                            <span>on Trustpilot</span>
-                            <span class="text-blue-300">•</span>
-                            <span class="text-emerald-400 flex items-center gap-1 font-semibold">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <!-- trust row -->
+                        <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-black shadow-sm">
+                                    <span class="bg-gradient-to-br from-blue-500 via-green-500 to-yellow-400 bg-clip-text text-transparent">G</span>
+                                </span>
+                                <span class="font-semibold text-ink">Rated Excellent</span>
+                                <span class="text-xl leading-none text-amber-400">★</span>
+                                <span class="font-bold text-mint">4.9</span>
+                                <span class="text-muted">on Trustpilot</span>
+                            </div>
+                            <span class="hidden h-8 w-px bg-blue-200 sm:block"></span>
+                            <div class="flex items-center gap-2 font-semibold text-mint">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-7 w-7 fill-current"><path d="M12 2 3.5 5.5v6.2c0 5 3.5 8.6 8.5 10.3 5-1.7 8.5-5.3 8.5-10.3V5.5L12 2Zm-1.2 13.7-3.2-3.2 1.4-1.4 1.8 1.8 4.4-4.4 1.4 1.4-5.8 5.8Z"/></svg>
                                 UKMLA &amp; GMC Aligned
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Hero Right: Authentic Medical Students & Campus Visual -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative w-full max-w-md">
-                            <!-- Outer container with medical photo -->
-                            <div class="relative rounded-[5px] overflow-hidden border border-white/20 shadow-2xl bg-slate-900/50 backdrop-blur-sm group">
-                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80"
-                                     alt="International Medical Students in Clinical Training"
-                                     class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-102 transition-transform duration-500" />
-                                
-                                <!-- Soft gradient overlay for text readability -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-black/30 pointer-events-none"></div>
-
-                                <!-- Floating top badges -->
-                                <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-[#0F172A]/85 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold shadow-lg">
-                                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                        2025/2026 Admissions Open
-                                    </span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-[5px] bg-blue-600/90 text-white text-xs sm:text-sm font-bold shadow-lg">
-                                        100% English Taught
-                                    </span>
-                                </div>
-
-                                <!-- Bottom Overlay Card -->
-                                <div class="absolute bottom-3.5 left-3.5 right-3.5 p-4 rounded-[5px] bg-[#0F172A]/90 backdrop-blur-md border border-white/20 text-white shadow-xl">
-                                    <div class="flex items-center justify-between mb-1.5">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-xl">🇧🇬</span>
-                                            <span class="font-bold text-sm sm:text-base text-white">Medical University of Plovdiv</span>
-                                        </div>
-                                        <span class="text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-400/30 px-2 py-0.5 rounded-[5px]">GMC Aligned</span>
-                                    </div>
-                                    <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
-                                        Medicine (MD) &amp; Dentistry (DMD) · 6-Year Program · EU Directive 2005/36/EC
-                                    </p>
-                                    <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm text-blue-200">
-                                        <span>Tuition: <strong class="text-white">€8,000 / Year</strong></span>
-                                        <a href="plovdiv-medical-university.html" class="text-blue-300 hover:text-white font-bold inline-flex items-center gap-1">
-                                            View Details <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Curved wave divider to section below -->
-            <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none translate-y-[1px]">
-                <svg class="relative block w-full h-8 sm:h-12 lg:h-16 text-white" viewBox="0 0 1440 60" fill="currentColor" preserveAspectRatio="none">
-                    <path d="M0,0 C480,50 960,50 1440,0 L1440,60 L0,60 Z"></path>
-                </svg>
+                    <!-- Right visual (proportional sleek width) -->
+                    <div class="relative mx-auto w-full max-w-[460px] sm:max-w-[490px] lg:max-w-[470px] xl:max-w-[490px] lg:ml-auto">
+                        <div aria-hidden="true" class="absolute -inset-4 -rotate-2 rounded-[2.5rem] bg-blue-100/80"></div>
+                        <div aria-hidden="true" class="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-cyan-100/70 blur-2xl"></div>
+                        <div class="photo-shape relative h-[360px] shadow-soft sm:h-[440px] lg:h-[470px] xl:h-[500px]">
+                            <img
+                                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1400&q=90"
+                                alt="Doctor in a white coat in a modern clinical setting"
+                                class="h-full w-full object-cover object-center"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-blue-900/5"></div>
+                            <div class="absolute right-4 top-4 sm:right-6 sm:top-6 inline-flex items-center gap-2 rounded-full bg-mint px-3.5 py-2 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-900/15">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="2"><path d="m4 12 5 5L20 6"/></svg>
+                                100% English Taught
+                            </div>
+                        </div>
+
+                        <!-- University information card -->
+                        <article class="relative mx-3 -mt-20 rounded-2xl border border-white/80 bg-white/95 p-4 sm:p-5 shadow-card backdrop-blur-xl sm:absolute sm:-bottom-5 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[min(480px,calc(100%+2.5rem))]">
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex min-w-0 items-center gap-2.5">
+                                    <span class="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 sm:h-6 sm:w-6 fill-none stroke-current" stroke-width="1.8"><path d="M3 21h18M5 21V9m14 12V9M2 9l10-6 10 6H2ZM8 12v5M12 12v5M16 12v5"/></svg>
+                                    </span>
+                                    <h2 class="text-sm font-extrabold leading-snug text-ink sm:text-base">Medical University of Plovdiv</h2>
+                                </div>
+                                <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1.5 text-xs font-bold text-mint ring-1 ring-inset ring-emerald-100">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-none stroke-current" stroke-width="2"><path d="m4 12 5 5L20 6"/></svg>
+                                    GMC Aligned
+                                </span>
+                            </div>
+
+                            <p class="mt-3 text-xs sm:text-sm leading-5 sm:leading-6 text-muted">
+                                Medicine (MD) &amp; Dentistry (DMD) <span class="px-1 text-blue-200">·</span> 6-Year Program <span class="px-1 text-blue-200">·</span> EU Directive 2005/36/EC
+                            </p>
+
+                            <div class="my-3 h-px bg-blue-100"></div>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2 text-xs sm:text-sm text-muted">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 sm:h-5 sm:w-5 text-brand fill-none stroke-current" stroke-width="1.8"><path d="m2 8 10-5 10 5-10 5L2 8Z"/><path d="M6 10v6c3.5 3 8.5 3 12 0v-6M22 8v7"/></svg>
+                                    Tuition: <strong class="text-ink">€8,000 / Year</strong>
+                                </div>
+                                <a href="plovdiv-medical-university.html" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand transition hover:gap-2.5">
+                                    View Details
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
