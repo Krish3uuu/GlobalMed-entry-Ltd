@@ -27,11 +27,73 @@
    ========================================================================== */
 html {
     font-family: 'Karla', sans-serif;
+    font-size: 16px;
 }
+
+/* Hero Banner Custom Styles (from studymed-europe-hero) */
+.hero-bg {
+    background:
+        radial-gradient(ellipse at 90% 45%, rgba(219,234,254,.75) 0%, rgba(239,246,255,.25) 34%, transparent 62%),
+        radial-gradient(ellipse at 8% 90%, rgba(219,234,254,.6) 0%, transparent 35%),
+        linear-gradient(115deg, #ffffff 0%, #f8fbff 55%, #f2f7ff 100%);
+}
+.photo-shape {
+    border-radius: 34% 14% 22% 17% / 20% 20% 24% 22%;
+    overflow: hidden;
+}
+.dot-pattern {
+    background-image: radial-gradient(#93b4fb 2px, transparent 2px);
+    background-size: 19px 19px;
+}
+@media (max-width: 767px) {
+    .photo-shape { border-radius: 28px; }
+}
+
+.text-brand { color: #1d4ed8; }
+.bg-brand { background-color: #1d4ed8; }
+.border-brand { border-color: #1d4ed8; }
+.text-ink { color: #10234b; }
+.text-muted { color: #5b6f91; }
+.text-mint { color: #08a878; }
+.bg-mint { background-color: #08a878; }
+.shadow-soft { box-shadow: 0 24px 70px rgba(29, 78, 216, .14); }
+.shadow-card { box-shadow: 0 18px 45px rgba(16, 35, 75, .16); }
 
 body {
     font-family: 'Karla', sans-serif;
     color: #3d4459;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Base paragraph and description readability (Minimum 14px, responsive 15-16px) */
+p, .paragraph, .subtext, .desc-text {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+    body {
+        font-size: 16px;
+    }
+    p, .paragraph, .subtext, .desc-text {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
+/* Ensure no text or subtext falls below 14px for accessibility and legibility */
+.text-xs {
+    font-size: 0.875rem !important; /* 14px minimum */
+    line-height: 1.35rem !important;
+}
+
+.text-\[10px\],
+.text-\[11px\],
+.text-\[12px\],
+.text-\[13px\] {
+    font-size: 14px !important;
+    line-height: 1.35rem !important;
 }
 
 /* Headings on light backgrounds default to #192F59 */
@@ -407,30 +469,30 @@ span.text-white,
     animation: nodeBlink 3.5s ease-in-out infinite 0.7s;
 }
 
-/* Pattern utilities */
+/* Soft ambient utilities */
 .bg-grid-mesh {
     background-size: 40px 40px;
     background-image:
-        linear-gradient(to right, rgba(29, 78, 216, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(29, 78, 216, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(29, 78, 216, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(29, 78, 216, 0.02) 1px, transparent 1px);
 }
 
 .bg-dot-matrix {
     background-size: 24px 24px;
-    background-image: radial-gradient(rgba(29, 78, 216, 0.08) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(29, 78, 216, 0.04) 1px, transparent 1px);
 }
 
 .bg-dot-matrix-subtle {
     background-size: 28px 28px;
-    background-image: radial-gradient(rgba(100, 116, 139, 0.06) 1.1px, transparent 1.1px);
+    background-image: radial-gradient(rgba(100, 116, 139, 0.03) 1px, transparent 1px);
 }
 
 .bg-isometric-grid {
     background-size: 48px 48px;
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.06) 1.5px, transparent 1.5px),
-        linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+        radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.025) 1px, transparent 1px),
+        linear-gradient(to right, rgba(226, 232, 240, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.15) 1px, transparent 1px);
 }
 
 /* Interactive Card Glow Effect */

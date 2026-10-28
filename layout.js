@@ -121,7 +121,7 @@
             </a>
 
             <!-- 8 Canonical Desktop Navigation Links -->
-            <nav class="hidden xl:flex items-center gap-5 2xl:gap-7 text-[13px] 2xl:text-sm font-semibold text-slate-600">
+            <nav class="hidden xl:flex items-center gap-5 2xl:gap-7 text-sm font-semibold text-slate-600">
                 <a class="${navClass('home')}" href="index.html#home">Home</a>
                 <a class="${navClass('about')}" href="about.html">About Us</a>
                 <a class="${navClass('courses')}" href="courses.html">Courses &amp; Universities</a>
@@ -170,7 +170,7 @@
             </div>
             <!-- Navigation Links (Scrollable) -->
             <div class="px-4 sm:px-5 py-4 overflow-y-auto flex-1 min-h-0 space-y-1">
-                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 px-3 mb-2">Navigation Menu</div>
+                <div class="text-xs font-bold uppercase tracking-widest text-slate-400 px-3 mb-2">Navigation Menu</div>
                 <a class="${mobileNavClass('home')}" href="index.html#home">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">home</span>
@@ -234,7 +234,7 @@
                     href="contact.html#consultation-form">
                     Book Consultation Assessment
                 </a>
-                <div class="flex items-center justify-center gap-4 text-[11px] text-slate-500 font-medium">
+                <div class="flex items-center justify-center gap-4 text-xs text-slate-500 font-medium">
                     <span class="flex items-center gap-1">
                         <span class="text-amber-500 font-bold">★</span> Trustpilot 4.9/5
                     </span>
@@ -257,7 +257,7 @@
                     <a href="index.html#home" class="inline-block group" aria-label="GlobalMed Entry Ltd Home">
                         <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
                     </a>
-                    <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+                    <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
                         Founded by NHS and European clinical doctors, GlobalMed Entry Ltd is the UK&apos;s authoritative advisory firm for studying medicine and dentistry in accredited European universities.
                     </p>
                     <div class="flex items-center gap-4 text-xs font-semibold text-slate-700 pt-1">
@@ -272,7 +272,7 @@
 
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Partner Universities</div>
-                    <ul class="space-y-2 text-xs">
+                    <ul class="space-y-2.5 text-sm">
                         <li><a class="hover:text-primary transition-colors" href="plovdiv-medical-university.html">Plovdiv Medical University</a></li>
                         <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Sofia Medical University</a></li>
                         <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Pleven Medical University</a></li>
@@ -284,7 +284,7 @@
 
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Our Services</div>
-                    <ul class="space-y-2 text-xs">
+                    <ul class="space-y-2.5 text-sm">
                         <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase I: Admissions Support</a></li>
                         <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase II: Relocation Support</a></li>
                         <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase III: Ongoing Support</a></li>
@@ -296,7 +296,7 @@
 
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Company &amp; Governance</div>
-                    <ul class="space-y-2 text-xs">
+                    <ul class="space-y-2.5 text-sm">
                         <li><a class="hover:text-primary transition-colors" href="about.html">About Us</a></li>
                         <li><a class="hover:text-primary transition-colors" href="success-stories.html">Success Stories</a></li>
                         <li><a class="hover:text-primary transition-colors" href="resources.html">Admissions Resources</a></li>
@@ -308,7 +308,7 @@
                 </div>
             </div>
 
-            <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4 text-center sm:text-left">
+            <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-400 gap-4 text-center sm:text-left">
                 <div>© 2025 GlobalMed Entry Ltd. Registered in England &amp; Wales (No. 10796193).</div>
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
                     <a class="hover:text-slate-600 transition-colors" href="#">Privacy Policy</a>
