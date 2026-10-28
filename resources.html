@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>Resources &amp; Admissions Guides | GlobalMed Entry Ltd</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    borderRadius: {
+                        sm: "5px",
+                        DEFAULT: "5px",
+                        md: "5px",
+                        lg: "5px",
+                        xl: "5px",
+                        "2xl": "5px",
+                        "3xl": "5px"
+                    },
+                    colors: {
+                        primary: "#1D4ED8",
+                        "primary-dark": "#173fa8",
+                        "primary-light": "#EFF6FF",
+                        "surface-muted": "#F8FAFD",
+                        "surface-card": "#FFFFFF",
+                        "border-clean": "#E2E8F0"
+                    },
+                    textColor: {
+                        "slate-950": "#192F59",
+                        "slate-900": "#192F59",
+                        "slate-600": "#3d4459",
+                        "slate-700": "#3d4459"
+                    },
+                    fontFamily: {
+                        sans: ["Karla", "sans-serif"],
+                        body: ["Karla", "sans-serif"],
+                        heading: ["Rubik", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'executive': '0 20px 45px -15px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.8)',
+                        'executive-hover': '0 25px 50px -12px rgba(29, 78, 216, 0.08), 0 0 0 1px rgba(186, 215, 255, 0.6)'
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body
+    class="bg-[#FCFDFE] font-sans text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+    <!-- Centralized Dynamic Site Header -->
+    <header id="site-header"></header>
+
+    <!-- Centralized Dynamic Mobile Navigation Drawer -->
+    <div id="site-mobile-drawer"></div>
+
+    <!-- MAIN RESOURCES CONTENT -->
+    <main class="w-full pt-16 sm:pt-20 lg:pt-24">
+        <!-- 1. HERO SECTION: Resources & Admissions Library (Pattern A) -->
+        <section class="relative pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 bg-gradient-to-b from-[#EFF6FF]/70 via-[#F8FAFD] to-white border-b border-slate-200/80 overflow-hidden">
+            <div class="absolute inset-0 bg-isometric-grid pointer-events-none opacity-40"></div>
+            <!-- Ambient Glow Accents -->
+            <div class="absolute top-1/4 -left-48 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 -right-48 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-[5px] bg-blue-50 border border-blue-200/80 text-primary text-xs font-semibold uppercase tracking-wider shadow-xs">
+                    <span class="material-symbols-outlined text-[16px] text-primary">menu_book</span>
+                    Doctor-Curated Medical Admissions Knowledge Base
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight">
+                    Resources &amp; Admissions Guides
+                </h1>
+                <p class="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+                    Authoritative regulatory frameworks, past entrance papers, living cost calculators, and legal document checklists authored by GMC-registered NHS doctors.
+                </p>
+
+                <!-- Search Input Bar -->
+                <div class="pt-6 max-w-2xl mx-auto">
+                    <div class="relative flex items-center shadow-executive rounded-[5px] bg-white border border-slate-200/90 overflow-hidden p-1.5 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                        <span class="material-symbols-outlined text-slate-400 pl-3 pr-2 text-[22px]">search</span>
+                        <input type="text" id="resourceSearch" placeholder="Search guides, entrance syllabi, GMC policies, visa checklists..."
+                            class="w-full py-2.5 px-2 text-sm text-slate-800 placeholder-slate-400 outline-none bg-transparent font-medium"
+                            onkeyup="filterResources()" />
+                        <button type="button" class="px-5 py-2.5 bg-primary text-white font-bold text-xs uppercase tracking-wider rounded-[5px] hover:bg-primary-dark transition-colors shrink-0 shadow-xs">
+                            Search
+                        </button>
+                    </div>
+
+                    <!-- Quick Filter Tags -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 pt-3 text-xs text-slate-500 font-medium">
+                        <span class="text-slate-400 text-[11px] font-bold uppercase tracking-wider">Popular:</span>
+                        <button onclick="setFilter('gmc')" class="px-2.5 py-1 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary transition-colors text-[11px] font-semibold">UKMLA Policy</button>
+                        <button onclick="setFilter('exams')" class="px-2.5 py-1 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary transition-colors text-[11px] font-semibold">Sofia Entrance Exam</button>
+                        <button onclick="setFilter('costs')" class="px-2.5 py-1 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary transition-colors text-[11px] font-semibold">Tuition Matrix</button>
+                        <button onclick="setFilter('visa')" class="px-2.5 py-1 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary transition-colors text-[11px] font-semibold">Type D Visa</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FLAGSHIP FEATURED GUIDE BANNER -->
+        <section class="py-10 bg-white border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="relative bg-gradient-to-br from-[#0F172A] via-[#172554] to-[#1E3A8A] text-white rounded-[5px] p-8 sm:p-12 shadow-executive overflow-hidden border border-blue-900/50">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-blue-500/15 blur-3xl pointer-events-none"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                        <div class="lg:col-span-8 space-y-4">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="px-3 py-1 rounded-[5px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold tracking-wide uppercase">
+                                    Flagship Policy Guide · October 2025
+                                </span>
+                                <span class="px-3 py-1 rounded-[5px] bg-white/10 text-blue-200 text-[11px] font-medium border border-white/10">
+                                    12 Min Read
+                                </span>
+                            </div>
+
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                                Complete Guide to GMC Registration &amp; UKMLA for European Medical Graduates (2025/2026 Framework)
+                            </h2>
+
+                            <p class="text-xs sm:text-sm text-blue-100/90 leading-relaxed max-w-2xl">
+                                An exhaustive clinical breakdown of how medical graduates from Bulgaria, Romania, and Poland register with the UK General Medical Council, clear the Medical Licensing Assessment (UKMLA), and secure their NHS Foundation Programme FY1 training posts post-Brexit.
+                            </p>
+
+                            <div class="flex flex-wrap items-center gap-6 pt-2 text-xs text-blue-200">
+                                <span class="flex items-center gap-1.5 font-semibold text-white">
+                                    <span class="material-symbols-outlined text-[17px] text-blue-300">person</span>
+                                    Dr. Samuel · NHS Doctor &amp; MU Sofia Graduate
+                                </span>
+                                <span class="flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[17px] text-emerald-400">verified</span>
+                                    GMC &amp; HEE Compliance Verified
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 flex flex-col gap-3 justify-center lg:items-end">
+                            <a href="resource-details.html"
+                                class="w-full sm:w-auto text-center px-7 py-3.5 rounded-[5px] bg-primary text-white font-extrabold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md shadow-blue-600/30 active:scale-95">
+                                Read Full Guide
+                            </a>
+                            <a href="resource-details.html#download"
+                                class="w-full sm:w-auto text-center px-6 py-3 rounded-[5px] bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all border border-white/20">
+                                Download PDF Checklist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MAIN RESOURCE DIRECTORY WITH INTERACTIVE FILTERS -->
+        <section class="py-14 sm:py-20 bg-[#F8FAFD] border-b border-slate-200/80" id="library">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-10">
+                <!-- Filter Tabs Header -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-slate-950 tracking-tight">Admissions &amp; Academic Directory</h2>
+                        <p class="text-xs text-slate-500 mt-1">Filter by preparation phase, regulatory compliance, or practical relocation support.</p>
+                    </div>
+
+                    <!-- Filter Pill Buttons -->
+                    <div class="flex flex-wrap items-center gap-2" id="filterContainer">
+                        <button onclick="setCategory('all')" id="btn-all" class="category-btn active px-3.5 py-1.5 rounded-[5px] bg-primary text-white text-xs font-bold transition-all shadow-xs">
+                            All (9)
+                        </button>
+                        <button onclick="setCategory('exams')" id="btn-exams" class="category-btn px-3.5 py-1.5 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary text-xs font-semibold transition-all">
+                            Entrance Exams
+                        </button>
+                        <button onclick="setCategory('gmc')" id="btn-gmc" class="category-btn px-3.5 py-1.5 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary text-xs font-semibold transition-all">
+                            GMC &amp; UKMLA
+                        </button>
+                        <button onclick="setCategory('costs')" id="btn-costs" class="category-btn px-3.5 py-1.5 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary text-xs font-semibold transition-all">
+                            Tuition &amp; Fees
+                        </button>
+                        <button onclick="setCategory('visa')" id="btn-visa" class="category-btn px-3.5 py-1.5 rounded-[5px] bg-white border border-slate-200 text-slate-700 hover:border-primary hover:text-primary text-xs font-semibold transition-all">
+                            Relocation &amp; Visas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resources Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch" id="resourceCardsGrid">
+                    <!-- Resource 1: GMC Registration & UKMLA Policy -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="gmc" data-title="gmc registration ukmla policy framework post-brexit nhs fy1">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-blue-50 text-primary text-[11px] font-bold tracking-wide border border-blue-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">verified</span>
+                                    GMC &amp; UKMLA
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">12 Min Read</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                <a href="resource-details.html">GMC Registration &amp; UKMLA Policy Framework (2025/2026)</a>
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Complete regulatory breakdown of GMC Recognition, Medical Licensing Assessment requirements (AKT and CPSA), and NHS Foundation training allocations.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="resource-details.html" class="flex items-center gap-1">
+                                <span>Read Comprehensive Guide</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 2: Entrance Exam Syllabus & Sample Paper Pack -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="exams" data-title="entrance exam biology chemistry syllabus sample papers past papers sofia plovdiv varna">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-purple-50 text-purple-700 text-[11px] font-bold tracking-wide border border-purple-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">school</span>
+                                    Entrance Exam Prep
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Exam Pack (PDF)</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                Medical Entrance Exam Syllabus &amp; 10-Year Sample Papers
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Curated Biology and Chemistry multiple-choice question banks, diagnostic mock papers, and answer keys for Sofia, Plovdiv, and Varna Medical Universities.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="contact.html#consultation-form" class="flex items-center gap-1">
+                                <span>Request Free Paper Pack</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">download</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 3: Tuition & Living Costs Matrix -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="costs" data-title="tuition living costs comparison fees bulgaria romania poland italy czechia">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-emerald-50 text-emerald-700 text-[11px] font-bold tracking-wide border border-emerald-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">payments</span>
+                                    Financial Planning
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">8 Min Read</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                European Medical Tuition Fees &amp; Living Costs Matrix 2025/2026
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Complete financial breakdown comparing university tuition (€7,500 - €9,000/yr), private rent, utility costs, and monthly student budgets across 6 EU destinations.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="courses.html" class="flex items-center gap-1">
+                                <span>View Fee Breakdown</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 4: Legalised Document Checklist -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="visa" data-title="hague apostille legalisation sworn translation document checklist fco ministry">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-blue-50 text-primary text-[11px] font-bold tracking-wide border border-blue-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">gavel</span>
+                                    Legal Dossier
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Checklist</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                Hague Apostille &amp; Sworn Translation Master Checklist
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Step-by-step instructions for UK and international certificates: Solicitor certification, UK FCO Apostille, certified sworn translation, and Ministry of Education validation.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="application-process.html" class="flex items-center gap-1">
+                                <span>Inspect Application Dossier</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 5: UKMLA AKT Question Bank Strategy -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="gmc" data-title="ukmla akt applied knowledge test passmedicine quesmed preparation question banks">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-blue-50 text-primary text-[11px] font-bold tracking-wide border border-blue-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">medical_services</span>
+                                    Clinical Licensing
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">10 Min Read</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                UKMLA AKT (Applied Knowledge Test) Preparation Blueprint
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Recommended high-yield question banks, NICE clinical guidelines, PassMedicine revision schedules, and high-yield scoring patterns for European undergraduates.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="resource-details.html" class="flex items-center gap-1">
+                                <span>Read Revision Blueprint</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 6: Student Accommodation Guide -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="visa" data-title="accommodation apartments rent sofia plovdiv varna housing contracts lease">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-slate-100 text-slate-700 text-[11px] font-bold tracking-wide border border-slate-200 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">home_work</span>
+                                    Campus Housing
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Local Guide</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                Student Housing in Bulgaria: Sofia, Plovdiv &amp; Varna Apartments
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Verified neighborhoods within walking distance of university clinical rectorates, standard lease terms, bill management, and on-ground viewing protocols.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="services.html#phases" class="flex items-center gap-1">
+                                <span>Relocation Service Details</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 7: NHS Foundation Programme Application -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="gmc" data-title="oriel nhs foundation programme fy1 fy2 eligibility allocation deaneries">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-blue-50 text-primary text-[11px] font-bold tracking-wide border border-blue-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">domain</span>
+                                    NHS Training
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Career Pathway</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                NHS Foundation Programme (FY1) Application Guide via Oriel
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Detailed timeline for European graduates: Oriel portal registration, Eligibility Window submissions, Deanery preference selection, and commencing hospital work.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="resource-details.html" class="flex items-center gap-1">
+                                <span>Read Oriel Allocation Guide</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 8: Medicine vs Dentistry in Europe -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="exams" data-title="medicine dentistry md dmd clinical hours gdc gmc career dental school">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-cyan-50 text-cyan-800 text-[11px] font-bold tracking-wide border border-cyan-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">dentistry</span>
+                                    Course Comparison
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Comparison</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                Medicine vs Dentistry in Europe: Curriculum &amp; Clinical Training
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Comparison of degree lengths (6 years MD vs 5-6 years DMD), chairside clinical phantom heads, hospital attachments, and GMC vs GDC UK registration pathways.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="courses.html" class="flex items-center gap-1">
+                                <span>Compare Courses</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource 9: Non-EU & Post-Brexit Visa Guide -->
+                    <div class="resource-card group bg-white rounded-[5px] border border-slate-200/90 p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                        data-category="visa" data-title="student visa type d bulgaria embassy migration biometric residence card permit">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] bg-emerald-50 text-emerald-700 text-[11px] font-bold tracking-wide border border-emerald-200/60 shadow-2xs">
+                                    <span class="material-symbols-outlined text-[15px]">badge</span>
+                                    Immigration
+                                </span>
+                                <span class="text-[11px] text-slate-400 font-medium">Visa Guide</span>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-snug">
+                                UK &amp; International Student Type D Visa Protocol
+                            </h3>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Comprehensive walkthrough for the Bulgarian National Type D Long-Stay Visa application, embassy appointments, financial proof, and Bulgarian Residence Card issuance.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary-dark transition-colors">
+                            <a href="services.html#phases" class="flex items-center gap-1">
+                                <span>View Visa Support Package</span>
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. LEAD MAGNET: DOWNLOAD ADMISSIONS HANDBOOK -->
+        <section class="py-16 sm:py-20 bg-white border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="bg-gradient-to-br from-[#172554] via-[#1E3A8A] to-[#1E293B] text-white rounded-[5px] p-8 sm:p-12 shadow-executive border border-blue-900/50">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-[5px] bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-wider border border-white/15">
+                                <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                                Free 64-Page Admissions Handbook
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                                Download The 2025/2026 European Medical Admissions Guidebook
+                            </h2>
+                            <p class="text-xs sm:text-sm text-blue-100 leading-relaxed">
+                                Includes detailed breakdowns for 12 GMC-aligned European universities, full entrance exam syllabi, step-by-step legalization timelines, and live student budget calculators.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-4 text-xs text-blue-200">
+                                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span> Instant PDF Delivery</span>
+                                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span> 100% Free · No Obligation</span>
+                                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span> Doctor-Verified Data</span>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 bg-white text-slate-900 p-6 sm:p-8 rounded-[5px] shadow-lg border border-slate-200">
+                            <h3 class="text-base font-bold text-slate-950 mb-1">Receive Your Free Copy via Email</h3>
+                            <p class="text-xs text-slate-500 mb-4">Enter your details below to download the latest edition.</p>
+
+                            <form onsubmit="event.preventDefault(); showDownloadSuccess();" class="space-y-3.5">
+                                <div>
+                                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1" for="handbookName">Your Name *</label>
+                                    <input type="text" id="handbookName" required placeholder="e.g. Alex Morgan"
+                                        class="w-full px-3.5 py-2 rounded-[5px] border border-slate-300 text-xs focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1" for="handbookEmail">Email Address *</label>
+                                    <input type="email" id="handbookEmail" required placeholder="name@example.com"
+                                        class="w-full px-3.5 py-2 rounded-[5px] border border-slate-300 text-xs focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1" for="handbookCourse">Target Intake</label>
+                                    <select id="handbookCourse" class="w-full px-3.5 py-2 rounded-[5px] border border-slate-300 text-xs focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all bg-white">
+                                        <option>Autumn 2025 Entry</option>
+                                        <option>Spring 2026 Entry</option>
+                                        <option>Autumn 2026 Entry</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full py-3 rounded-[5px] bg-primary text-white font-extrabold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md active:scale-95">
+                                    Download Handbook Now
+                                </button>
+                                <p class="text-[10px] text-center text-slate-400">Strictly confidential. No spam, guaranteed.</p>
+                            </form>
+
+                            <div id="handbookSuccessMsg" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-[5px] text-emerald-800 text-xs font-semibold">
+                                ✓ Handbook sent! Please check your inbox within 2 minutes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE FREQUENTLY ASKED QUESTIONS (Pattern E) -->
+        <section class="py-16 sm:py-20 bg-[#F8FAFD] border-b border-slate-200/80">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary block">Common Questions</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">Frequently Asked Academic Questions</h2>
+                    <p class="text-xs sm:text-sm text-slate-600">Answers to vital questions regarding syllabus, exams, and UK licensure.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <!-- FAQ 1 -->
+                    <div class="rounded-[5px] border border-slate-200 bg-white overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between p-4 text-left font-bold text-xs sm:text-sm text-slate-800 hover:text-primary focus:outline-none"
+                            onclick="toggleFaq(1)" id="faq-btn-1">
+                            <span class="flex items-center gap-2.5">
+                                <span class="text-base text-slate-400 font-bold" id="faq-icon-1">+</span>
+                                <span>Do European medical universities teach completely in English?</span>
+                            </span>
+                        </button>
+                        <div class="p-4 bg-slate-50/70 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-1">
+                            Yes. All lectures, lab sessions, clinical seminars, textbooks, and examinations are conducted 100% in English. During clinical years (years 4 to 6), universities provide conversational language classes so students can take basic patient histories in local teaching hospitals.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="rounded-[5px] border border-slate-200 bg-white overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between p-4 text-left font-bold text-xs sm:text-sm text-slate-800 hover:text-primary focus:outline-none"
+                            onclick="toggleFaq(2)" id="faq-btn-2">
+                            <span class="flex items-center gap-2.5">
+                                <span class="text-base text-slate-400 font-bold" id="faq-icon-2">+</span>
+                                <span>Will I be able to practice as a doctor in the UK NHS after graduating?</span>
+                            </span>
+                        </button>
+                        <div class="p-4 bg-slate-50/70 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-2">
+                            Yes. Medical degrees from recognized European faculties (such as Sofia, Plovdiv, Varna) meet the General Medical Council&apos;s primary medical qualification criteria. European graduates are eligible to clear the UKMLA and register with the GMC for Foundation Programme FY1/FY2 training posts.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="rounded-[5px] border border-slate-200 bg-white overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between p-4 text-left font-bold text-xs sm:text-sm text-slate-800 hover:text-primary focus:outline-none"
+                            onclick="toggleFaq(3)" id="faq-btn-3">
+                            <span class="flex items-center gap-2.5">
+                                <span class="text-base text-slate-400 font-bold" id="faq-icon-3">+</span>
+                                <span>What is the structure of the Biology &amp; Chemistry entrance exams?</span>
+                            </span>
+                        </button>
+                        <div class="p-4 bg-slate-50/70 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-3">
+                            The entrance examinations consist of multiple-choice questions (MCQs) in high school-level Biology and Chemistry, alongside a short English proficiency assessment for non-native speakers. GlobalMed Entry Ltd provides past exam papers, structured revision modules, and mock exams that have produced our 99.2% first-time pass rate.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="rounded-[5px] border border-slate-200 bg-white overflow-hidden shadow-xs">
+                        <button class="w-full flex items-center justify-between p-4 text-left font-bold text-xs sm:text-sm text-slate-800 hover:text-primary focus:outline-none"
+                            onclick="toggleFaq(4)" id="faq-btn-4">
+                            <span class="flex items-center gap-2.5">
+                                <span class="text-base text-slate-400 font-bold" id="faq-icon-4">+</span>
+                                <span>Can I apply with BTEC, Scottish Highers, or an existing Bachelor&apos;s degree?</span>
+                            </span>
+                        </button>
+                        <div class="p-4 bg-slate-50/70 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-4">
+                            Yes. European universities assess international qualifications individually. Our clinical admissions team reviews your transcripts and matches you with institutions that recognize your specific qualification profile without unnecessary resits.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PRE-FOOTER CTA SECTION (Pattern C) -->
+        <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden" id="consultation">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">
+                    <span class="material-symbols-outlined text-3xl sm:text-4xl">support_agent</span>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+                    Thinking About Applying This Year?
+                </h2>
+
+                <p class="text-xs sm:text-sm text-blue-100 font-normal max-w-xl mx-auto leading-relaxed">
+                    Why not book a FREE consultation with an expert advisor.
+                </p>
+
+                <div class="pt-3">
+                    <a href="contact.html#consultation-form"
+                        class="inline-block px-8 py-3.5 rounded-[5px] bg-white text-primary hover:bg-blue-50 font-bold text-xs uppercase tracking-wider transition-colors shadow-md">
+                        Book Now!
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Centralized Dynamic Site Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Centralized Layout Loader -->
+    <script src="layout.js"></script>
+
+    <!-- Inline Filter & Interactive Helper Scripts -->
+    <script>
+        function filterResources() {
+            const query = document.getElementById('resourceSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.resource-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title') || '';
+                const text = card.innerText.toLowerCase();
+                if (title.includes(query) || text.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function setCategory(cat) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white', 'shadow-xs');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+            const activeBtn = document.getElementById('btn-' + cat);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+                activeBtn.classList.add('bg-primary', 'text-white', 'shadow-xs');
+            }
+
+            const cards = document.querySelectorAll('.resource-card');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (cat === 'all' || cardCat === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function setFilter(cat) {
+            setCategory(cat);
+            const lib = document.getElementById('library');
+            if (lib) lib.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleFaq(index) {
+            const content = document.getElementById('faq-content-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            if (!content || !icon) return;
+            const isHidden = content.classList.contains('hidden');
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        function showDownloadSuccess() {
+            const msg = document.getElementById('handbookSuccessMsg');
+            if (msg) msg.classList.remove('hidden');
+        }
+    </script>
+</body>
+
+</html>

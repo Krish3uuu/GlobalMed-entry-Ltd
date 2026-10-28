@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+@layer base {
+    html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        font-family: 'Karla', sans-serif;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        -webkit-tap-highlight-color: transparent;
+        font-family: 'Karla', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-heading {
+        font-family: 'Rubik', sans-serif;
+    }
+}
+
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY & DEFAULT BASE COLORS
+   ========================================================================== */
+html {
+    font-family: 'Karla', sans-serif;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    color: #3d4459;
+}
+
+/* Headings on light backgrounds default to #192F59 */
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Rubik', sans-serif !important;
+    color: #192F59;
+}
+
+/* Form inputs & controls */
+input, textarea, select {
+    font-family: 'Karla', sans-serif;
+    color: #3d4459;
+}
+
+/* Headings specifically on light backgrounds */
+.text-slate-950,
+.text-slate-900,
+.heading-color {
+    color: #192F59;
+}
+
+/* Body and descriptions on light backgrounds */
+.text-slate-600,
+.text-slate-700,
+.text-slate-800,
+.body-color {
+    color: #3d4459;
+}
+
+/* ==========================================================================
+   PRIMARY COLOR & ACTIVE NAVIGATION (Fixes Issue 2: Nav active color)
+   ========================================================================== */
+.text-primary,
+a.text-primary,
+span.text-primary,
+div.text-primary,
+header nav a.text-primary,
+header nav a[class*="text-primary"],
+#mobileDrawer a.text-primary,
+.mobile-nav-link.text-primary,
+.mobile-nav-link.text-primary * {
+    color: #1D4ED8 !important;
+}
+
+/* Active navigation link in header */
+header nav a.text-primary::after,
+header nav a[class*="after:bg-primary"]::after {
+    background-color: #1D4ED8 !important;
+}
+
+header nav a.text-slate-600 {
+    color: #475569 !important;
+}
+
+header nav a.text-slate-600:hover {
+    color: #1D4ED8 !important;
+}
+
+/* ==========================================================================
+   CONTACT CARD ICON BOXES (Fixes Issue 1: Contact card icons on Home & Contact)
+   Normal state: Royal blue icon on light blue background
+   Hover state: Pure white icon on royal blue background
+   ========================================================================== */
+.bg-blue-50.text-primary,
+.bg-blue-50.text-primary .material-symbols-outlined,
+.bg-blue-50 .material-symbols-outlined.text-primary,
+.bg-blue-50.text-primary *,
+.bg-blue-50 > .material-symbols-outlined {
+    color: #1D4ED8 !important;
+}
+
+/* Group hover state for interactive contact cards */
+.group:hover .group-hover\:bg-primary {
+    background-color: #1D4ED8 !important;
+}
+
+.group:hover .group-hover\:text-white,
+.group:hover .group-hover\:text-white .material-symbols-outlined,
+.group:hover .group-hover\:bg-primary .material-symbols-outlined,
+.group:hover .group-hover\:bg-primary * {
+    color: #ffffff !important;
+}
+
+.group:hover .group-hover\:text-primary {
+    color: #1D4ED8 !important;
+}
+
+/* ==========================================================================
+   BUTTONS: All background buttons MUST retain pure white text & icons
+   ========================================================================== */
+a.bg-primary,
+button.bg-primary,
+input[type="submit"].bg-primary,
+a.bg-primary-dark,
+button.bg-primary-dark,
+.btn-primary,
+button.text-white,
+a.text-white {
+    color: #ffffff !important;
+}
+
+a.bg-primary *,
+button.bg-primary *,
+a.bg-primary-dark *,
+button.bg-primary-dark *,
+.btn-primary *,
+a.text-white *,
+button.text-white * {
+    color: #ffffff !important;
+}
+
+/* Ensure background color on buttons */
+a.bg-primary,
+button.bg-primary,
+input[type="submit"].bg-primary {
+    background-color: #1D4ED8 !important;
+}
+
+a.bg-primary-dark,
+button.bg-primary-dark {
+    background-color: #173FA8 !important;
+}
+
+/* White buttons with primary text (e.g. "bg-white text-primary") */
+a.bg-white.text-primary,
+a.bg-white.text-primary *,
+button.bg-white.text-primary,
+button.bg-white.text-primary * {
+    color: #1D4ED8 !important;
+    background-color: #ffffff !important;
+}
+
+/* Translucent frosted buttons in dark sections (e.g. "bg-white/10 text-white") */
+a[class*="bg-white/10"],
+a[class*="bg-white/10"] *,
+button[class*="bg-white/10"],
+button[class*="bg-white/10"] * {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   DARK BACKGROUND SECTIONS & GRADIENT BANNERS (Fixes Issues 3, 4, 5)
+   All headings and descriptions MUST remain pure white & light blue
+   ========================================================================== */
+.text-white,
+h1.text-white,
+h2.text-white,
+h3.text-white,
+h4.text-white,
+h5.text-white,
+h6.text-white,
+p.text-white,
+span.text-white,
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.bg-gradient-to-br.text-white h1,
+.bg-gradient-to-br.text-white h2,
+.bg-gradient-to-br.text-white h3,
+.bg-gradient-to-br.text-white h4,
+[class*="from-[#0F172A]"] h1,
+[class*="from-[#0F172A]"] h2,
+[class*="from-[#0F172A]"] h3,
+[class*="from-[#0F172A]"] h4,
+[class*="from-[#172554]"] h1,
+[class*="from-[#172554]"] h2,
+[class*="from-[#172554]"] h3,
+[class*="from-[#172554]"] h4,
+[class*="bg-[#0F172A]"] h1,
+[class*="bg-[#0F172A]"] h2,
+[class*="bg-[#0F172A]"] h3,
+[class*="bg-[#0F172A]"] h4,
+[class*="bg-[#020617]"] h1,
+[class*="bg-[#020617]"] h2,
+[class*="bg-[#020617]"] h3,
+[class*="bg-[#020617]"] h4 {
+    color: #ffffff !important;
+}
+
+/* Paragraphs and descriptions inside dark containers */
+.text-white p,
+[class*="from-[#0F172A]"] p:not(.bg-white *),
+[class*="from-[#172554]"] p:not(.bg-white *),
+[class*="bg-[#0F172A]"] p:not(.bg-white *),
+[class*="bg-[#020617]"] p:not(.bg-white *) {
+    color: #dbeafe !important;
+}
+
+/* Explicit accent text utilities inside dark sections */
+.text-blue-100, [class*="text-blue-100"] {
+    color: #dbeafe !important;
+}
+
+.text-blue-200, [class*="text-blue-200"] {
+    color: #bfdbfe !important;
+}
+
+.text-blue-300, [class*="text-blue-300"] {
+    color: #93c5fd !important;
+}
+
+.text-blue-400, [class*="text-blue-400"] {
+    color: #60a5fa !important;
+}
+
+.text-emerald-300, [class*="text-emerald-300"] {
+    color: #6ee7b7 !important;
+}
+
+.text-emerald-400, [class*="text-emerald-400"] {
+    color: #34d399 !important;
+}
+
+/* ==========================================================================
+   WHITE CARDS & FORMS NESTED INSIDE DARK SECTIONS
+   (e.g., Handbook Download Form on resources.html, Testimonials on index.html)
+   ========================================================================== */
+[class*="from-[#0F172A]"] .bg-white h1,
+[class*="from-[#0F172A]"] .bg-white h2,
+[class*="from-[#0F172A]"] .bg-white h3,
+[class*="from-[#0F172A]"] .bg-white h4,
+[class*="from-[#172554]"] .bg-white h1,
+[class*="from-[#172554]"] .bg-white h2,
+[class*="from-[#172554]"] .bg-white h3,
+[class*="from-[#172554]"] .bg-white h4,
+[class*="bg-[#0F172A]"] .bg-white h1,
+[class*="bg-[#0F172A]"] .bg-white h2,
+[class*="bg-[#0F172A]"] .bg-white h3,
+[class*="bg-[#0F172A]"] .bg-white h4,
+.text-white .bg-white h1,
+.text-white .bg-white h2,
+.text-white .bg-white h3,
+.text-white .bg-white h4,
+.text-white .bg-white .text-slate-950,
+.text-white .bg-white .text-slate-900 {
+    color: #192F59 !important;
+}
+
+[class*="from-[#0F172A]"] .bg-white p,
+[class*="from-[#0F172A]"] .bg-white label,
+[class*="from-[#0F172A]"] .bg-white input,
+[class*="from-[#0F172A]"] .bg-white select,
+[class*="from-[#172554]"] .bg-white p,
+[class*="from-[#172554]"] .bg-white label,
+[class*="from-[#172554]"] .bg-white input,
+[class*="from-[#172554]"] .bg-white select,
+[class*="bg-[#0F172A]"] .bg-white p,
+[class*="bg-[#0F172A]"] .bg-white label,
+[class*="bg-[#0F172A]"] .bg-white input,
+[class*="bg-[#0F172A]"] .bg-white select,
+.text-white .bg-white p,
+.text-white .bg-white label,
+.text-white .bg-white input,
+.text-white .bg-white select {
+    color: #3d4459 !important;
+}
+
+[class*="from-[#172554]"] .bg-white input,
+[class*="from-[#172554]"] .bg-white select {
+    background-color: #ffffff !important;
+}
+
+/* Ensure buttons inside those nested white cards stay pure white */
+[class*="from-[#0F172A]"] .bg-white button.bg-primary,
+[class*="from-[#0F172A]"] .bg-white button.bg-primary *,
+[class*="from-[#172554]"] .bg-white button.bg-primary,
+[class*="from-[#172554]"] .bg-white button.bg-primary * {
+    color: #ffffff !important;
+    background-color: #1D4ED8 !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Custom Animations & Background Patterns */
+@keyframes floatSlow {
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-24px) scale(1.05);
+    }
+}
+
+@keyframes floatReverse {
+    0%,
+    100% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(22px) scale(0.95) rotate(6deg);
+    }
+}
+
+@keyframes pulseSoft {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.65;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes shimmerSweep {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes nodeBlink {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes gridDrift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 48px 48px;
+    }
+}
+
+.animate-float-1 {
+    animation: floatSlow 12s ease-in-out infinite;
+}
+
+.animate-float-2 {
+    animation: floatReverse 15s ease-in-out infinite;
+}
+
+.animate-float-3 {
+    animation: floatSlow 18s ease-in-out infinite 3s;
+}
+
+.animate-pulse-glow {
+    animation: pulseSoft 6s ease-in-out infinite;
+}
+
+.animate-node-1 {
+    animation: nodeBlink 3s ease-in-out infinite;
+}
+
+.animate-node-2 {
+    animation: nodeBlink 4s ease-in-out infinite 1.5s;
+}
+
+.animate-node-3 {
+    animation: nodeBlink 3.5s ease-in-out infinite 0.7s;
+}
+
+/* Pattern utilities */
+.bg-grid-mesh {
+    background-size: 40px 40px;
+    background-image:
+        linear-gradient(to right, rgba(29, 78, 216, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(29, 78, 216, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(29, 78, 216, 0.08) 1.2px, transparent 1.2px);
+}
+
+.bg-dot-matrix-subtle {
+    background-size: 28px 28px;
+    background-image: radial-gradient(rgba(100, 116, 139, 0.06) 1.1px, transparent 1.1px);
+}
+
+.bg-isometric-grid {
+    background-size: 48px 48px;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.06) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+}
+
+/* Interactive Card Glow Effect */
+.glow-card-interactive {
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card-interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -15px rgba(29, 78, 216, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+.glow-badge-ring {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    animation: pulseRing 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulseRing {
+    to {
+        box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    }
+}
