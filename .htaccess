@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Redirect /index.html to /
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ [NC]
+    RewriteRule ^index\.html$ / [R=301,L]
+
+    # 2. Redirect /filename.html to /filename
+    RewriteCond %{THE_REQUEST} /([^.]+)\.html(\?[^\ ]*)?\ HTTP/ [NC]
+    RewriteRule ^ %1 [R=301,L]
+
+    # 3. Internally resolve /filename to /filename.html
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L,QSA]
+</IfModule>
+

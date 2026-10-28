@@ -6,33 +6,59 @@
  */
 
 (function () {
+    // 0. Automatically clean URL in browser address bar (remove .html, show / for home)
+    try {
+        const rawPath = window.location.pathname;
+        const search = window.location.search;
+        const hash = window.location.hash;
+
+        if (rawPath.endsWith('/index.html')) {
+            let clean = rawPath.slice(0, -10);
+            if (!clean) clean = '/';
+            window.history.replaceState(null, '', clean + search + hash);
+        } else if (rawPath === '/index.html' || rawPath === 'index.html') {
+            window.history.replaceState(null, '', '/' + search + hash);
+        } else if (rawPath.endsWith('.html')) {
+            let clean = rawPath.slice(0, -5);
+            window.history.replaceState(null, '', clean + search + hash);
+        }
+    } catch (e) {
+        // Silently bypass in local file:// security sandboxes
+    }
+
     // 1. Detect current page to automatically highlight the active nav item
     const currentPath = window.location.pathname.toLowerCase();
     
     function isActive(pageName) {
         if (pageName === 'home') {
-            return currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '';
+            return currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('/index');
         }
         if (pageName === 'about') {
-            return currentPath.endsWith('about.html');
+            return currentPath.endsWith('about.html') || currentPath.endsWith('/about');
         }
         if (pageName === 'courses') {
-            return currentPath.endsWith('courses.html') || currentPath.endsWith('study-medicine-in-bulgaria.html') || currentPath.endsWith('study-medicine-in-bulgeria.html') || currentPath.endsWith('plovdiv-medical-university.html') || currentPath.endsWith('university-details.html');
+            return currentPath.endsWith('courses.html') || currentPath.endsWith('/courses') || 
+                   currentPath.endsWith('study-medicine-in-bulgaria.html') || currentPath.endsWith('/study-medicine-in-bulgaria') || 
+                   currentPath.endsWith('study-medicine-in-bulgeria.html') || currentPath.endsWith('/study-medicine-in-bulgeria') || 
+                   currentPath.endsWith('plovdiv-medical-university.html') || currentPath.endsWith('/plovdiv-medical-university') || 
+                   currentPath.endsWith('university-details.html') || currentPath.endsWith('/university-details');
         }
         if (pageName === 'services') {
-            return currentPath.endsWith('services.html');
+            return currentPath.endsWith('services.html') || currentPath.endsWith('/services');
         }
         if (pageName === 'process') {
-            return currentPath.endsWith('application-process.html');
+            return currentPath.endsWith('application-process.html') || currentPath.endsWith('/application-process');
         }
         if (pageName === 'stories') {
-            return currentPath.endsWith('success-stories.html') || currentPath.endsWith('story-details.html');
+            return currentPath.endsWith('success-stories.html') || currentPath.endsWith('/success-stories') || 
+                   currentPath.endsWith('story-details.html') || currentPath.endsWith('/story-details');
         }
         if (pageName === 'resources') {
-            return currentPath.endsWith('resources.html') || currentPath.endsWith('resource-details.html');
+            return currentPath.endsWith('resources.html') || currentPath.endsWith('/resources') || 
+                   currentPath.endsWith('resource-details.html') || currentPath.endsWith('/resource-details');
         }
         if (pageName === 'contact') {
-            return currentPath.endsWith('contact.html');
+            return currentPath.endsWith('contact.html') || currentPath.endsWith('/contact');
         }
         return false;
     }
