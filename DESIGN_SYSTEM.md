@@ -51,10 +51,10 @@
 Every page must contain the exact global header with synchronized desktop navigation and mobile drawer:
 
 ### A. Minimal Top Trust Bar (Hidden on Mobile, Visible on `lg:block`)
-* Left: Email (`info@example.com`) and Phone (`+44 7345 692756`)
+* Left: Email (`inquiry@globalmedentry.com`) and Phone (`+44 7345 692756`)
 * Right:
   * `UK Registered Company No. 10796193` with green verified shield
-  * `★ 4.9 on Trustpilot`
+  * `UK Registered Company No. 10796193`
   * `UKMLA & GMC Aligned` with live green pulse dot
 
 ### B. Executive Navigation Bar (8 Canonical Links)

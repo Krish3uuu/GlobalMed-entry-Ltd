@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Plovdiv Medical University | Courses, Tuition Fees &amp; Entry Requirements | GlobalMed Entry Ltd</title>
-    <meta content="Comprehensive guide to Plovdiv Medical University (Bulgaria). 6-year English-taught Medicine (MD) and 5-year Dentistry (DMD), €9,000/yr tuition fees, entrance exam dates, GMC accreditation, and student accommodation." name="description" />
+    <meta content="Comprehensive guide to Plovdiv Medical University (Bulgaria). 6-year English-taught Medicine (MD) and 5-year Dentistry (DMD), tuition details/yr tuition fees, entrance exam dates, GMC accreditation, and student accommodation." name="description" />
     <meta content="Plovdiv Medical University, Medical University of Plovdiv, study medicine in Bulgaria, study dentistry Plovdiv, GMC recognised European medical schools, UKMLA Bulgaria, European medical admissions" name="keywords" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -17,8 +17,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1D4ED8',
-                        'primary-dark': '#173FA8',
+                        primary: '#02326f',
+                        'primary-dark': '#01214a',
+                        accent: '#12bda9',
+                        mint: '#12bda9',
+                        brand: '#02326f',
                     },
                     fontFamily: {
                         heading: ['Rubik', 'sans-serif'],
@@ -27,7 +30,7 @@
                     },
                     boxShadow: {
                         'executive': '0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.05)',
-                        'executive-hover': '0 25px 50px -12px rgba(29, 78, 216, 0.15), 0 0 0 1px rgba(29, 78, 216, 0.15)',
+                        'executive-hover': '0 25px 50px -12px rgba(2, 50, 111, 0.14), 0 0 0 1px rgba(18, 189, 169, 0.35)',
                     }
                 }
             }
@@ -67,12 +70,33 @@
     <!-- Centralized Dynamic Mobile Navigation Drawer -->
     <div id="site-mobile-drawer"></div>
 
-    <main class="w-full pt-16 sm:pt-20 lg:pt-24">
+    <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
         <!-- 2. HERO HEADER SECTION (Pattern A) -->
         <section class="relative pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-16 bg-gradient-to-b from-[#EFF6FF]/70 via-[#F8FAFD] to-white border-b border-slate-200/80 overflow-hidden">
             <div class="absolute inset-0 bg-isometric-grid pointer-events-none opacity-40"></div>
             <div class="absolute top-1/4 -left-48 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute top-1/3 -right-48 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl pointer-events-none"></div>
+            <!-- Decorative Abstract Geometric Shapes (Study in UK Style) -->
+            <div class="absolute -top-6 -left-6 sm:top-2 sm:left-4 w-28 sm:w-36 h-28 sm:h-36 pointer-events-none select-none z-0 opacity-80">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-[#12bda9]">
+                    <path d="M10 20 C 10 90, 70 120, 130 110 L 110 80 C 70 85, 45 65, 40 20 Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="absolute top-16 left-28 sm:left-44 pointer-events-none hidden sm:block opacity-65 z-0">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="text-[#12bda9]">
+                    <circle cx="10" cy="12" r="2.5" fill="currentColor" />
+                    <circle cx="34" cy="8" r="3.5" fill="currentColor" />
+                    <circle cx="22" cy="38" r="2" fill="currentColor" />
+                    <circle cx="48" cy="28" r="3" fill="currentColor" />
+                    <circle cx="40" cy="50" r="2.5" fill="currentColor" />
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 right-4 sm:right-16 w-32 sm:w-44 h-32 sm:h-44 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 20 140 A 120 120 0 0 1 140 20" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+                </svg>
+            </div>
+
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
                 <!-- Breadcrumbs -->
@@ -120,7 +144,7 @@
                     <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
                         <div class="px-4 py-3 rounded-[5px] bg-white border border-slate-200/90 shadow-xs flex flex-col">
                             <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Annual Tuition</span>
-                            <span class="text-lg sm:text-xl font-extrabold text-primary">€9,000 / yr</span>
+                            <span class="text-lg sm:text-xl font-extrabold text-primary">6-Year Program</span>
                         </div>
                         <div class="px-4 py-3 rounded-[5px] bg-white border border-slate-200/90 shadow-xs flex flex-col">
                             <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Next Intake</span>
@@ -308,7 +332,7 @@
                                         <div class="space-y-1.5">
                                             <h3 class="text-sm sm:text-base font-bold text-slate-950">3. Highly Competitive Tuition &amp; Low Living Costs</h3>
                                             <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-                                                Tuition fees are strictly capped at <strong>€9,000 per year</strong> for Medicine and Dentistry, payable in two equal semester installments of €4,500. Monthly living costs in Plovdiv average between <strong>€450 and €600</strong> including private rented accommodation, making it one of Europe’s most affordable student cities.
+                                                Tuition fees for Medicine and Dentistry are payable directly to the university in two equal semester installments. Monthly living costs in Plovdiv remain exceptionally low, making it one of Europe’s most affordable student cities.
                                             </p>
                                         </div>
                                     </div>
@@ -476,7 +500,7 @@
                                         Chosen by over 90% of UK students. Modern 1-bedroom and 2-bedroom flats located within a 5 to 10-minute walk of the Medical University (Vasil Aprilov, Bunardzhika, or Youth Hill). Fully furnished with air conditioning, equipped kitchens, and high-speed internet.
                                     </p>
                                     <div class="pt-2 text-xs font-bold text-primary">
-                                        Typical Rent: €300 – €500 / month
+                                        Typical Rent: Affordable Private Rental
                                     </div>
                                 </div>
 
@@ -490,7 +514,7 @@
                                         University-operated dormitories located near the campus faculties. Standard twin-sharing rooms with central heating, study desks, and shared bathroom and kitchen facilities. A budget-friendly alternative for students seeking minimum overheads.
                                     </p>
                                     <div class="pt-2 text-xs font-bold text-primary">
-                                        Typical Rent: €70 – €100 / month
+                                        Typical Rent: University Subsidised Rate
                                     </div>
                                 </div>
                             </div>
@@ -701,7 +725,7 @@
                                         </span>
                                     </button>
                                     <div class="p-4 bg-slate-50/70 text-sm text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-2">
-                                        Tuition fees for both Medicine (MD) and Dental Medicine (DMD) are €9,000 per academic year. The university permits payment in two equal semester installments: €4,500 prior to winter semester registration (September) and €4,500 prior to summer semester registration (February).
+                                        Tuition fees for both Medicine (MD) and Dental Medicine (DMD) are payable in two equal semester installments: prior to winter semester registration (September) and prior to summer semester registration (February). Contact our advisory team for current fee schedules.
                                     </div>
                                 </div>
 
@@ -771,7 +795,7 @@
                                         </span>
                                     </button>
                                     <div class="p-4 bg-slate-50/70 text-sm text-slate-600 leading-relaxed border-t border-slate-100 hidden" id="faq-content-7">
-                                        Plovdiv is one of Europe’s most economical university cities. Most international students spend between €450 and €600 per month in total. This includes a private modern apartment (€300–€400/mo), groceries (€120–€150/mo), high-speed fiber internet and phone (€15–€20/mo), and leisure.
+                                        Plovdiv is one of Europe’s most economical university cities. Most international students enjoy very comfortable student living with modest monthly budgets covering modern private rentals, groceries, utilities, and campus dining.
                                     </div>
                                 </div>
                             </div>
@@ -807,11 +831,11 @@
                             <div class="pt-2 border-t border-white/10 space-y-2.5 text-xs">
                                 <div class="flex items-center justify-between text-blue-100">
                                     <span>Medicine (MD):</span>
-                                    <span class="font-bold text-white">6 Years · €9,000 / yr</span>
+                                    <span class="font-bold text-white">6 Years · Full English</span>
                                 </div>
                                 <div class="flex items-center justify-between text-blue-100">
                                     <span>Dentistry (DMD):</span>
-                                    <span class="font-bold text-white">5 Years · €9,000 / yr</span>
+                                    <span class="font-bold text-white">5 Years · Full English</span>
                                 </div>
                                 <div class="flex items-center justify-between text-blue-100">
                                     <span>Teaching Language:</span>
@@ -893,7 +917,7 @@
                             </button>
                         </div>
 
-                        <!-- CARD 4: DIRECT CONTACT & VERIFIED TRUSTPILOT BADGE -->
+                        <!-- CARD 4: DIRECT CONTACT & ADMISSIONS ADVISORY -->
                         <div class="p-6 rounded-[5px] bg-slate-50 border border-slate-200/80 space-y-3">
                             <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Advisory Line</div>
                             <div class="space-y-2">
@@ -901,21 +925,10 @@
                                     <span class="material-symbols-outlined text-primary text-[18px]">call</span>
                                     +44 7345 692756
                                 </a>
-                                <a href="mailto:info@example.com" class="flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-primary transition-colors">
+                                <a href="mailto:inquiry@globalmedentry.com" class="flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-primary transition-colors">
                                     <span class="material-symbols-outlined text-primary text-[18px]">mail</span>
-                                    info@example.com
+                                    inquiry@globalmedentry.com
                                 </a>
-                            </div>
-
-                            <div class="pt-3 border-t border-slate-200/80 flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-[5px] border border-emerald-500 flex flex-col items-center justify-center shrink-0">
-                                    <span class="text-emerald-600 text-xs font-black">★</span>
-                                    <span class="text-slate-950 font-black text-xs leading-none mt-0.5">4.9</span>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold text-slate-900">Rated Excellent on Trustpilot</div>
-                                    <div class="text-sm text-slate-500">Over 500+ verified medical student reviews</div>
-                                </div>
                             </div>
                         </div>
 
@@ -926,6 +939,18 @@
 
         <!-- 5. "THINKING ABOUT APPLYING THIS YEAR?" (Pattern C) -->
         <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden" id="bottomCta">
+            <!-- Bold Geometric Donut Curves & Motifs (Study in UK Style) -->
+            <div class="absolute -top-10 right-8 sm:right-24 w-44 sm:w-56 h-44 sm:h-56 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 200 200" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 30 100 A 70 70 0 0 1 170 100" stroke="currentColor" stroke-width="26" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 left-6 sm:left-16 w-36 sm:w-48 h-36 sm:h-48 pointer-events-none select-none z-0 opacity-60">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-cyan-400">
+                    <circle cx="80" cy="80" r="55" stroke="currentColor" stroke-width="22" stroke-dasharray="110 25" stroke-linecap="round"/>
+                </svg>
+            </div>
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">
                     <span class="material-symbols-outlined text-3xl sm:text-4xl">support_agent</span>
