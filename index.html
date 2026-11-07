@@ -102,18 +102,18 @@
     <div id="site-mobile-drawer"></div>
 
     <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
-        <!-- 1. HERO SECTION: Study Medicine In Europe (StudyMed Europe Hero) -->
-        <section class="hero-bg relative isolate overflow-hidden pt-6 pb-14 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24"
+        <!-- 1. HERO SECTION: Study Medicine In Europe (StudyMed Europe Hero) - Dark Mode -->
+        <section class="hero-bg relative isolate overflow-hidden pt-6 pb-16 sm:pt-10 sm:pb-24 lg:pt-12 lg:pb-28 text-white"
             id="home">
-            <!-- soft decorative shapes -->
+            <!-- Ambient glowing shapes -->
             <div aria-hidden="true"
-                class="pointer-events-none absolute -right-24 top-32 h-[30rem] w-[30rem] rounded-full bg-blue-100/50 blur-3xl">
+                class="pointer-events-none absolute -right-24 top-24 h-[32rem] w-[32rem] rounded-full bg-[#12bda9]/15 blur-3xl">
             </div>
             <div aria-hidden="true"
-                class="pointer-events-none absolute -bottom-44 -left-24 h-96 w-[42rem] rounded-full bg-blue-100/70 blur-3xl">
+                class="pointer-events-none absolute -bottom-40 -left-24 h-96 w-[42rem] rounded-full bg-[#02326f]/70 blur-3xl">
             </div>
             <div aria-hidden="true"
-                class="dot-pattern pointer-events-none absolute right-[3.5%] top-[29%] hidden h-24 w-24 opacity-60 lg:block">
+                class="dot-pattern pointer-events-none absolute right-[3.5%] top-[24%] hidden h-28 w-28 opacity-40 lg:block">
             </div>
 
             <!-- Geometric Arc & Confetti Patterns (Study in UK Style) -->
@@ -134,11 +134,11 @@
 
             <div class="relative mx-auto flex max-w-[1440px] items-center px-5 py-6 sm:px-8 lg:px-12 xl:px-16">
                 <div
-                    class="grid w-full items-center gap-12 lg:grid-cols-[1.18fr_.82fr] xl:grid-cols-[1.22fr_.78fr] lg:gap-8 xl:gap-14">
-                    <!-- Left content (expanded container for optimal text fit) -->
-                    <div class="relative z-10 w-full max-w-none lg:max-w-3xl xl:max-w-4xl">
+                    class="grid w-full items-center gap-10 sm:gap-12 lg:grid-cols-[1.12fr_.88fr] xl:grid-cols-[1.16fr_.84fr] lg:gap-8 xl:gap-14">
+                    <!-- Left content: Text on bottom for mobile (order-2), left for desktop (lg:order-1) -->
+                    <div class="relative z-10 w-full max-w-none lg:max-w-3xl xl:max-w-4xl order-2 lg:order-1">
                         <div
-                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#12bda9]/30 bg-[#12bda9]/10 px-4 py-2 text-sm font-semibold text-[#02326f] shadow-sm">
+                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#12bda9]/40 bg-[#12bda9]/15 px-4 py-2 text-sm font-semibold text-[#12bda9] shadow-sm backdrop-blur-sm">
                             <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                 stroke-width="1.8">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -149,9 +149,9 @@
                         </div>
 
                         <h1
-                            class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-[#02326f] sm:text-6xl xl:text-[72px]">
+                            class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-white sm:text-6xl xl:text-[72px]">
                             Study Medicine In<br />
-                            <span class="relative inline-block text-[#02326f] mt-1 pb-1">
+                            <span class="relative inline-block text-white mt-1 pb-1">
                                 Europe<span class="text-[#12bda9]">.</span>
                                 <!-- Hand-drawn pen stroke scribble underline in vibrant teal #12bda9 -->
                                 <svg class="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 text-[#12bda9] overflow-visible pointer-events-none"
@@ -169,14 +169,14 @@
                             </span>
                         </h1>
 
-                        <p class="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
+                        <p class="mt-6 max-w-2xl text-lg leading-8 text-blue-100/90 sm:text-xl font-normal">
                             The number 1 UK medical consultancy for studying abroad.
                             Enquire today for free.
                         </p>
 
                         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                             <a href="contact.html#consultation-form"
-                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#02326f] px-7 py-4 text-sm font-bold text-white shadow-lg shadow-[#02326f]/25 transition hover:-translate-y-0.5 hover:bg-[#01214a] focus:outline-none focus:ring-4 focus:ring-[#12bda9]/30">
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#12bda9] px-7 py-4 text-sm font-bold text-[#02326f] shadow-lg shadow-[#12bda9]/30 transition hover:-translate-y-0.5 hover:bg-[#0ea896] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#12bda9]/40">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                     stroke-width="1.8">
                                     <rect x="3.5" y="5" width="17" height="16" rx="2" />
@@ -189,7 +189,7 @@
                                 </svg>
                             </a>
                             <a href="services.html"
-                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border-2 border-[#02326f]/20 bg-white/90 px-7 py-4 text-sm font-bold text-[#02326f] transition hover:-translate-y-0.5 hover:border-[#12bda9] hover:bg-[#12bda9]/10 focus:outline-none focus:ring-4 focus:ring-[#12bda9]/20">
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border-2 border-white/25 bg-white/10 px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-[#12bda9] hover:bg-[#12bda9]/20 focus:outline-none focus:ring-4 focus:ring-white/20 backdrop-blur-sm">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                     stroke-width="1.8">
                                     <path d="m12 3 9 5-9 5-9-5 9-5Z" />
@@ -201,11 +201,11 @@
 
                         <!-- service highlights -->
                         <div id="services-highlight"
-                            class="mt-9 grid gap-4 border-b border-blue-100 pb-7 sm:grid-cols-3 sm:gap-0">
+                            class="mt-9 grid gap-4 border-b border-white/15 pb-7 sm:grid-cols-3 sm:gap-0">
                             <a href="contact.html#consultation-form"
-                                class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:pr-4 group transition-colors">
+                                class="flex items-center gap-3 sm:border-r sm:border-white/15 sm:pr-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path
@@ -214,15 +214,14 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Free
-                                        Consultation</p>
-                                    <p class="mt-0.5 text-sm text-muted">No hidden fees</p>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">Free Consultation</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">No hidden fees</p>
                                 </div>
                             </a>
                             <a href="services.html"
-                                class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:px-4 group transition-colors">
+                                class="flex items-center gap-3 sm:border-r sm:border-white/15 sm:px-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path d="M6 3h9l4 4v14H6z" />
@@ -230,15 +229,14 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Services
-                                        &amp; Packages</p>
-                                    <p class="mt-0.5 text-sm text-muted">Tailored to your goals</p>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">Services &amp; Packages</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">Tailored to your goals</p>
                                 </div>
                             </a>
                             <a href="application-process.html"
                                 class="flex items-center gap-3 sm:pl-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path d="m2 8 10-5 10 5-10 5L2 8Z" />
@@ -246,90 +244,29 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Application
-                                        Process</p>
-                                    <p class="mt-0.5 text-sm text-muted">Simple &amp; guided</p>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">Application Process</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">Simple &amp; guided</p>
                                 </div>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Right visual (graduating medical students hero banner) -->
+                    <!-- Right visual: Hero Image on top for mobile (order-1), right for desktop (lg:order-2) -->
                     <div
-                        class="relative mx-auto w-full max-w-[460px] sm:max-w-[490px] lg:max-w-[470px] xl:max-w-[490px] lg:ml-auto">
-                        <div aria-hidden="true" class="absolute -inset-4 -rotate-2 rounded-[2.5rem] bg-[#02326f]/10">
+                        class="relative mx-auto w-full max-w-[420px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] lg:ml-auto flex items-center justify-center order-1 lg:order-2">
+                        <!-- Ambient backlight glow -->
+                        <div aria-hidden="true"
+                            class="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#12bda9]/25 via-blue-500/20 to-transparent blur-3xl pointer-events-none">
                         </div>
                         <div aria-hidden="true"
-                            class="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-[#12bda9]/25 blur-2xl"></div>
-                        <div class="photo-shape relative h-[360px] shadow-soft sm:h-[440px] lg:h-[470px] xl:h-[500px] border-4 border-white/80 bg-slate-100 overflow-hidden">
-                            <img src="images/hero-banner.jpg"
-                                alt="Graduating Medical Students Celebrating in Europe"
-                                class="h-full w-full object-cover object-center" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#02326f]/60 via-[#02326f]/10 to-transparent">
-                            </div>
-                            <!-- 100% English Taught High-Contrast Teal Badge -->
-                            <div
-                                class="absolute right-4 top-4 sm:right-6 sm:top-6 z-20 inline-flex items-center gap-2 rounded-full bg-[#12bda9] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#02326f] shadow-lg shadow-[#12bda9]/40 ring-2 ring-white">
-                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current"
-                                    stroke-width="2.5">
-                                    <path d="m4 12 5 5L20 6" />
-                                </svg>
-                                100% English Taught
-                            </div>
+                            class="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-[#12bda9]/20 blur-2xl pointer-events-none"></div>
+
+                        <!-- Standalone Cutout Hero Image -->
+                        <div class="relative z-10 w-full flex items-center justify-center">
+                            <img src="images/hero-study-europe.webp"
+                                alt="Study Medicine in Europe with GlobalMed Entry"
+                                class="w-full h-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-[1.02]" />
                         </div>
-
-                        <!-- University information card -->
-                        <article
-                            class="relative mx-3 -mt-20 rounded-2xl border border-white/90 bg-white/95 p-4 sm:p-5 shadow-card backdrop-blur-xl sm:absolute sm:-bottom-5 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[min(480px,calc(100%+2.5rem))] z-20">
-                            <div class="flex flex-wrap items-center justify-between gap-3">
-                                <div class="flex min-w-0 items-center gap-2.5">
-                                    <span
-                                        class="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-[#02326f]/10 text-[#02326f]">
-                                        <svg aria-hidden="true" viewBox="0 0 24 24"
-                                            class="h-5 w-5 sm:h-6 sm:w-6 fill-none stroke-current" stroke-width="1.8">
-                                            <path d="M3 21h18M5 21V9m14 12V9M2 9l10-6 10 6H2ZM8 12v5M12 12v5M16 12v5" />
-                                        </svg>
-                                    </span>
-                                    <h2 class="text-sm font-extrabold leading-snug text-[#02326f] sm:text-base">Medical
-                                        University of Plovdiv</h2>
-                                </div>
-                                <span
-                                    class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#12bda9]/15 px-2.5 py-1.5 text-xs font-bold text-[#02326f] ring-1 ring-inset ring-[#12bda9]/40">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24"
-                                        class="h-3.5 w-3.5 text-[#12bda9] fill-none stroke-current" stroke-width="2.5">
-                                        <path d="m4 12 5 5L20 6" />
-                                    </svg>
-                                    GMC Aligned
-                                </span>
-                            </div>
-
-                            <p class="mt-3 text-xs sm:text-sm leading-5 sm:leading-6 text-muted">
-                                Medicine (MD) &amp; Dentistry (DMD) <span class="px-1 text-[#12bda9]">·</span> 6-Year
-                                Program <span class="px-1 text-[#12bda9]">·</span> EU Directive 2005/36/EC
-                            </p>
-
-                            <div class="my-3 h-px bg-slate-100"></div>
-
-                            <div class="flex flex-wrap items-center justify-between gap-3">
-                                <div class="flex items-center gap-2 text-xs sm:text-sm text-muted">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24"
-                                        class="h-4 w-4 sm:h-5 sm:w-5 text-[#12bda9] fill-none stroke-current"
-                                        stroke-width="1.8">
-                                        <path d="m2 8 10-5 10 5-10 5L2 8Z" />
-                                        <path d="M6 10v6c3.5 3 8.5 3 12 0v-6M22 8v7" />
-                                    </svg>
-                                    Program: <strong class="text-[#02326f]">6 Years · Full English</strong>
-                                </div>
-                                <a href="plovdiv-medical-university.html"
-                                    class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#02326f] transition hover:text-[#12bda9] hover:gap-2.5">
-                                    View Details
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current"
-                                        stroke-width="2">
-                                        <path d="M5 12h14M13 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </article>
                     </div>
                 </div>
             </div>
