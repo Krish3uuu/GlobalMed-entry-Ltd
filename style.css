@@ -54,19 +54,19 @@ html {
     font-size: 16px;
 }
 
-/* Hero Banner Custom Styles (from studymed-europe-hero) */
+/* Hero Banner Custom Styles (from studymed-europe-hero) - Dark Mode Theme */
 .hero-bg {
     background:
-        radial-gradient(ellipse at 90% 45%, rgba(18, 189, 169, 0.12) 0%, rgba(2, 50, 111, 0.05) 34%, transparent 62%),
-        radial-gradient(ellipse at 8% 90%, rgba(2, 50, 111, 0.08) 0%, transparent 35%),
-        linear-gradient(115deg, #ffffff 0%, #f6fbfb 55%, #f0f5fc 100%);
+        radial-gradient(ellipse at 85% 35%, rgba(18, 189, 169, 0.2) 0%, rgba(2, 50, 111, 0.4) 45%, transparent 75%),
+        radial-gradient(ellipse at 15% 80%, rgba(2, 50, 111, 0.65) 0%, transparent 50%),
+        linear-gradient(135deg, #01142f 0%, #022554 48%, #01193a 100%);
 }
 .photo-shape {
     border-radius: 34% 14% 22% 17% / 20% 20% 24% 22%;
     overflow: hidden;
 }
 .dot-pattern {
-    background-image: radial-gradient(#93b4fb 2px, transparent 2px);
+    background-image: radial-gradient(rgba(18, 189, 169, 0.25) 1.5px, transparent 1.5px);
     background-size: 19px 19px;
 }
 @media (max-width: 767px) {
