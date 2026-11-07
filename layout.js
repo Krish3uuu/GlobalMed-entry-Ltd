@@ -28,7 +28,7 @@
 
     // 1. Detect current page to automatically highlight the active nav item
     const currentPath = window.location.pathname.toLowerCase();
-    
+
     function isActive(pageName) {
         if (pageName === 'home') {
             return currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('/index');
@@ -36,12 +36,15 @@
         if (pageName === 'about') {
             return currentPath.endsWith('about.html') || currentPath.endsWith('/about');
         }
+        if (pageName === 'study-uk') {
+            return currentPath.endsWith('study-in-uk.html') || currentPath.endsWith('/study-in-uk');
+        }
         if (pageName === 'courses') {
-            return currentPath.endsWith('courses.html') || currentPath.endsWith('/courses') || 
-                   currentPath.endsWith('study-medicine-in-bulgaria.html') || currentPath.endsWith('/study-medicine-in-bulgaria') || 
-                   currentPath.endsWith('study-medicine-in-bulgeria.html') || currentPath.endsWith('/study-medicine-in-bulgeria') || 
-                   currentPath.endsWith('plovdiv-medical-university.html') || currentPath.endsWith('/plovdiv-medical-university') || 
-                   currentPath.endsWith('university-details.html') || currentPath.endsWith('/university-details');
+            return currentPath.endsWith('courses.html') || currentPath.endsWith('/courses') ||
+                currentPath.endsWith('study-medicine-in-bulgaria.html') || currentPath.endsWith('/study-medicine-in-bulgaria') ||
+                currentPath.endsWith('study-medicine-in-bulgeria.html') || currentPath.endsWith('/study-medicine-in-bulgeria') ||
+                currentPath.endsWith('plovdiv-medical-university.html') || currentPath.endsWith('/plovdiv-medical-university') ||
+                currentPath.endsWith('university-details.html') || currentPath.endsWith('/university-details');
         }
         if (pageName === 'services') {
             return currentPath.endsWith('services.html') || currentPath.endsWith('/services');
@@ -50,12 +53,12 @@
             return currentPath.endsWith('application-process.html') || currentPath.endsWith('/application-process');
         }
         if (pageName === 'stories') {
-            return currentPath.endsWith('success-stories.html') || currentPath.endsWith('/success-stories') || 
-                   currentPath.endsWith('story-details.html') || currentPath.endsWith('/story-details');
+            return currentPath.endsWith('success-stories.html') || currentPath.endsWith('/success-stories') ||
+                currentPath.endsWith('story-details.html') || currentPath.endsWith('/story-details');
         }
         if (pageName === 'resources') {
-            return currentPath.endsWith('resources.html') || currentPath.endsWith('/resources') || 
-                   currentPath.endsWith('resource-details.html') || currentPath.endsWith('/resource-details');
+            return currentPath.endsWith('resources.html') || currentPath.endsWith('/resources') ||
+                currentPath.endsWith('resource-details.html') || currentPath.endsWith('/resource-details');
         }
         if (pageName === 'contact') {
             return currentPath.endsWith('contact.html') || currentPath.endsWith('/contact');
@@ -114,20 +117,20 @@
         </div>
 
         <!-- Executive Navbar Container with Fluid Max-Width & Proper Breathing Room -->
-        <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between h-16 sm:h-20">
-            <!-- Brand Logo with Generous Right Margin -->
-            <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 group shrink-0" href="index.html#home" aria-label="GlobalMed Entry Ltd Home">
-                <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+        <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between min-h-[76px] sm:min-h-[88px] py-1 sm:py-2">
+            <!-- Brand Logo with Generous Right Margin & Vertical Breathing Room -->
+            <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 my-1 group shrink-0" href="index.html#home" aria-label="GlobalMed Entry Ltd Home">
+                <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[110px] sm:w-[120px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
             </a>
 
-            <!-- 8 Canonical Desktop Navigation Links -->
-            <nav class="hidden xl:flex items-center gap-5 2xl:gap-7 text-sm font-semibold text-slate-600">
+            <!-- Canonical Desktop Navigation Links -->
+            <nav class="hidden xl:flex items-center gap-4 2xl:gap-6 text-sm font-semibold text-slate-600">
                 <a class="${navClass('home')}" href="index.html#home">Home</a>
                 <a class="${navClass('about')}" href="about.html">About Us</a>
+                <a class="${navClass('study-uk')}" href="study-in-uk.html">Study in UK</a>
                 <a class="${navClass('courses')}" href="courses.html">Courses &amp; Universities</a>
                 <a class="${navClass('services')}" href="services.html">Our Services</a>
                 <a class="${navClass('process')}" href="application-process.html">Application Process</a>
-                <a class="${navClass('stories')}" href="success-stories.html">Success Stories</a>
                 <a class="${navClass('resources')}" href="resources.html">Resources</a>
                 <a class="${navClass('contact')}" href="contact.html">Contact</a>
             </nav>
@@ -159,8 +162,8 @@
             id="mobileMenuPanel">
             <!-- Drawer Header -->
             <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
-                <a href="index.html#home" class="flex items-center" aria-label="GlobalMed Entry Ltd Home">
-                    <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-8 sm:h-9 w-auto object-contain" />
+                <a href="index.html#home" class="flex items-center my-1" aria-label="GlobalMed Entry Ltd Home">
+                    <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[120px] sm:w-[130px] h-auto object-contain" />
                 </a>
                 <button aria-label="Close navigation menu"
                     class="w-9 h-9 rounded-[5px] text-slate-500 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
@@ -185,6 +188,13 @@
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
+                <a class="${mobileNavClass('study-uk')}" href="study-in-uk.html">
+                    <span class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[19px] text-primary">flag</span>
+                        Study in the UK
+                    </span>
+                    <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
+                </a>
                 <a class="${mobileNavClass('courses')}" href="courses.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">school</span>
@@ -203,13 +213,6 @@
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">alt_route</span>
                         Application Process
-                    </span>
-                    <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
-                </a>
-                <a class="${mobileNavClass('stories')}" href="success-stories.html">
-                    <span class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[19px] text-primary">forum</span>
-                        Success Stories
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
@@ -271,14 +274,14 @@
                 </div>
 
                 <div>
-                    <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Partner Universities</div>
+                    <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Study Destinations</div>
                     <ul class="space-y-2.5 text-sm">
+                        <li><a class="hover:text-primary transition-colors font-semibold text-primary" href="study-in-uk.html">Study in the UK</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="study-medicine-in-bulgaria.html">Study in Bulgaria</a></li>
                         <li><a class="hover:text-primary transition-colors" href="plovdiv-medical-university.html">Plovdiv Medical University</a></li>
                         <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Sofia Medical University</a></li>
                         <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Pleven Medical University</a></li>
                         <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Varna Medical University</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Trakia University</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Prof. Dr. Assen Zlatarov</a></li>
                     </ul>
                 </div>
 
