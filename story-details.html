@@ -31,16 +31,23 @@
                         "3xl": "5px"
                     },
                     colors: {
-                        primary: "#1D4ED8",
-                        "primary-dark": "#173fa8",
+                        primary: "#02326f",
+                        "primary-dark": "#01214a",
                         "primary-light": "#EFF6FF",
+                        accent: "#12bda9",
+                        "accent-dark": "#0d9686",
+                        "accent-light": "#effcfb",
+                        brand: "#02326f",
+                        ink: "#02326f",
+                        mint: "#12bda9",
+                        teal: "#12bda9",
                         "surface-muted": "#F8FAFD",
                         "surface-card": "#FFFFFF",
                         "border-clean": "#E2E8F0"
                     },
                     textColor: {
-                        "slate-950": "#192F59",
-                        "slate-900": "#192F59",
+                        "slate-950": "#02326f",
+                        "slate-900": "#02326f",
                         "slate-600": "#3d4459",
                         "slate-700": "#3d4459"
                     },
@@ -51,7 +58,7 @@
                     },
                     boxShadow: {
                         'executive': '0 20px 45px -15px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.8)',
-                        'executive-hover': '0 25px 50px -12px rgba(29, 78, 216, 0.08), 0 0 0 1px rgba(186, 215, 255, 0.6)'
+                        'executive-hover': '0 25px 50px -12px rgba(2, 50, 111, 0.12), 0 0 0 1px rgba(18, 189, 169, 0.4)'
                     }
                 }
             }
@@ -91,12 +98,33 @@
     <div id="site-mobile-drawer"></div>
 
     <!-- MAIN STORY DETAILS CONTENT -->
-    <main class="w-full pt-16 sm:pt-20 lg:pt-24">
+    <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
         <!-- 1. BREADCRUMBS & HERO HEADER (Pattern A) -->
         <section class="relative pt-10 sm:pt-14 pb-12 sm:pb-16 bg-gradient-to-b from-[#EFF6FF]/70 via-[#F8FAFD] to-white border-b border-slate-200/80 overflow-hidden">
             <div class="absolute inset-0 bg-isometric-grid pointer-events-none opacity-40"></div>
             <!-- Ambient Glow -->
             <div class="absolute top-1/4 -left-48 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl pointer-events-none"></div>
+            <!-- Decorative Abstract Geometric Shapes (Study in UK Style) -->
+            <div class="absolute -top-6 -left-6 sm:top-2 sm:left-4 w-28 sm:w-36 h-28 sm:h-36 pointer-events-none select-none z-0 opacity-80">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-[#12bda9]">
+                    <path d="M10 20 C 10 90, 70 120, 130 110 L 110 80 C 70 85, 45 65, 40 20 Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="absolute top-16 left-28 sm:left-44 pointer-events-none hidden sm:block opacity-65 z-0">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="text-[#12bda9]">
+                    <circle cx="10" cy="12" r="2.5" fill="currentColor" />
+                    <circle cx="34" cy="8" r="3.5" fill="currentColor" />
+                    <circle cx="22" cy="38" r="2" fill="currentColor" />
+                    <circle cx="48" cy="28" r="3" fill="currentColor" />
+                    <circle cx="40" cy="50" r="2.5" fill="currentColor" />
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 right-4 sm:right-16 w-32 sm:w-44 h-32 sm:h-44 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 20 140 A 120 120 0 0 1 140 20" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+                </svg>
+            </div>
+
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-4">
                 <!-- Breadcrumbs -->
@@ -396,18 +424,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Trustpilot Badge (Screenshot 2 Match) -->
-                        <div class="p-4 rounded-[5px] bg-white border border-slate-200 shadow-sm flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-[5px] border border-emerald-500 flex flex-col items-center justify-center shrink-0">
-                                <span class="text-emerald-600 text-xs font-black">★</span>
-                                <span class="text-slate-950 font-black text-xs leading-none mt-0.5">4.9</span>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-slate-950 text-xs">Rated Excellent on Trustpilot</h5>
-                                <p class="text-sm text-slate-500">Over 500+ verified medical reviews</p>
-                            </div>
-                        </div>
                     </aside>
                 </div>
             </div>
@@ -487,6 +503,18 @@
 
         <!-- 4. PRE-FOOTER CTA SECTION (Pattern C) -->
         <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden" id="consultation">
+            <!-- Bold Geometric Donut Curves & Motifs (Study in UK Style) -->
+            <div class="absolute -top-10 right-8 sm:right-24 w-44 sm:w-56 h-44 sm:h-56 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 200 200" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 30 100 A 70 70 0 0 1 170 100" stroke="currentColor" stroke-width="26" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 left-6 sm:left-16 w-36 sm:w-48 h-36 sm:h-48 pointer-events-none select-none z-0 opacity-60">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-cyan-400">
+                    <circle cx="80" cy="80" r="55" stroke="currentColor" stroke-width="22" stroke-dasharray="110 25" stroke-linecap="round"/>
+                </svg>
+            </div>
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">
                     <span class="material-symbols-outlined text-3xl sm:text-4xl">support_agent</span>

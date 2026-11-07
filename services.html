@@ -31,16 +31,23 @@
                         "3xl": "5px"
                     },
                     colors: {
-                        primary: "#1D4ED8",
-                        "primary-dark": "#173fa8",
+                        primary: "#02326f",
+                        "primary-dark": "#01214a",
                         "primary-light": "#EFF6FF",
+                        accent: "#12bda9",
+                        "accent-dark": "#0d9686",
+                        "accent-light": "#effcfb",
+                        brand: "#02326f",
+                        ink: "#02326f",
+                        mint: "#12bda9",
+                        teal: "#12bda9",
                         "surface-muted": "#F8FAFD",
                         "surface-card": "#FFFFFF",
                         "border-clean": "#E2E8F0"
                     },
                     textColor: {
-                        "slate-950": "#192F59",
-                        "slate-900": "#192F59",
+                        "slate-950": "#02326f",
+                        "slate-900": "#02326f",
                         "slate-600": "#3d4459",
                         "slate-700": "#3d4459"
                     },
@@ -51,7 +58,7 @@
                     },
                     boxShadow: {
                         'executive': '0 20px 45px -15px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.8)',
-                        'executive-hover': '0 25px 50px -12px rgba(29, 78, 216, 0.08), 0 0 0 1px rgba(186, 215, 255, 0.6)'
+                        'executive-hover': '0 25px 50px -12px rgba(2, 50, 111, 0.12), 0 0 0 1px rgba(18, 189, 169, 0.4)'
                     }
                 }
             }
@@ -90,13 +97,34 @@
     <!-- Centralized Dynamic Mobile Navigation Drawer -->
     <div id="site-mobile-drawer"></div>
 
-    <main class="pt-20 sm:pt-28">
+    <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
         <!-- HERO SECTION: Our Services (Consistent Theme: Isometric Grid, Ambient Glow, Curved Divider) -->
         <section class="relative pt-12 sm:pt-16 lg:pt-20 pb-20 sm:pb-28 lg:pb-36 bg-gradient-to-b from-[#EFF6FF]/70 via-[#F8FAFD] to-white border-b border-slate-200/80 overflow-hidden">
             <div class="absolute inset-0 bg-isometric-grid pointer-events-none opacity-40"></div>
             <!-- Ambient Glow Accents -->
             <div class="absolute top-1/4 -left-48 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute top-1/3 -right-48 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl pointer-events-none"></div>
+            <!-- Decorative Abstract Geometric Shapes (Study in UK Style) -->
+            <div class="absolute -top-6 -left-6 sm:top-2 sm:left-4 w-28 sm:w-36 h-28 sm:h-36 pointer-events-none select-none z-0 opacity-80">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-[#12bda9]">
+                    <path d="M10 20 C 10 90, 70 120, 130 110 L 110 80 C 70 85, 45 65, 40 20 Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="absolute top-16 left-28 sm:left-44 pointer-events-none hidden sm:block opacity-65 z-0">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="text-[#12bda9]">
+                    <circle cx="10" cy="12" r="2.5" fill="currentColor" />
+                    <circle cx="34" cy="8" r="3.5" fill="currentColor" />
+                    <circle cx="22" cy="38" r="2" fill="currentColor" />
+                    <circle cx="48" cy="28" r="3" fill="currentColor" />
+                    <circle cx="40" cy="50" r="2.5" fill="currentColor" />
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 right-4 sm:right-16 w-32 sm:w-44 h-32 sm:h-44 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 20 140 A 120 120 0 0 1 140 20" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+                </svg>
+            </div>
+
 
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 text-center relative z-10 space-y-5">
                 <!-- Illustrated Circle Icon: Graduation Cap & Books -->
@@ -380,20 +408,20 @@
                         </p>
                     </div>
 
-                    <!-- Right Column: Digital Anatomy Graphic Box Styled to Match Site Theme -->
+                    <!-- Right Column: Digital Medical Library & Learning Assets Image -->
                     <div class="lg:col-span-5 flex items-center justify-center">
-                        <div class="w-full max-w-sm rounded-[5px] bg-[#F8FAFD] border border-slate-200/90 p-6 sm:p-8 flex flex-col items-center justify-between shadow-xs">
-                            <div class="w-full flex justify-between items-center text-xs text-primary font-bold border-b border-slate-200 pb-3 mb-5">
-                                <span class="uppercase tracking-wider">Digital Medical Library</span>
-                                <span class="material-symbols-outlined text-[20px]">menu_book</span>
+                        <div class="relative w-full max-w-md overflow-hidden rounded-[5px] border border-slate-200/90 shadow-md group">
+                            <img src="images/medical-library.jpg" alt="Medical Textbooks and Digital Learning Resources"
+                                class="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#02326f]/75 via-[#02326f]/15 to-transparent flex items-end p-4 sm:p-5">
+                                <div class="text-white">
+                                    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#12bda9] text-[#02326f] text-xs font-bold mb-1.5 shadow-sm">
+                                        <span class="material-symbols-outlined text-[15px]">menu_book</span>
+                                        Digital Medical Library
+                                    </div>
+                                    <p class="text-xs text-white/95 font-medium">Included Free with All GlobalMed Entry Packages</p>
+                                </div>
                             </div>
-                            <div class="w-36 h-40 rounded-[5px] bg-white border border-slate-200 flex flex-col items-center justify-center p-4 shadow-sm mb-5">
-                                <span class="material-symbols-outlined text-6xl text-primary mb-2">vital_signs</span>
-                                <span class="text-xs font-bold text-slate-800 uppercase tracking-tight">Atlas of Anatomy</span>
-                            </div>
-                            <span class="text-xs font-semibold text-slate-600 text-center">
-                                Included Free with All GlobalMed Entry Packages
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -401,7 +429,7 @@
         </section>
 
         <!-- SECTION: Contact Us & FAQ Side-by-Side (Theme Matched) -->
-        <section class="py-16 sm:py-20 lg:py-24 bg-[#F8FAFD] border-t border-slate-200/80 relative" id="consultation">
+        <section class="overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#F8FAFD] border-t border-slate-200/80 relative" id="consultation">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <!-- Left: Contact Us For A Free Consultation -->
@@ -428,7 +456,7 @@
                                 <span class="material-symbols-outlined text-primary text-[20px]">mail</span>
                                 <div>
                                     <div class="text-xs text-slate-500 font-medium">Admissions Email</div>
-                                    <a href="mailto:info@example.com" class="hover:text-primary transition-colors font-bold text-slate-900">info@example.com</a>
+                                    <a href="mailto:inquiry@globalmedentry.com" class="hover:text-primary transition-colors font-bold text-slate-900">inquiry@globalmedentry.com</a>
                                 </div>
                             </div>
                         </div>
@@ -514,6 +542,18 @@
 
         <!-- SECTION: Thinking About Applying This Year? (Theme-Matched Navy Section) -->
         <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden">
+            <!-- Bold Geometric Donut Curves & Motifs (Study in UK Style) -->
+            <div class="absolute -top-10 right-8 sm:right-24 w-44 sm:w-56 h-44 sm:h-56 pointer-events-none select-none z-0 opacity-35">
+                <svg viewBox="0 0 200 200" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 30 100 A 70 70 0 0 1 170 100" stroke="currentColor" stroke-width="26" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 left-6 sm:left-16 w-36 sm:w-48 h-36 sm:h-48 pointer-events-none select-none z-0 opacity-25">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-[#02326f]">
+                    <circle cx="80" cy="80" r="55" stroke="currentColor" stroke-width="22" stroke-dasharray="110 25" stroke-linecap="round"/>
+                </svg>
+            </div>
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
                 <!-- Doctor Consultation Icon -->
                 <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">

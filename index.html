@@ -31,24 +31,29 @@
                         "3xl": "5px"
                     },
                     colors: {
-                        brand: '#1d4ed8',
-                        ink: '#10234b',
-                        muted: '#5b6f91',
-                        mint: '#08a878',
-                        primary: "#1D4ED8",
-                        "primary-dark": "#173fa8",
+                        brand: '#02326f',
+                        ink: '#02326f',
+                        muted: '#516482',
+                        mint: '#12bda9',
+                        accent: '#12bda9',
+                        "accent-dark": "#0d9686",
+                        "accent-light": "#effcfb",
+                        primary: "#02326f",
+                        "primary-dark": "#01214a",
                         "primary-light": "#EFF6FF",
                         "surface-muted": "#F8FAFD",
                         "surface-card": "#FFFFFF",
                         "border-clean": "#E2E8F0"
                     },
                     boxShadow: {
-                        soft: '0 24px 70px rgba(29, 78, 216, .14)',
-                        card: '0 18px 45px rgba(16, 35, 75, .16)'
+                        soft: '0 24px 70px rgba(2, 50, 111, .14)',
+                        card: '0 18px 45px rgba(2, 50, 111, .16)',
+                        executive: '0 20px 45px -15px rgba(2, 50, 111, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.8)',
+                        'executive-hover': '0 25px 50px -12px rgba(2, 50, 111, 0.12), 0 0 0 1px rgba(18, 189, 169, 0.4)'
                     },
                     textColor: {
-                        "slate-950": "#192F59",
-                        "slate-900": "#192F59",
+                        "slate-950": "#02326f",
+                        "slate-900": "#02326f",
                         "slate-600": "#3d4459",
                         "slate-700": "#3d4459"
                     },
@@ -56,10 +61,6 @@
                         sans: ["Karla", "sans-serif"],
                         body: ["Karla", "sans-serif"],
                         heading: ["Rubik", "sans-serif"]
-                    },
-                    boxShadow: {
-                        'executive': '0 20px 45px -15px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.8)',
-                        'executive-hover': '0 25px 50px -12px rgba(29, 78, 216, 0.08), 0 0 0 1px rgba(186, 215, 255, 0.6)'
                     }
                 }
             }
@@ -100,9 +101,9 @@
     <!-- Centralized Dynamic Mobile Navigation Drawer -->
     <div id="site-mobile-drawer"></div>
 
-    <main class="w-full pt-16 sm:pt-20">
+    <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
         <!-- 1. HERO SECTION: Study Medicine In Europe (StudyMed Europe Hero) -->
-        <section class="hero-bg relative isolate overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-32"
+        <section class="hero-bg relative isolate overflow-hidden pt-6 pb-14 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24"
             id="home">
             <!-- soft decorative shapes -->
             <div aria-hidden="true"
@@ -115,13 +116,29 @@
                 class="dot-pattern pointer-events-none absolute right-[3.5%] top-[29%] hidden h-24 w-24 opacity-60 lg:block">
             </div>
 
+            <!-- Geometric Arc & Confetti Patterns (Study in UK Style) -->
+            <div class="absolute -top-6 -left-6 sm:top-2 sm:left-4 w-28 sm:w-36 h-28 sm:h-36 pointer-events-none select-none z-0 opacity-80">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-[#12bda9]">
+                    <path d="M10 20 C 10 90, 70 120, 130 110 L 110 80 C 70 85, 45 65, 40 20 Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="absolute top-16 left-28 sm:left-44 pointer-events-none hidden sm:block opacity-65">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="text-[#12bda9]">
+                    <circle cx="10" cy="12" r="2.5" fill="currentColor" />
+                    <circle cx="34" cy="8" r="3.5" fill="currentColor" />
+                    <circle cx="22" cy="38" r="2" fill="currentColor" />
+                    <circle cx="48" cy="28" r="3" fill="currentColor" />
+                    <circle cx="40" cy="50" r="2.5" fill="currentColor" />
+                </svg>
+            </div>
+
             <div class="relative mx-auto flex max-w-[1440px] items-center px-5 py-6 sm:px-8 lg:px-12 xl:px-16">
                 <div
                     class="grid w-full items-center gap-12 lg:grid-cols-[1.18fr_.82fr] xl:grid-cols-[1.22fr_.78fr] lg:gap-8 xl:gap-14">
                     <!-- Left content (expanded container for optimal text fit) -->
                     <div class="relative z-10 w-full max-w-none lg:max-w-3xl xl:max-w-4xl">
                         <div
-                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-brand shadow-sm">
+                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#12bda9]/30 bg-[#12bda9]/10 px-4 py-2 text-sm font-semibold text-[#02326f] shadow-sm">
                             <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                 stroke-width="1.8">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -132,12 +149,12 @@
                         </div>
 
                         <h1
-                            class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-ink sm:text-6xl xl:text-[72px]">
+                            class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-[#02326f] sm:text-6xl xl:text-[72px]">
                             Study Medicine In<br />
-                            <span class="relative inline-block text-brand mt-1 pb-1">
-                                Europe<span class="text-blue-300">.</span>
-                                <!-- Hand-drawn pen stroke scribble underline (matching reference) -->
-                                <svg class="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 text-brand overflow-visible pointer-events-none"
+                            <span class="relative inline-block text-[#02326f] mt-1 pb-1">
+                                Europe<span class="text-[#12bda9]">.</span>
+                                <!-- Hand-drawn pen stroke scribble underline in vibrant teal #12bda9 -->
+                                <svg class="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 text-[#12bda9] overflow-visible pointer-events-none"
                                     viewBox="0 0 260 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <!-- Main sweeping pen stroke under Europe (left to 'p') -->
                                     <path d="M 2 12.5 C 45 7.5, 100 4.5, 168 8" stroke="currentColor" stroke-width="3.4"
@@ -159,7 +176,7 @@
 
                         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                             <a href="contact.html#consultation-form"
-                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-brand px-7 py-4 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-200">
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#02326f] px-7 py-4 text-sm font-bold text-white shadow-lg shadow-[#02326f]/25 transition hover:-translate-y-0.5 hover:bg-[#01214a] focus:outline-none focus:ring-4 focus:ring-[#12bda9]/30">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                     stroke-width="1.8">
                                     <rect x="3.5" y="5" width="17" height="16" rx="2" />
@@ -172,7 +189,7 @@
                                 </svg>
                             </a>
                             <a href="services.html"
-                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-blue-200 bg-white/80 px-7 py-4 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-brand hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100">
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border-2 border-[#02326f]/20 bg-white/90 px-7 py-4 text-sm font-bold text-[#02326f] transition hover:-translate-y-0.5 hover:border-[#12bda9] hover:bg-[#12bda9]/10 focus:outline-none focus:ring-4 focus:ring-[#12bda9]/20">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
                                     stroke-width="1.8">
                                     <path d="m12 3 9 5-9 5-9-5 9-5Z" />
@@ -188,7 +205,7 @@
                             <a href="contact.html#consultation-form"
                                 class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:pr-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path
@@ -197,7 +214,7 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-ink group-hover:text-brand transition-colors">Free
+                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Free
                                         Consultation</p>
                                     <p class="mt-0.5 text-sm text-muted">No hidden fees</p>
                                 </div>
@@ -205,7 +222,7 @@
                             <a href="services.html"
                                 class="flex items-center gap-3 sm:border-r sm:border-blue-100 sm:px-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path d="M6 3h9l4 4v14H6z" />
@@ -213,7 +230,7 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-ink group-hover:text-brand transition-colors">Services
+                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Services
                                         &amp; Packages</p>
                                     <p class="mt-0.5 text-sm text-muted">Tailored to your goals</p>
                                 </div>
@@ -221,7 +238,7 @@
                             <a href="application-process.html"
                                 class="flex items-center gap-3 sm:pl-4 group transition-colors">
                                 <span
-                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-100/80 text-brand group-hover:scale-105 transition-transform">
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#12bda9]/15 text-[#02326f] group-hover:scale-105 group-hover:bg-[#12bda9]/25 transition-all">
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path d="m2 8 10-5 10 5-10 5L2 8Z" />
@@ -229,49 +246,32 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <p class="font-bold text-ink group-hover:text-brand transition-colors">Application
+                                    <p class="font-bold text-[#02326f] group-hover:text-[#12bda9] transition-colors">Application
                                         Process</p>
                                     <p class="mt-0.5 text-sm text-muted">Simple &amp; guided</p>
                                 </div>
                             </a>
                         </div>
-
-                        <!-- trust row
-                        <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm">
-                            <div class="flex items-center gap-2">
-                                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-black shadow-sm">
-                                    <span class="bg-gradient-to-br from-blue-500 via-green-500 to-yellow-400 bg-clip-text text-transparent">G</span>
-                                </span>
-                                <span class="font-semibold text-ink">Rated Excellent</span>
-                                <span class="text-xl leading-none text-amber-400">★</span>
-                                <span class="font-bold text-mint">4.9</span>
-                                <span class="text-muted">on Trustpilot</span>
-                            </div>
-                            <span class="hidden h-8 w-px bg-blue-200 sm:block"></span>
-                            <div class="flex items-center gap-2 font-semibold text-mint">
-                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-7 w-7 fill-current"><path d="M12 2 3.5 5.5v6.2c0 5 3.5 8.6 8.5 10.3 5-1.7 8.5-5.3 8.5-10.3V5.5L12 2Zm-1.2 13.7-3.2-3.2 1.4-1.4 1.8 1.8 4.4-4.4 1.4 1.4-5.8 5.8Z"/></svg>
-                                UKMLA &amp; GMC Aligned
-                            </div>
-                        </div> -->
                     </div>
 
-                    <!-- Right visual (proportional sleek width) -->
+                    <!-- Right visual (graduating medical students hero banner) -->
                     <div
                         class="relative mx-auto w-full max-w-[460px] sm:max-w-[490px] lg:max-w-[470px] xl:max-w-[490px] lg:ml-auto">
-                        <div aria-hidden="true" class="absolute -inset-4 -rotate-2 rounded-[2.5rem] bg-blue-100/80">
+                        <div aria-hidden="true" class="absolute -inset-4 -rotate-2 rounded-[2.5rem] bg-[#02326f]/10">
                         </div>
                         <div aria-hidden="true"
-                            class="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-cyan-100/70 blur-2xl"></div>
-                        <div class="photo-shape relative h-[360px] shadow-soft sm:h-[440px] lg:h-[470px] xl:h-[500px]">
-                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1400&q=90"
-                                alt="Doctor in a white coat in a modern clinical setting"
+                            class="absolute -bottom-6 -right-6 h-36 w-36 rounded-full bg-[#12bda9]/25 blur-2xl"></div>
+                        <div class="photo-shape relative h-[360px] shadow-soft sm:h-[440px] lg:h-[470px] xl:h-[500px] border-4 border-white/80 bg-slate-100 overflow-hidden">
+                            <img src="images/hero-banner.jpg"
+                                alt="Graduating Medical Students Celebrating in Europe"
                                 class="h-full w-full object-cover object-center" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-blue-900/5">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#02326f]/60 via-[#02326f]/10 to-transparent">
                             </div>
+                            <!-- 100% English Taught High-Contrast Teal Badge -->
                             <div
-                                class="absolute right-4 top-4 sm:right-6 sm:top-6 inline-flex items-center gap-2 rounded-full bg-mint px-3.5 py-2 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-900/15">
+                                class="absolute right-4 top-4 sm:right-6 sm:top-6 z-20 inline-flex items-center gap-2 rounded-full bg-[#12bda9] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#02326f] shadow-lg shadow-[#12bda9]/40 ring-2 ring-white">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current"
-                                    stroke-width="2">
+                                    stroke-width="2.5">
                                     <path d="m4 12 5 5L20 6" />
                                 </svg>
                                 100% English Taught
@@ -280,23 +280,23 @@
 
                         <!-- University information card -->
                         <article
-                            class="relative mx-3 -mt-20 rounded-2xl border border-white/80 bg-white/95 p-4 sm:p-5 shadow-card backdrop-blur-xl sm:absolute sm:-bottom-5 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[min(480px,calc(100%+2.5rem))]">
+                            class="relative mx-3 -mt-20 rounded-2xl border border-white/90 bg-white/95 p-4 sm:p-5 shadow-card backdrop-blur-xl sm:absolute sm:-bottom-5 sm:-left-8 sm:mx-0 sm:mt-0 sm:w-[min(480px,calc(100%+2.5rem))] z-20">
                             <div class="flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex min-w-0 items-center gap-2.5">
                                     <span
-                                        class="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-brand">
+                                        class="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-[#02326f]/10 text-[#02326f]">
                                         <svg aria-hidden="true" viewBox="0 0 24 24"
                                             class="h-5 w-5 sm:h-6 sm:w-6 fill-none stroke-current" stroke-width="1.8">
                                             <path d="M3 21h18M5 21V9m14 12V9M2 9l10-6 10 6H2ZM8 12v5M12 12v5M16 12v5" />
                                         </svg>
                                     </span>
-                                    <h2 class="text-sm font-extrabold leading-snug text-ink sm:text-base">Medical
+                                    <h2 class="text-sm font-extrabold leading-snug text-[#02326f] sm:text-base">Medical
                                         University of Plovdiv</h2>
                                 </div>
                                 <span
-                                    class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1.5 text-xs font-bold text-mint ring-1 ring-inset ring-emerald-100">
+                                    class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#12bda9]/15 px-2.5 py-1.5 text-xs font-bold text-[#02326f] ring-1 ring-inset ring-[#12bda9]/40">
                                     <svg aria-hidden="true" viewBox="0 0 24 24"
-                                        class="h-3.5 w-3.5 fill-none stroke-current" stroke-width="2">
+                                        class="h-3.5 w-3.5 text-[#12bda9] fill-none stroke-current" stroke-width="2.5">
                                         <path d="m4 12 5 5L20 6" />
                                     </svg>
                                     GMC Aligned
@@ -304,24 +304,24 @@
                             </div>
 
                             <p class="mt-3 text-xs sm:text-sm leading-5 sm:leading-6 text-muted">
-                                Medicine (MD) &amp; Dentistry (DMD) <span class="px-1 text-blue-200">·</span> 6-Year
-                                Program <span class="px-1 text-blue-200">·</span> EU Directive 2005/36/EC
+                                Medicine (MD) &amp; Dentistry (DMD) <span class="px-1 text-[#12bda9]">·</span> 6-Year
+                                Program <span class="px-1 text-[#12bda9]">·</span> EU Directive 2005/36/EC
                             </p>
 
-                            <div class="my-3 h-px bg-blue-100"></div>
+                            <div class="my-3 h-px bg-slate-100"></div>
 
                             <div class="flex flex-wrap items-center justify-between gap-3">
                                 <div class="flex items-center gap-2 text-xs sm:text-sm text-muted">
                                     <svg aria-hidden="true" viewBox="0 0 24 24"
-                                        class="h-4 w-4 sm:h-5 sm:w-5 text-brand fill-none stroke-current"
+                                        class="h-4 w-4 sm:h-5 sm:w-5 text-[#12bda9] fill-none stroke-current"
                                         stroke-width="1.8">
                                         <path d="m2 8 10-5 10 5-10 5L2 8Z" />
                                         <path d="M6 10v6c3.5 3 8.5 3 12 0v-6M22 8v7" />
                                     </svg>
-                                    Program: <strong class="text-ink">6 Years · Full English</strong>
+                                    Program: <strong class="text-[#02326f]">6 Years · Full English</strong>
                                 </div>
                                 <a href="plovdiv-medical-university.html"
-                                    class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand transition hover:gap-2.5">
+                                    class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#02326f] transition hover:text-[#12bda9] hover:gap-2.5">
                                     View Details
                                     <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current"
                                         stroke-width="2">
@@ -713,14 +713,13 @@
                     <div class="lg:col-span-6 flex justify-center">
                         <div
                             class="w-full max-w-md rounded-[5px] bg-white text-slate-800 p-7 sm:p-8 shadow-executive relative">
-                            <!-- Star Rating (Trustpilot Green) -->
+                            <!-- Star Rating -->
                             <div class="flex items-center gap-1 text-[#00B67A] mb-4">
                                 <span class="material-symbols-outlined text-[20px] fill-current">star</span>
                                 <span class="material-symbols-outlined text-[20px] fill-current">star</span>
                                 <span class="material-symbols-outlined text-[20px] fill-current">star</span>
                                 <span class="material-symbols-outlined text-[20px] fill-current">star</span>
                                 <span class="material-symbols-outlined text-[20px] fill-current">star</span>
-                                <span class="text-xs font-bold text-slate-900 ml-1.5">Rated 4.9 on Trustpilot</span>
                             </div>
 
                             <blockquote
@@ -975,8 +974,7 @@
                         </p>
 
                         <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-                            Our dual presence with corporate offices in London, UK and on-ground campus hubs in Sofia
-                            and Plovdiv, Bulgaria guarantees you have local, British-standard advocacy wherever you are.
+                            Our registered London headquarters, combined with dedicated on-ground student coordinators across Bulgaria, guarantees you have reliable, British-standard advocacy wherever you are.
                         </p>
 
                         <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -1293,8 +1291,8 @@
                     </p>
                 </div>
 
-                <!-- 4 Contact Cards matching Screenshot 1 -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-left items-stretch">
+                <!-- 3 Contact Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left items-stretch">
                     <!-- Card 1: Phone & WhatsApp -->
                     <a href="tel:+447345692756"
                         class="group relative bg-white p-6 rounded-[5px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
@@ -1319,7 +1317,7 @@
                     </a>
 
                     <!-- Card 2: Email Inquiries -->
-                    <a href="mailto:info@example.com"
+                    <a href="mailto:inquiry@globalmedentry.com"
                         class="group relative bg-white p-6 rounded-[5px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div
@@ -1332,7 +1330,7 @@
                             </span>
                             <h3
                                 class="text-base sm:text-lg font-extrabold text-slate-950 tracking-tight group-hover:text-primary transition-colors mb-2 break-all">
-                                info@example.com
+                                inquiry@globalmedentry.com
                             </h3>
                         </div>
 
@@ -1341,7 +1339,7 @@
                         </div>
                     </a>
 
-                    <!-- Card 3: London HQ -->
+                    <!-- Card 3: Business Address -->
                     <div
                         class="group relative bg-white p-6 rounded-[5px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                         <div>
@@ -1351,43 +1349,18 @@
                             </div>
 
                             <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                                LONDON HEADQUARTERS
+                                BUSINESS ADDRESS
                             </span>
                             <h3 class="text-lg font-extrabold text-slate-950 tracking-tight mb-1">
-                                66, Paul Street
+                                66, Paul street
                             </h3>
-                            <p class="text-sm sm:text-base text-slate-500 leading-relaxed">
-                                London, EC2A 4NA, United Kingdom
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+                                London.EC2A 4NA
                             </p>
                         </div>
 
                         <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 font-medium">
-                            Company No. 10796193
-                        </div>
-                    </div>
-
-                    <!-- Card 4: European On-Ground Hub -->
-                    <div
-                        class="group relative bg-white p-6 rounded-[5px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-executive hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
-                        <div>
-                            <div
-                                class="w-12 h-12 rounded-[5px] bg-blue-50 text-primary border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-xs">
-                                <span class="material-symbols-outlined text-[24px]">domain</span>
-                            </div>
-
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                                EUROPEAN ON-GROUND HUB
-                            </span>
-                            <h3 class="text-lg font-extrabold text-slate-950 tracking-tight mb-1">
-                                Sofia Campus Office
-                            </h3>
-                            <p class="text-sm sm:text-base text-slate-500 leading-relaxed">
-                                Sofia, Bulgaria (Adjacent to MU Sofia)
-                            </p>
-                        </div>
-
-                        <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-emerald-600">
-                            24/7 On-Site Representatives
+                            UK Registered Company No. 10796193
                         </div>
                     </div>
                 </div>
@@ -1396,6 +1369,17 @@
 
         <!-- 12. PRE-FOOTER CTA: Thinking About Applying This Year? -->
         <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden" id="cta">
+            <!-- Bold Geometric Donut Curves & Motifs (Study in UK Style) -->
+            <div class="absolute -top-10 right-8 sm:right-24 w-44 sm:w-56 h-44 sm:h-56 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 200 200" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 30 100 A 70 70 0 0 1 170 100" stroke="currentColor" stroke-width="26" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="absolute -bottom-8 left-6 sm:left-16 w-36 sm:w-48 h-36 sm:h-48 pointer-events-none select-none z-0 opacity-60">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-cyan-400">
+                    <circle cx="80" cy="80" r="55" stroke="currentColor" stroke-width="22" stroke-dasharray="110 25" stroke-linecap="round"/>
+                </svg>
+            </div>
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
                 <div
                     class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">

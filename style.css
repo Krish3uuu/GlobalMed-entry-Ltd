@@ -6,7 +6,14 @@
         padding: 0;
         overflow-x: hidden;
         scroll-behavior: smooth;
+        scroll-padding-top: 140px;
         font-family: 'Karla', sans-serif;
+    }
+
+    @media (max-width: 1023px) {
+        html {
+            scroll-padding-top: 104px;
+        }
     }
 
     body {
@@ -15,6 +22,23 @@
         overflow-x: hidden;
         -webkit-tap-highlight-color: transparent;
         font-family: 'Karla', sans-serif;
+    }
+
+    /* Fixed executive header clearance across all pages */
+    main, .main-content {
+        padding-top: 96px;
+    }
+
+    @media (min-width: 640px) {
+        main, .main-content {
+            padding-top: 108px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        main, .main-content {
+            padding-top: 140px;
+        }
     }
 
     h1, h2, h3, h4, h5, h6, .font-heading {
@@ -33,9 +57,9 @@ html {
 /* Hero Banner Custom Styles (from studymed-europe-hero) */
 .hero-bg {
     background:
-        radial-gradient(ellipse at 90% 45%, rgba(219,234,254,.75) 0%, rgba(239,246,255,.25) 34%, transparent 62%),
-        radial-gradient(ellipse at 8% 90%, rgba(219,234,254,.6) 0%, transparent 35%),
-        linear-gradient(115deg, #ffffff 0%, #f8fbff 55%, #f2f7ff 100%);
+        radial-gradient(ellipse at 90% 45%, rgba(18, 189, 169, 0.12) 0%, rgba(2, 50, 111, 0.05) 34%, transparent 62%),
+        radial-gradient(ellipse at 8% 90%, rgba(2, 50, 111, 0.08) 0%, transparent 35%),
+        linear-gradient(115deg, #ffffff 0%, #f6fbfb 55%, #f0f5fc 100%);
 }
 .photo-shape {
     border-radius: 34% 14% 22% 17% / 20% 20% 24% 22%;
@@ -49,15 +73,19 @@ html {
     .photo-shape { border-radius: 28px; }
 }
 
-.text-brand { color: #1d4ed8; }
-.bg-brand { background-color: #1d4ed8; }
-.border-brand { border-color: #1d4ed8; }
-.text-ink { color: #10234b; }
-.text-muted { color: #5b6f91; }
-.text-mint { color: #08a878; }
-.bg-mint { background-color: #08a878; }
-.shadow-soft { box-shadow: 0 24px 70px rgba(29, 78, 216, .14); }
-.shadow-card { box-shadow: 0 18px 45px rgba(16, 35, 75, .16); }
+.text-brand { color: #02326f; }
+.bg-brand { background-color: #02326f; }
+.border-brand { border-color: #02326f; }
+.text-ink { color: #02326f; }
+.text-muted { color: #516482; }
+.text-mint { color: #12bda9; }
+.bg-mint { background-color: #12bda9; }
+.border-mint { border-color: #12bda9; }
+.text-accent { color: #12bda9; }
+.bg-accent { background-color: #12bda9; }
+.border-accent { border-color: #12bda9; }
+.shadow-soft { box-shadow: 0 24px 70px rgba(2, 50, 111, .14); }
+.shadow-card { box-shadow: 0 18px 45px rgba(2, 50, 111, .16); }
 
 body {
     font-family: 'Karla', sans-serif;
@@ -96,10 +124,10 @@ p, .paragraph, .subtext, .desc-text {
     line-height: 1.35rem !important;
 }
 
-/* Headings on light backgrounds default to #192F59 */
+/* Headings on light backgrounds default to #02326f (Primary Deep Navy) */
 h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Rubik', sans-serif !important;
-    color: #192F59;
+    color: #02326f;
 }
 
 /* Form inputs & controls */
@@ -112,7 +140,7 @@ input, textarea, select {
 .text-slate-950,
 .text-slate-900,
 .heading-color {
-    color: #192F59;
+    color: #02326f;
 }
 
 /* Body and descriptions on light backgrounds */
@@ -124,7 +152,7 @@ input, textarea, select {
 }
 
 /* ==========================================================================
-   PRIMARY COLOR & ACTIVE NAVIGATION (Fixes Issue 2: Nav active color)
+   PRIMARY COLOR & ACTIVE NAVIGATION
    ========================================================================== */
 .text-primary,
 a.text-primary,
@@ -135,13 +163,13 @@ header nav a[class*="text-primary"],
 #mobileDrawer a.text-primary,
 .mobile-nav-link.text-primary,
 .mobile-nav-link.text-primary * {
-    color: #1D4ED8 !important;
+    color: #02326f !important;
 }
 
 /* Active navigation link in header */
 header nav a.text-primary::after,
 header nav a[class*="after:bg-primary"]::after {
-    background-color: #1D4ED8 !important;
+    background-color: #02326f !important;
 }
 
 header nav a.text-slate-600 {
@@ -149,25 +177,25 @@ header nav a.text-slate-600 {
 }
 
 header nav a.text-slate-600:hover {
-    color: #1D4ED8 !important;
+    color: #02326f !important;
 }
 
 /* ==========================================================================
-   CONTACT CARD ICON BOXES (Fixes Issue 1: Contact card icons on Home & Contact)
-   Normal state: Royal blue icon on light blue background
-   Hover state: Pure white icon on royal blue background
+   CONTACT CARD ICON BOXES
+   Normal state: Primary deep navy icon on light blue background
+   Hover state: Pure white icon on primary deep navy background
    ========================================================================== */
 .bg-blue-50.text-primary,
 .bg-blue-50.text-primary .material-symbols-outlined,
 .bg-blue-50 .material-symbols-outlined.text-primary,
 .bg-blue-50.text-primary *,
 .bg-blue-50 > .material-symbols-outlined {
-    color: #1D4ED8 !important;
+    color: #02326f !important;
 }
 
 /* Group hover state for interactive contact cards */
 .group:hover .group-hover\:bg-primary {
-    background-color: #1D4ED8 !important;
+    background-color: #02326f !important;
 }
 
 .group:hover .group-hover\:text-white,
@@ -178,7 +206,7 @@ header nav a.text-slate-600:hover {
 }
 
 .group:hover .group-hover\:text-primary {
-    color: #1D4ED8 !important;
+    color: #02326f !important;
 }
 
 /* ==========================================================================
@@ -209,12 +237,12 @@ button.text-white * {
 a.bg-primary,
 button.bg-primary,
 input[type="submit"].bg-primary {
-    background-color: #1D4ED8 !important;
+    background-color: #02326f !important;
 }
 
 a.bg-primary-dark,
 button.bg-primary-dark {
-    background-color: #173FA8 !important;
+    background-color: #01214a !important;
 }
 
 /* White buttons with primary text (e.g. "bg-white text-primary") */
@@ -222,7 +250,7 @@ a.bg-white.text-primary,
 a.bg-white.text-primary *,
 button.bg-white.text-primary,
 button.bg-white.text-primary * {
-    color: #1D4ED8 !important;
+    color: #02326f !important;
     background-color: #ffffff !important;
 }
 
@@ -332,7 +360,7 @@ span.text-white,
 .text-white .bg-white h4,
 .text-white .bg-white .text-slate-950,
 .text-white .bg-white .text-slate-900 {
-    color: #192F59 !important;
+    color: #02326f !important;
 }
 
 [class*="from-[#0F172A]"] .bg-white p,
@@ -365,7 +393,7 @@ span.text-white,
 [class*="from-[#172554]"] .bg-white button.bg-primary,
 [class*="from-[#172554]"] .bg-white button.bg-primary * {
     color: #ffffff !important;
-    background-color: #1D4ED8 !important;
+    background-color: #02326f !important;
 }
 
 ::-webkit-scrollbar {
@@ -473,26 +501,26 @@ span.text-white,
 .bg-grid-mesh {
     background-size: 40px 40px;
     background-image:
-        linear-gradient(to right, rgba(29, 78, 216, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(29, 78, 216, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(2, 50, 111, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 50, 111, 0.03) 1px, transparent 1px);
 }
 
 .bg-dot-matrix {
     background-size: 24px 24px;
-    background-image: radial-gradient(rgba(29, 78, 216, 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(2, 50, 111, 0.05) 1px, transparent 1px);
 }
 
 .bg-dot-matrix-subtle {
     background-size: 28px 28px;
-    background-image: radial-gradient(rgba(100, 116, 139, 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(18, 189, 169, 0.05) 1px, transparent 1px);
 }
 
 .bg-isometric-grid {
     background-size: 48px 48px;
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.025) 1px, transparent 1px),
-        linear-gradient(to right, rgba(226, 232, 240, 0.15) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(226, 232, 240, 0.15) 1px, transparent 1px);
+        radial-gradient(circle at 50% 50%, rgba(18, 189, 169, 0.04) 1px, transparent 1px),
+        linear-gradient(to right, rgba(2, 50, 111, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 50, 111, 0.06) 1px, transparent 1px);
 }
 
 /* Interactive Card Glow Effect */
@@ -503,16 +531,16 @@ span.text-white,
 
 .glow-card-interactive:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px -15px rgba(29, 78, 216, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(2, 50, 111, 0.14), 0 0 0 1px rgba(18, 189, 169, 0.4);
 }
 
 .glow-badge-ring {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    box-shadow: 0 0 0 0 rgba(18, 189, 169, 0.4);
     animation: pulseRing 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
 @keyframes pulseRing {
     to {
-        box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+        box-shadow: 0 0 0 8px rgba(18, 189, 169, 0);
     }
 }

@@ -68,7 +68,7 @@
 
     function navClass(pageName) {
         if (isActive(pageName)) {
-            return 'text-primary font-bold relative py-1.5 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary after:rounded-full whitespace-nowrap transition-colors';
+            return 'text-primary font-bold relative py-1.5 after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#12bda9] after:rounded-full whitespace-nowrap transition-colors';
         }
         return 'text-slate-600 hover:text-primary font-semibold py-1.5 relative whitespace-nowrap transition-colors';
     }
@@ -88,9 +88,9 @@
             <div class="max-w-[1536px] mx-auto flex items-center justify-between text-slate-500 font-medium">
                 <div class="flex items-center gap-6">
                     <a class="flex items-center gap-1.5 hover:text-primary transition-colors tracking-tight font-medium"
-                        href="mailto:info@example.com">
+                        href="mailto:inquiry@globalmedentry.com">
                         <span class="material-symbols-outlined text-[15px] text-primary">mail</span>
-                        <span>info@example.com</span>
+                        <span>inquiry@globalmedentry.com</span>
                     </a>
                     <a class="flex items-center gap-1.5 hover:text-primary transition-colors tracking-tight font-medium"
                         href="tel:+447345692756">
@@ -100,16 +100,12 @@
                 </div>
                 <div class="flex items-center gap-6 text-xs">
                     <span class="flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[15px] text-emerald-600">verified</span>
+                        <span class="material-symbols-outlined text-[15px] text-[#12bda9]">verified</span>
                         <span>UK Registered Company No. 10796193</span>
                     </span>
                     <span class="text-slate-300">|</span>
-                    <span class="flex items-center gap-1 font-semibold text-slate-800">
-                        <span class="text-amber-500 font-bold">★ 4.9</span> on Trustpilot
-                    </span>
-                    <span class="text-slate-300">|</span>
                     <span class="text-slate-700 font-semibold flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#12bda9] animate-pulse"></span>
                         UKMLA &amp; GMC Aligned
                     </span>
                 </div>
@@ -117,10 +113,10 @@
         </div>
 
         <!-- Executive Navbar Container with Fluid Max-Width & Proper Breathing Room -->
-        <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between min-h-[76px] sm:min-h-[88px] py-1 sm:py-2">
-            <!-- Brand Logo with Generous Right Margin & Vertical Breathing Room -->
+        <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between min-h-[76px] sm:min-h-[88px] py-2 sm:py-3">
+            <!-- Brand Logo with Generous Right Margin & Vertical Breathing Room (130px width) -->
             <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 my-1 group shrink-0" href="index.html#home" aria-label="GlobalMed Entry Ltd Home">
-                <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[110px] sm:w-[120px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+                <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[125px] sm:w-[130px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
             </a>
 
             <!-- Canonical Desktop Navigation Links -->
@@ -137,7 +133,7 @@
 
             <!-- Right CTA Action & Mobile Hamburger Button -->
             <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-                <a class="inline-flex items-center text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-blue-600/20 glow-badge-ring whitespace-nowrap active:scale-95"
+                <a class="inline-flex items-center text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-[#02326f]/25 glow-badge-ring whitespace-nowrap active:scale-95"
                     href="contact.html#consultation-form">
                     Book Consultation
                 </a>
@@ -233,16 +229,12 @@
             </div>
             <!-- Drawer Footer CTA -->
             <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50/70 shrink-0 space-y-3">
-                <a class="w-full inline-flex items-center justify-center text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-blue-600/20 text-center"
+                <a class="w-full inline-flex items-center justify-center text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-[#02326f]/25 text-center"
                     href="contact.html#consultation-form">
                     Book Consultation Assessment
                 </a>
-                <div class="flex items-center justify-center gap-4 text-xs text-slate-500 font-medium">
-                    <span class="flex items-center gap-1">
-                        <span class="text-amber-500 font-bold">★</span> Trustpilot 4.9/5
-                    </span>
-                    <span>•</span>
-                    <span class="flex items-center gap-1 text-emerald-600 font-semibold">
+                <div class="flex items-center justify-center text-xs text-slate-500 font-medium">
+                    <span class="flex items-center gap-1 text-[#12bda9] font-semibold">
                         <span class="material-symbols-outlined text-[14px]">verified</span> GMC Aligned
                     </span>
                 </div>
@@ -263,13 +255,13 @@
                     <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
                         Founded by NHS and European clinical doctors, GlobalMed Entry Ltd is the UK&apos;s authoritative advisory firm for studying medicine and dentistry in accredited European universities.
                     </p>
-                    <div class="flex items-center gap-4 text-xs font-semibold text-slate-700 pt-1">
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-700 pt-1">
                         <span class="flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+                            <span class="material-symbols-outlined text-[16px] text-[#12bda9]">verified</span>
                             UK Reg. 10796193
                         </span>
                         <span>•</span>
-                        <span>London, UK &amp; Sofia, Bulgaria</span>
+                        <span>Business address: 66, Paul street  London.EC2A 4NA</span>
                     </div>
                 </div>
 
