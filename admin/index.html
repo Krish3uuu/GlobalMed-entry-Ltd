@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editorial Directorate Portal | GlobalMed Entry Ltd</title>
+    <title>Post &amp; Homepage Manager | GlobalMed Entry Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -24,100 +24,805 @@
         }
     </script>
 </head>
-<body class="bg-[#0F172A] min-h-screen flex items-center justify-center p-4 font-['Karla',sans-serif] text-slate-800 relative overflow-hidden">
-    <!-- Ambient glow shapes -->
-    <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#12bda9]/10 blur-3xl pointer-events-none"></div>
+<body class="bg-slate-50 min-h-screen font-['Karla',sans-serif] text-slate-800 antialiased flex flex-col">
 
-    <div class="w-full max-w-md relative z-10">
-        <!-- Brand Header Card -->
-        <div class="text-center mb-8">
-            <a href="../index.html" class="inline-block mb-4">
-                <img src="../images/logo.webp" alt="GlobalMed Entry Ltd" class="h-16 w-auto mx-auto object-contain drop-shadow-md" />
-            </a>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-200 text-xs font-semibold uppercase tracking-wider">
-                <span class="material-symbols-outlined text-[15px] text-[#12bda9]">lock</span>
-                Protected Editorial Directorate
-            </div>
-            <h1 class="text-2xl font-bold text-white tracking-tight mt-3">Content &amp; Article Manager</h1>
-            <p class="text-slate-400 text-sm mt-1">Sign in to publish, edit articles, and manage homepage items.</p>
-        </div>
+    <!-- Posts Seed Database -->
+    <script src="../blog/posts-data.js"></script>
 
-        <!-- Login Box -->
-        <div class="bg-white rounded-[5px] border border-slate-200/90 shadow-2xl p-7 sm:p-8 space-y-4">
-            <!-- Environment Notice -->
-            <div id="envNotice" class="p-3.5 rounded-[5px] bg-blue-50 border border-blue-200 text-slate-700 text-xs space-y-1">
-                <div class="flex items-center gap-1.5 text-primary font-bold">
-                    <span class="material-symbols-outlined text-[16px] text-[#12bda9]">info</span>
-                    <span>Editorial Server Environment</span>
+    <!-- 1. LOGIN VIEW (Shown when unauthenticated) -->
+    <div id="loginView" class="hidden fixed inset-0 z-50 bg-[#0F172A] flex items-center justify-center p-4 overflow-y-auto">
+        <!-- Ambient glow shapes -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#12bda9]/10 blur-3xl pointer-events-none"></div>
+
+        <div class="w-full max-w-md relative z-10 my-auto">
+            <!-- Brand Header Card -->
+            <div class="text-center mb-6">
+                <a href="../index.html" class="inline-block mb-3">
+                    <img src="../images/logo.webp" alt="GlobalMed Entry Ltd" class="h-14 sm:h-16 w-auto mx-auto object-contain drop-shadow-md" />
+                </a>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-200 text-xs font-semibold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-[15px] text-[#12bda9]">lock</span>
+                    Protected Editorial Directorate
                 </div>
-                <p class="text-slate-600 leading-relaxed">
-                    This admin portal manages the live SQLite database and session authentication. On PHP/WordPress hosts, it connects to <code class="bg-blue-100 text-primary px-1 rounded">admin/login.php</code>.
-                </p>
+                <h1 class="text-2xl font-bold text-white tracking-tight mt-2.5">Editorial Manager Portal</h1>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1">Sign in to publish, edit articles, and manage homepage items.</p>
             </div>
 
-            <form onsubmit="handleDemoLogin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" for="username">Username</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                            <span class="material-symbols-outlined text-[18px]">account_circle</span>
-                        </span>
-                        <input type="text" id="username" value="admin" required
-                            class="w-full pl-9 pr-3.5 py-2.5 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm placeholder-slate-400 transition-colors"
-                            placeholder="admin" />
-                    </div>
+            <!-- Login Box -->
+            <div class="bg-white rounded-[5px] border border-slate-200/90 shadow-2xl p-6 sm:p-8 space-y-4">
+                <div id="loginErrorAlert" class="hidden p-3 rounded-[5px] bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-rose-600">error</span>
+                    <span>Invalid credentials. Use <strong>admin</strong> and <strong>GlobalMed2026!</strong></span>
                 </div>
 
-                <div>
-                    <div class="flex items-center justify-between mb-1.5">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700" for="password">Password</label>
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="loginUsername">Username</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                <span class="material-symbols-outlined text-[18px]">account_circle</span>
+                            </span>
+                            <input type="text" id="loginUsername" value="admin" required
+                                class="w-full pl-9 pr-3.5 py-2.5 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm placeholder-slate-400 transition-colors"
+                                placeholder="admin" />
+                        </div>
                     </div>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                            <span class="material-symbols-outlined text-[18px]">key</span>
-                        </span>
-                        <input type="password" id="password" value="GlobalMed2026!" required
-                            class="w-full pl-9 pr-10 py-2.5 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm placeholder-slate-400 transition-colors"
-                            placeholder="••••••••••••" />
+
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700" for="loginPassword">Password</label>
+                            <span class="text-[11px] text-slate-400">Default: GlobalMed2026!</span>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                                <span class="material-symbols-outlined text-[18px]">key</span>
+                            </span>
+                            <input type="password" id="loginPassword" value="GlobalMed2026!" required
+                                class="w-full pl-9 pr-10 py-2.5 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm placeholder-slate-400 transition-colors"
+                                placeholder="••••••••••••" />
+                            <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+                                <span class="material-symbols-outlined text-[18px]" id="eyeIcon">visibility</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <button type="submit"
-                    class="w-full py-3 px-4 rounded-[5px] bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-98 flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-[18px]">login</span>
-                    <span>Authenticate &amp; Access Dashboard</span>
-                </button>
-            </form>
+                    <button type="submit"
+                        class="w-full py-3 px-4 rounded-[5px] bg-primary hover:bg-primary-dark text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-98 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">login</span>
+                        <span>Sign In to Editorial Dashboard</span>
+                    </button>
+                </form>
 
-            <div id="demoSuccessMessage" class="hidden p-3.5 rounded-[5px] bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs space-y-1">
-                <div class="font-bold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
-                    <span>Authentication Verified!</span>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span class="flex items-center gap-1 text-[#12bda9] font-semibold">
+                        <span class="material-symbols-outlined text-[14px]">verified_user</span> 256-bit Protected
+                    </span>
+                    <a href="../index.html" class="text-primary hover:underline font-bold">Return to Website</a>
                 </div>
-                <p>To execute write operations to SQLite, run the backend server with <code class="bg-emerald-100 px-1 rounded">php -S localhost:8000</code> and visit <a href="login.php" class="underline font-bold">admin/login.php</a>.</p>
             </div>
-        </div>
-
-        <!-- Back to Website -->
-        <div class="text-center mt-6">
-            <a href="../index.html" class="text-xs text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1.5 font-medium">
-                <span class="material-symbols-outlined text-[15px]">arrow_back</span>
-                <span>Return to GlobalMed Entry Ltd</span>
-            </a>
         </div>
     </div>
 
+    <!-- 2. DASHBOARD VIEW (Shown when authenticated) -->
+    <div id="dashboardView" class="flex-1 flex flex-col">
+        <!-- Top Admin Navigation Bar -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="flex items-center gap-3">
+                        <img src="../images/logo.webp" alt="GlobalMed Entry" class="h-10 w-auto object-contain" />
+                        <span class="hidden sm:inline-block font-extrabold text-slate-900 text-sm tracking-tight border-l border-slate-200 pl-3">
+                            Editorial Directorate
+                        </span>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="../blog/index.html" target="_blank"
+                        class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">visibility</span>
+                        <span>View Public Blog</span>
+                    </a>
+                    <a href="../index.html#articles" target="_blank"
+                        class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-blue-50 hover:bg-blue-100 text-primary text-xs font-semibold transition-colors border border-blue-200">
+                        <span class="material-symbols-outlined text-[16px]">home</span>
+                        <span>View Homepage</span>
+                    </a>
+                    <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs uppercase">
+                            AD
+                        </div>
+                        <span class="text-xs font-bold text-slate-900 hidden sm:inline">Admin User</span>
+                    </div>
+                    <button onclick="handleAdminLogout()"
+                        class="p-2 rounded-[5px] text-slate-500 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                        title="Sign Out">
+                        <span class="material-symbols-outlined text-[20px]">logout</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+            <!-- Flash Banner (Dynamic) -->
+            <div id="flashNotice" class="hidden p-4 rounded-[5px] bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium flex items-center justify-between shadow-xs">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px] text-emerald-600">check_circle</span>
+                    <span id="flashNoticeText">Action completed successfully.</span>
+                </div>
+                <button onclick="document.getElementById('flashNotice').classList.add('hidden')" class="text-slate-400 hover:text-slate-600">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <!-- Header Title & Action Row -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">Articles, News &amp; Events</h1>
+                    <p class="text-slate-500 text-sm mt-0.5">Manage published content, edit full articles, and control what appears on the homepage.</p>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <button onclick="openPostModal(null)"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[5px] bg-[#12bda9] hover:bg-[#0d9686] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95">
+                        <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                        <span>Create New Post</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4 Metrics Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-5 rounded-[5px] bg-white border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Total Posts</span>
+                        <span class="material-symbols-outlined text-[22px] text-blue-500">article</span>
+                    </div>
+                    <div class="text-2xl font-black text-slate-900" id="metricTotal">0</div>
+                    <span class="text-xs text-slate-400 mt-1 block">Articles, News, Events &amp; Packs</span>
+                </div>
+
+                <div class="p-5 rounded-[5px] bg-white border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Home Articles Grid</span>
+                        <span class="material-symbols-outlined text-[22px] text-emerald-500">featured_video</span>
+                    </div>
+                    <div class="text-2xl font-black text-emerald-600">
+                        <span id="metricHomeArticles">0</span> <span class="text-xs font-semibold text-slate-400">/ 3 slots</span>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-1 block">3 Featured cards on homepage</span>
+                </div>
+
+                <div class="p-5 rounded-[5px] bg-white border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Home News Column</span>
+                        <span class="material-symbols-outlined text-[22px] text-primary">newspaper</span>
+                    </div>
+                    <div class="text-2xl font-black text-primary">
+                        <span id="metricHomeNews">0</span> <span class="text-xs font-semibold text-slate-400">active</span>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-1 block">Latest News &amp; Updates list</span>
+                </div>
+
+                <div class="p-5 rounded-[5px] bg-white border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Drafts</span>
+                        <span class="material-symbols-outlined text-[22px] text-amber-500">edit_note</span>
+                    </div>
+                    <div class="text-2xl font-black text-amber-600" id="metricDrafts">0</div>
+                    <span class="text-xs text-slate-400 mt-1 block">Unpublished internal drafts</span>
+                </div>
+            </div>
+
+            <!-- Filter & Search Toolbar -->
+            <div class="bg-white rounded-[5px] border border-slate-200 p-4 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <!-- Filter Pills by Type -->
+                <div class="flex flex-wrap items-center gap-1.5 text-xs font-semibold" id="adminTypeFilters">
+                    <button onclick="setAdminTypeFilter('all')" data-type="all"
+                        class="admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-primary text-white font-bold">
+                        All Types
+                    </button>
+                    <button onclick="setAdminTypeFilter('article')" data-type="article"
+                        class="admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Articles
+                    </button>
+                    <button onclick="setAdminTypeFilter('news')" data-type="news"
+                        class="admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        News &amp; Updates
+                    </button>
+                    <button onclick="setAdminTypeFilter('event')" data-type="event"
+                        class="admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Events &amp; Webinars
+                    </button>
+                    <button onclick="setAdminTypeFilter('resource')" data-type="resource"
+                        class="admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Resources &amp; Packs
+                    </button>
+                </div>
+
+                <!-- Homepage Filter & Search Input -->
+                <div class="flex items-center gap-2">
+                    <select id="adminHomeFilter" onchange="renderAdminTable()"
+                        class="text-xs rounded-[5px] border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary py-1.5 pl-2.5 pr-8 text-slate-700">
+                        <option value="all">All Locations</option>
+                        <option value="1">Only on Homepage</option>
+                        <option value="0">Not on Homepage</option>
+                    </select>
+
+                    <div class="relative">
+                        <input type="text" id="adminSearchQuery" placeholder="Search title or category..." oninput="renderAdminTable()"
+                            class="text-xs rounded-[5px] border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary py-1.5 pl-8 pr-3 text-slate-700 placeholder-slate-400 w-48 sm:w-56" />
+                        <span class="material-symbols-outlined text-[16px] text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none">search</span>
+                    </div>
+
+                    <button onclick="resetAdminFilters()" class="p-1.5 text-slate-400 hover:text-slate-600" title="Reset Filters">
+                        <span class="material-symbols-outlined text-[18px]">clear_all</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Posts Table Card -->
+            <div class="bg-white rounded-[5px] border border-slate-200 shadow-xs overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50/80 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                                <th class="py-3 px-4">Post Title &amp; Category</th>
+                                <th class="py-3 px-3">Type</th>
+                                <th class="py-3 px-3">Status</th>
+                                <th class="py-3 px-3">Homepage Display</th>
+                                <th class="py-3 px-3">Date</th>
+                                <th class="py-3 px-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody" class="divide-y divide-slate-100 text-xs">
+                            <!-- Populated dynamically by renderAdminTable() -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Empty State -->
+                <div id="adminEmptyState" class="hidden py-12 text-center text-slate-400">
+                    <span class="material-symbols-outlined text-4xl text-slate-300 block mb-2">post_add</span>
+                    <p class="font-medium text-slate-600">No posts match the current filter.</p>
+                    <button onclick="openPostModal(null)" class="inline-block mt-2 text-primary font-bold hover:underline">Create a new post &rarr;</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 3. MODAL: CREATE / EDIT POST -->
+    <div id="postModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-[5px] border border-slate-200 shadow-2xl w-full max-w-2xl my-8 overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/80">
+                <h3 class="font-bold text-slate-900 text-base" id="modalTitle">Create New Post</h3>
+                <button onclick="closePostModal()" class="text-slate-400 hover:text-slate-600">
+                    <span class="material-symbols-outlined text-[20px]">close</span>
+                </button>
+            </div>
+
+            <!-- Modal Form Body (Scrollable) -->
+            <form id="postForm" onsubmit="savePost(event)" class="p-6 space-y-4 overflow-y-auto flex-1">
+                <input type="hidden" id="editPostId" value="" />
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostTitle">Title *</label>
+                    <input type="text" id="modalPostTitle" required oninput="autoGenerateSlug()"
+                        class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm"
+                        placeholder="e.g. 2026 European Medical University Breakdown" />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostType">Type *</label>
+                        <select id="modalPostType" required
+                            class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm">
+                            <option value="article">Article (Flagship / Guide)</option>
+                            <option value="news">News &amp; Updates</option>
+                            <option value="event">Event &amp; Webinar</option>
+                            <option value="resource">Resource &amp; Pack</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostCategory">Category *</label>
+                        <input type="text" id="modalPostCategory" required
+                            class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm"
+                            placeholder="e.g. Admissions Guide, Tuition, Exams" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostAuthor">Author</label>
+                        <input type="text" id="modalPostAuthor" value="Admissions Directorate"
+                            class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm" />
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostReadTime">Read Time / Badge</label>
+                        <input type="text" id="modalPostReadTime" value="5 min read"
+                            class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostImage">Featured Image URL</label>
+                    <input type="url" id="modalPostImage"
+                        class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm"
+                        placeholder="https://images.unsplash.com/..." />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostExcerpt">Short Excerpt (Summary) *</label>
+                    <textarea id="modalPostExcerpt" required rows="2"
+                        class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm"
+                        placeholder="Summary appearing on blog listings and homepage..."></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostContent">Full Article Content (HTML allowed)</label>
+                    <textarea id="modalPostContent" rows="6"
+                        class="w-full px-3 py-2 rounded-[5px] border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm font-mono text-xs"
+                        placeholder="<p>Full article body...</p>"></textarea>
+                </div>
+
+                <!-- Homepage Display Controls -->
+                <div class="p-4 rounded-[5px] bg-slate-50 border border-slate-200 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5" for="modalShowOnHome">
+                            <span class="material-symbols-outlined text-[18px] text-[#12bda9]">home</span>
+                            <span>Display on Client Homepage</span>
+                        </label>
+                        <input type="checkbox" id="modalShowOnHome" onchange="toggleHomeOptions()"
+                            class="rounded-[3px] border-slate-300 text-primary focus:ring-primary h-4 w-4" />
+                    </div>
+
+                    <div id="homeOptionsContainer" class="hidden grid grid-cols-2 gap-4 pt-2 border-t border-slate-200">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="modalHomeSection">Section</label>
+                            <select id="modalHomeSection" class="w-full px-2 py-1.5 rounded-[5px] border border-slate-200 text-xs">
+                                <option value="articles">3 Featured Cards (Navy Section)</option>
+                                <option value="news">Latest News &amp; Updates Column</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="modalHomeOrder">Display Order</label>
+                            <input type="number" id="modalHomeOrder" value="1" min="1" max="10"
+                                class="w-full px-2 py-1.5 rounded-[5px] border border-slate-200 text-xs" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1" for="modalPostStatus">Publication Status</label>
+                    <select id="modalPostStatus" class="w-full px-3 py-2 rounded-[5px] border border-slate-200 text-sm">
+                        <option value="published">Published (Live Public)</option>
+                        <option value="draft">Draft (Private Internal)</option>
+                    </select>
+                </div>
+            </form>
+
+            <!-- Modal Footer Actions -->
+            <div class="px-6 py-3.5 border-t border-slate-200 flex items-center justify-end gap-3 bg-slate-50/80">
+                <button type="button" onclick="closePostModal()"
+                    class="px-4 py-2 rounded-[5px] border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-bold uppercase tracking-wider">
+                    Cancel
+                </button>
+                <button type="submit" form="postForm"
+                    class="px-5 py-2 rounded-[5px] bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all">
+                    Save Post
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CONTROLLER LOGIC -->
     <script>
-        function handleDemoLogin(e) {
-            e.preventDefault();
-            // If running on a server that supports PHP, try redirecting to login.php
-            if (window.location.protocol !== 'file:' && window.location.hostname === 'localhost') {
-                window.location.href = 'login.php';
-                return;
+        const STORAGE_KEY = 'globalmed_posts_store';
+        const AUTH_KEY = 'globalmed_admin_authenticated';
+
+        let adminPosts = [];
+        let currentAdminType = 'all';
+
+        // Load posts store
+        function loadPostsStore() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                try {
+                    adminPosts = JSON.parse(stored);
+                } catch (e) {
+                    adminPosts = (typeof GLOBALMED_POSTS !== 'undefined') ? [...GLOBALMED_POSTS] : [];
+                }
+            } else if (typeof GLOBALMED_POSTS !== 'undefined') {
+                adminPosts = [...GLOBALMED_POSTS];
+                savePostsStore();
             }
-            document.getElementById('demoSuccessMessage').classList.remove('hidden');
         }
+
+        function savePostsStore() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(adminPosts));
+        }
+
+        function checkAuth() {
+            const isAuth = localStorage.getItem(AUTH_KEY) === 'true';
+            if (isAuth) {
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('dashboardView').classList.remove('hidden');
+                loadPostsStore();
+                renderAdminTable();
+            } else {
+                document.getElementById('loginView').classList.remove('hidden');
+                document.getElementById('dashboardView').classList.add('hidden');
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUsername').value.trim();
+            const p = document.getElementById('loginPassword').value.trim();
+
+            if (u === 'admin' && p === 'GlobalMed2026!') {
+                localStorage.setItem(AUTH_KEY, 'true');
+                document.getElementById('loginErrorAlert').classList.add('hidden');
+                checkAuth();
+                showFlashNotice('Successfully authenticated to Editorial Directorate.');
+            } else {
+                document.getElementById('loginErrorAlert').classList.remove('hidden');
+            }
+        }
+
+        function handleAdminLogout() {
+            localStorage.removeItem(AUTH_KEY);
+            checkAuth();
+        }
+
+        function togglePassVisibility() {
+            const pInput = document.getElementById('loginPassword');
+            const eye = document.getElementById('eyeIcon');
+            if (pInput.type === 'password') {
+                pInput.type = 'text';
+                eye.textContent = 'visibility_off';
+            } else {
+                pInput.type = 'password';
+                eye.textContent = 'visibility';
+            }
+        }
+
+        function showFlashNotice(msg) {
+            const notice = document.getElementById('flashNotice');
+            document.getElementById('flashNoticeText').textContent = msg;
+            notice.classList.remove('hidden');
+            setTimeout(() => {
+                notice.classList.add('hidden');
+            }, 4000);
+        }
+
+        function setAdminTypeFilter(type) {
+            currentAdminType = type;
+            document.querySelectorAll('.admin-type-btn').forEach(btn => {
+                if (btn.getAttribute('data-type') === type) {
+                    btn.className = 'admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-primary text-white font-bold';
+                } else {
+                    btn.className = 'admin-type-btn px-3 py-1.5 rounded-[5px] transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200';
+                }
+            });
+            renderAdminTable();
+        }
+
+        function resetAdminFilters() {
+            currentAdminType = 'all';
+            document.getElementById('adminHomeFilter').value = 'all';
+            document.getElementById('adminSearchQuery').value = '';
+            setAdminTypeFilter('all');
+        }
+
+        function updateMetrics() {
+            const total = adminPosts.length;
+            const homeArt = adminPosts.filter(p => p.show_on_home == 1 && p.home_section === 'articles').length;
+            const homeNews = adminPosts.filter(p => p.show_on_home == 1 && p.home_section === 'news').length;
+            const drafts = adminPosts.filter(p => p.status === 'draft').length;
+
+            document.getElementById('metricTotal').textContent = total;
+            document.getElementById('metricHomeArticles').textContent = homeArt;
+            document.getElementById('metricHomeNews').textContent = homeNews;
+            document.getElementById('metricDrafts').textContent = drafts;
+        }
+
+        function toggleHomeOptions() {
+            const cb = document.getElementById('modalShowOnHome');
+            const opts = document.getElementById('homeOptionsContainer');
+            if (cb.checked) {
+                opts.classList.remove('hidden');
+            } else {
+                opts.classList.add('hidden');
+            }
+        }
+
+        function autoGenerateSlug() {
+            const title = document.getElementById('modalPostTitle').value;
+            // auto-generate slug in background
+        }
+
+        function toggleHomeStatus(id) {
+            const p = adminPosts.find(item => item.id == id);
+            if (!p) return;
+
+            p.show_on_home = (p.show_on_home == 1) ? 0 : 1;
+            if (p.show_on_home == 1 && !p.home_section) {
+                p.home_section = (p.post_type === 'article') ? 'articles' : 'news';
+                p.home_order = 1;
+            }
+            savePostsStore();
+            renderAdminTable();
+            showFlashNotice(`Updated homepage status for "${p.title}".`);
+        }
+
+        function deletePost(id) {
+            const p = adminPosts.find(item => item.id == id);
+            if (!p) return;
+            if (confirm(`Are you sure you want to delete "${p.title}"?`)) {
+                adminPosts = adminPosts.filter(item => item.id != id);
+                savePostsStore();
+                renderAdminTable();
+                showFlashNotice(`Post "${p.title}" deleted.`);
+            }
+        }
+
+        function openPostModal(id) {
+            const modal = document.getElementById('postModal');
+            const titleEl = document.getElementById('modalTitle');
+            const form = document.getElementById('postForm');
+            form.reset();
+
+            if (id) {
+                const p = adminPosts.find(item => item.id == id);
+                if (!p) return;
+                titleEl.textContent = 'Edit Post: ' + p.title;
+                document.getElementById('editPostId').value = p.id;
+                document.getElementById('modalPostTitle').value = p.title || '';
+                document.getElementById('modalPostType').value = p.post_type || 'article';
+                document.getElementById('modalPostCategory').value = p.category || '';
+                document.getElementById('modalPostAuthor').value = p.author || 'Admissions Directorate';
+                document.getElementById('modalPostReadTime').value = p.read_time || '5 min read';
+                document.getElementById('modalPostImage').value = p.featured_image || '';
+                document.getElementById('modalPostExcerpt').value = p.excerpt || '';
+                document.getElementById('modalPostContent').value = p.content || '';
+                document.getElementById('modalPostStatus').value = p.status || 'published';
+                document.getElementById('modalShowOnHome').checked = (p.show_on_home == 1);
+                document.getElementById('modalHomeSection').value = p.home_section || 'articles';
+                document.getElementById('modalHomeOrder').value = p.home_order || 1;
+            } else {
+                titleEl.textContent = 'Create New Post';
+                document.getElementById('editPostId').value = '';
+                document.getElementById('modalShowOnHome').checked = false;
+                document.getElementById('modalHomeSection').value = 'articles';
+                document.getElementById('modalHomeOrder').value = 1;
+            }
+
+            toggleHomeOptions();
+            modal.classList.remove('hidden');
+        }
+
+        function closePostModal() {
+            document.getElementById('postModal').classList.add('hidden');
+        }
+
+        function savePost(e) {
+            e.preventDefault();
+            const id = document.getElementById('editPostId').value;
+            const title = document.getElementById('modalPostTitle').value.trim();
+            const type = document.getElementById('modalPostType').value;
+            const category = document.getElementById('modalPostCategory').value.trim();
+            const author = document.getElementById('modalPostAuthor').value.trim();
+            const readTime = document.getElementById('modalPostReadTime').value.trim();
+            const image = document.getElementById('modalPostImage').value.trim() || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80';
+            const excerpt = document.getElementById('modalPostExcerpt').value.trim();
+            const content = document.getElementById('modalPostContent').value.trim();
+            const status = document.getElementById('modalPostStatus').value;
+            const showOnHome = document.getElementById('modalShowOnHome').checked ? 1 : 0;
+            const homeSection = document.getElementById('modalHomeSection').value;
+            const homeOrder = parseInt(document.getElementById('modalHomeOrder').value || '1', 10);
+
+            // Generate clean slug
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+            if (id) {
+                // Update
+                const p = adminPosts.find(item => item.id == id);
+                if (p) {
+                    p.title = title;
+                    p.slug = slug;
+                    p.post_type = type;
+                    p.category = category;
+                    p.author = author;
+                    p.read_time = readTime;
+                    p.featured_image = image;
+                    p.excerpt = excerpt;
+                    p.content = content;
+                    p.status = status;
+                    p.show_on_home = showOnHome;
+                    p.home_section = homeSection;
+                    p.home_order = homeOrder;
+                }
+                showFlashNotice(`Updated post "${title}".`);
+            } else {
+                // Insert
+                const newId = adminPosts.length ? Math.max(...adminPosts.map(p => p.id || 0)) + 1 : 1;
+                const newPost = {
+                    id: newId,
+                    title,
+                    slug,
+                    post_type: type,
+                    category,
+                    author,
+                    read_time: readTime,
+                    featured_image: image,
+                    excerpt,
+                    content,
+                    status,
+                    show_on_home: showOnHome,
+                    home_section: homeSection,
+                    home_order: homeOrder,
+                    created_at: new Date().toISOString()
+                };
+                adminPosts.unshift(newPost);
+                showFlashNotice(`Created new post "${title}".`);
+            }
+
+            savePostsStore();
+            closePostModal();
+            renderAdminTable();
+        }
+
+        function renderAdminTable() {
+            updateMetrics();
+            const tbody = document.getElementById('adminTableBody');
+            const empty = document.getElementById('adminEmptyState');
+            tbody.innerHTML = '';
+
+            const homeFilter = document.getElementById('adminHomeFilter').value;
+            const q = (document.getElementById('adminSearchQuery').value || '').trim().toLowerCase();
+
+            let filtered = adminPosts.filter(p => {
+                const matchesType = (currentAdminType === 'all' || p.post_type === currentAdminType);
+                let matchesHome = true;
+                if (homeFilter === '1') matchesHome = (p.show_on_home == 1);
+                if (homeFilter === '0') matchesHome = (p.show_on_home == 0);
+                const matchesQuery = (!q ||
+                    (p.title && p.title.toLowerCase().includes(q)) ||
+                    (p.category && p.category.toLowerCase().includes(q)) ||
+                    (p.excerpt && p.excerpt.toLowerCase().includes(q))
+                );
+                return matchesType && matchesHome && matchesQuery;
+            });
+
+            if (filtered.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            } else {
+                empty.classList.add('hidden');
+            }
+
+            // Sort: show_on_home DESC, home_order ASC
+            filtered.sort((a, b) => {
+                if ((b.show_on_home || 0) !== (a.show_on_home || 0)) {
+                    return (b.show_on_home || 0) - (a.show_on_home || 0);
+                }
+                return (a.home_order || 99) - (b.home_order || 99);
+            });
+
+            filtered.forEach(p => {
+                const typeStyles = {
+                    article: 'bg-blue-50 text-blue-700 border-blue-200',
+                    news: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                    event: 'bg-purple-50 text-purple-700 border-purple-200',
+                    resource: 'bg-amber-50 text-amber-700 border-amber-200'
+                };
+                const style = typeStyles[p.post_type] || 'bg-slate-100 text-slate-700 border-slate-200';
+
+                let homeBadge = '';
+                if (p.show_on_home == 1) {
+                    const sec = p.home_section === 'articles' ? 'Articles Grid' : 'News Column';
+                    homeBadge = `
+                        <button onclick="toggleHomeStatus(${p.id})"
+                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold hover:bg-emerald-100 transition-colors"
+                            title="Click to remove from homepage">
+                            <span class="material-symbols-outlined text-[15px] text-emerald-600">check_circle</span>
+                            <span>${sec} (#${p.home_order || 1})</span>
+                        </button>
+                    `;
+                } else {
+                    homeBadge = `
+                        <button onclick="toggleHomeStatus(${p.id})"
+                            class="inline-flex items-center gap-1 px-2.5 py-1 rounded-[4px] bg-slate-100 text-slate-500 hover:text-slate-700 hover:bg-slate-200 transition-colors text-[11px]"
+                            title="Click to show on homepage">
+                            <span class="material-symbols-outlined text-[14px]">add</span>
+                            <span>Add to Home</span>
+                        </button>
+                    `;
+                }
+
+                let statusBadge = (p.status === 'published') ?
+                    `<span class="inline-flex items-center gap-1 text-emerald-700 font-bold"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Live</span></span>` :
+                    `<span class="inline-flex items-center gap-1 text-amber-600 font-bold"><span class="w-2 h-2 rounded-full bg-amber-400"></span><span>Draft</span></span>`;
+
+                const dateStr = p.created_at ? new Date(p.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Recent';
+
+                tbody.innerHTML += `
+                <tr class="hover:bg-slate-50/70 transition-colors">
+                    <!-- Title & Category -->
+                    <td class="py-3.5 px-4 max-w-sm">
+                        <div class="flex items-start gap-3">
+                            <img src="${p.featured_image || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=120&q=80'}" alt=""
+                                class="w-12 h-12 rounded-[3px] object-cover shrink-0 border border-slate-200" />
+                            <div>
+                                <button onclick="openPostModal(${p.id})" class="font-bold text-slate-900 hover:text-primary transition-colors text-sm line-clamp-1 text-left">
+                                    ${p.title}
+                                </button>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-600 font-semibold text-[10px]">
+                                        ${p.category || 'General'}
+                                    </span>
+                                    <span class="text-slate-400 text-[11px] truncate max-w-[200px]">/${p.slug}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- Type -->
+                    <td class="py-3.5 px-3">
+                        <span class="inline-block px-2 py-0.5 rounded-[3px] border font-bold uppercase tracking-wider text-[10px] ${style}">
+                            ${(p.post_type || 'article').toUpperCase()}
+                        </span>
+                    </td>
+
+                    <!-- Status -->
+                    <td class="py-3.5 px-3">
+                        ${statusBadge}
+                    </td>
+
+                    <!-- Homepage Toggle -->
+                    <td class="py-3.5 px-3">
+                        ${homeBadge}
+                    </td>
+
+                    <!-- Date -->
+                    <td class="py-3.5 px-3 text-slate-500 text-[11px]">
+                        ${dateStr}
+                    </td>
+
+                    <!-- Actions -->
+                    <td class="py-3.5 px-4 text-right">
+                        <div class="inline-flex items-center gap-1">
+                            <a href="../blog/post.html?slug=${encodeURIComponent(p.slug)}" target="_blank"
+                                class="p-1.5 text-slate-400 hover:text-primary rounded-[3px] hover:bg-slate-100 transition-colors" title="View Public Post">
+                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            </a>
+                            <button onclick="openPostModal(${p.id})"
+                                class="p-1.5 text-slate-400 hover:text-primary rounded-[3px] hover:bg-slate-100 transition-colors" title="Edit Post">
+                                <span class="material-symbols-outlined text-[18px]">edit</span>
+                            </button>
+                            <button onclick="deletePost(${p.id})"
+                                class="p-1.5 text-slate-400 hover:text-rose-600 rounded-[3px] hover:bg-rose-50 transition-colors" title="Delete Post">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                `;
+            });
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+        });
     </script>
 </body>
 </html>
