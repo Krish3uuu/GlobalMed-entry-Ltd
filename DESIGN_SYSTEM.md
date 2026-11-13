@@ -51,10 +51,10 @@
 Every page must contain the exact global header with synchronized desktop navigation and mobile drawer:
 
 ### A. Minimal Top Trust Bar (Hidden on Mobile, Visible on `lg:block`)
-* Left: Email (`inquiry@globalmedentry.com`) and Phone (`+44 7345 692756`)
+* Left: Email (`info@globalmedentry.com`) and Phone (`+44 7345 692756`)
 * Right:
-  * `UK Registered Company No. 10796193` with green verified shield
-  * `UK Registered Company No. 10796193`
+  * `UK Registered Company` with green verified shield
+  * `UK Registered Company`
   * `UKMLA & GMC Aligned` with live green pulse dot
 
 ### B. Executive Navigation Bar (8 Canonical Links)
@@ -76,11 +76,11 @@ Every page must contain the exact global header with synchronized desktop naviga
 ## 3. Global Shell: 5-Column Executive Footer
 
 Every page must conclude with the synchronized 5-column footer:
-* **Column 1 & 2 (Brand Overview)**: Logo, Doctor-founded advisory firm summary, UK Company No. 10796193, London & Sofia offices.
+* **Column 1 & 2 (Brand Overview)**: Logo, Doctor-founded advisory firm summary, UK Company, London & Sofia offices.
 * **Column 3 (Partner Universities)**: Plovdiv, Sofia, Pleven, Varna, Trakia, Prof. Dr. Assen Zlatarov.
 * **Column 4 (Our Services)**: Phase I to IV Support, Our Premium Package, Free Consultation.
 * **Column 5 (Company & Governance)**: About Us, Leadership Clinicians, Ethos, GMC Relations, Application Process, Contact & Offices.
-* **Bottom Bar**: `© 2025 GlobalMed Entry Ltd. Registered in England & Wales (No. 10796193)` + Privacy Policy, Terms, GMC Compliance Notes.
+* **Bottom Bar**: `© 2025 GlobalMed Entry Ltd. Registered in England & Wales` + Privacy Policy, Terms, GMC Compliance Notes.
 
 ---
 
