@@ -148,7 +148,7 @@
                 <a class="${navClass('courses')}" href="${siteRoot}courses.html">Courses &amp; Universities</a>
                 <a class="${navClass('services')}" href="${siteRoot}services.html">Our Services</a>
                 <a class="${navClass('process')}" href="${siteRoot}application-process.html">Application Process</a>
-                <a class="${navClass('blog')}" href="${siteRoot}blog/index.php">Blog &amp; News</a>
+                <a class="${navClass('blog')}" href="${siteRoot}blog/index.html">Blog &amp; News</a>
                 <a class="${navClass('contact')}" href="${siteRoot}contact.html">Contact</a>
             </nav>
 
@@ -233,7 +233,7 @@
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('blog')}" href="${siteRoot}blog/index.php">
+                <a class="${mobileNavClass('blog')}" href="${siteRoot}blog/index.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">newspaper</span>
                         Blog &amp; News
@@ -316,7 +316,7 @@
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html">About Us</a></li>
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}success-stories.html">Success Stories</a></li>
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}resources.html">Admissions Resources</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}blog/index.php">Blog &amp; Knowledge Base</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}blog/index.html">Blog &amp; Knowledge Base</a></li>
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html#leadership">Advisory Directorate</a></li>
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html#accreditation">GMC &amp; HEE Relations</a></li>
                         <li><a class="hover:text-primary transition-colors" href="${siteRoot}application-process.html">Application Process</a></li>
@@ -328,10 +328,10 @@
             <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-400 gap-4 text-center sm:text-left">
                 <div>© 2026 GlobalMed Entry Ltd. Registered in England &amp; Wales.</div>
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
-                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}blog/index.php">Blog &amp; Insights</a>
+                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}blog/index.html">Blog &amp; Insights</a>
                     <a class="hover:text-slate-600 transition-colors" href="#">Privacy Policy</a>
                     <a class="hover:text-slate-600 transition-colors" href="#">Terms of Service</a>
-                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}admin/login.php">Editorial Portal</a>
+                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}admin/index.html">Editorial Portal</a>
                 </div>
             </div>
         </div>
