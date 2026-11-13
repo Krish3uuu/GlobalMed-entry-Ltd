@@ -28,6 +28,8 @@
 
     <!-- Posts Seed Database -->
     <script src="../blog/posts-data.js"></script>
+    <script src="../posts-data.js"></script>
+    <script src="/posts-data.js"></script>
 
     <!-- 1. LOGIN VIEW (Shown when unauthenticated) -->
     <div id="loginView" class="hidden fixed inset-0 z-50 bg-[#0F172A] flex items-center justify-center p-4 overflow-y-auto">
@@ -39,7 +41,7 @@
             <!-- Brand Header Card -->
             <div class="text-center mb-6">
                 <a href="../index.html" class="inline-block mb-3">
-                    <img src="../images/logo.webp" alt="GlobalMed Entry Ltd" class="h-14 sm:h-16 w-auto mx-auto object-contain drop-shadow-md" />
+                    <img src="../images/logo.webp" onerror="this.onerror=null; this.src='/images/logo.webp';" alt="GlobalMed Entry Ltd" class="h-14 sm:h-16 w-auto mx-auto object-contain drop-shadow-md" />
                 </a>
                 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-200 text-xs font-semibold uppercase tracking-wider">
                     <span class="material-symbols-outlined text-[15px] text-[#12bda9]">lock</span>
@@ -111,7 +113,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                     <a href="../index.html" class="flex items-center gap-3">
-                        <img src="../images/logo.webp" alt="GlobalMed Entry" class="h-10 w-auto object-contain" />
+                        <img src="../images/logo.webp" onerror="this.onerror=null; this.src='/images/logo.webp';" alt="GlobalMed Entry" class="h-10 w-auto object-contain" />
                         <span class="hidden sm:inline-block font-extrabold text-slate-900 text-sm tracking-tight border-l border-slate-200 pl-3">
                             Editorial Directorate
                         </span>

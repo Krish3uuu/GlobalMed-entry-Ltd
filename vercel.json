@@ -4,6 +4,9 @@
   "rewrites": [
     { "source": "/blog/index.php", "destination": "/blog/index.html" },
     { "source": "/blog/post.php", "destination": "/blog/post.html" },
+    { "source": "/blog/post", "destination": "/blog/post.html" },
+    { "source": "/blog/post.html", "destination": "/blog/post.html" },
+    { "source": "/post", "destination": "/blog/post.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/", "destination": "/blog/index.html" },
     { "source": "/admin/login.php", "destination": "/admin/index.html" },
