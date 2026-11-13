@@ -29,22 +29,19 @@
             const p = window.location.pathname.toLowerCase();
             return (p.includes('/blog/') || p.includes('/admin/')) ? '../' : '';
         }
-        // Web Server environment (localhost, staging, production domain)
-        const p = window.location.pathname;
-        const subMatch = p.match(/^(.*\/)(blog|admin)(\/.*)?$/i);
+        // Web Server environment (localhost, staging, production domain, Vercel)
+        const p = window.location.pathname || '/';
+        const subMatch = p.match(/^(.*\/)?(blog|admin)(\/.*)?$/i);
         if (subMatch && subMatch[1]) {
             return subMatch[1];
-        }
-        const dirMatch = p.match(/^(.*\/)[^\/]*$/);
-        if (dirMatch && dirMatch[1]) {
-            return dirMatch[1];
         }
         return '/';
     }
 
     const siteRoot = getSiteRoot();
-    const homeUrl = (window.location.protocol === 'file:') ? (siteRoot + 'index.html#home') : (siteRoot + '#home');
-    const logoUrl = siteRoot + 'images/logo.webp';
+    const homeUrl = (window.location.protocol === 'file:') ? (siteRoot + 'index.html') : siteRoot;
+    const logoUrl = (window.location.protocol === 'file:') ? (siteRoot + 'images/logo.webp') : '/images/logo.webp';
+    const logoFallback = (window.location.protocol === 'file:') ? (siteRoot + 'images/logo.png') : '/images/logo.png';
 
     // 2. Detect current page to automatically highlight the active nav item
     const currentPath = window.location.pathname.toLowerCase();
@@ -53,7 +50,8 @@
     function isActive(pageName) {
         if (pageName === 'home') {
             if (isSubdir) return false;
-            return currentPath.endsWith('index.html') || currentPath.endsWith('index.php') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('/index');
+            const cleanPath = currentPath.replace(/\/+$/, '');
+            return cleanPath === '' || cleanPath === '/' || cleanPath.endsWith('/index.html') || cleanPath.endsWith('/index.php') || cleanPath.endsWith('/index');
         }
         if (pageName === 'about') {
             return currentPath.endsWith('about.html') || currentPath.endsWith('/about');
@@ -137,7 +135,7 @@
         <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between min-h-[76px] sm:min-h-[88px] py-2 sm:py-3">
             <!-- Brand Logo with Generous Right Margin & Vertical Breathing Room (130px width) -->
             <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 my-1 group shrink-0" href="${homeUrl}" aria-label="GlobalMed Entry Ltd Home">
-                <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="w-[125px] sm:w-[130px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+                <img src="${logoUrl}" onerror="this.onerror=null; this.src='${logoFallback}';" alt="GlobalMed Entry Ltd" class="w-[125px] sm:w-[130px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
             </a>
 
             <!-- Canonical Desktop Navigation Links -->
@@ -180,7 +178,7 @@
             <!-- Drawer Header -->
             <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
                 <a href="${homeUrl}" class="flex items-center my-1" aria-label="GlobalMed Entry Ltd Home">
-                    <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="w-[120px] sm:w-[130px] h-auto object-contain" />
+                    <img src="${logoUrl}" onerror="this.onerror=null; this.src='${logoFallback}';" alt="GlobalMed Entry Ltd" class="w-[120px] sm:w-[130px] h-auto object-contain" />
                 </a>
                 <button aria-label="Close navigation menu"
                     class="w-9 h-9 rounded-[5px] text-slate-500 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
@@ -271,10 +269,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 sm:pb-12 border-b border-slate-100">
                 <div class="lg:col-span-2 space-y-4">
                     <a href="${homeUrl}" class="inline-block group" aria-label="GlobalMed Entry Ltd Home">
-                        <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+                        <img src="${logoUrl}" onerror="this.onerror=null; this.src='${logoFallback}';" alt="GlobalMed Entry Ltd" class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
                     </a>
                     <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
-                        Founded by NHS and European clinical doctors, GlobalMed Entry Ltd is the UK&apos;s authoritative advisory firm for studying medicine and dentistry in accredited European universities.
+                        GlobalMed Entry Ltd is a UK-registered education consultancy providing structured admissions guidance and comprehensive application support for accredited European medical and dental faculties.
                     </p>
                     <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-700 pt-1">
                         <span class="flex items-center gap-1.5">
