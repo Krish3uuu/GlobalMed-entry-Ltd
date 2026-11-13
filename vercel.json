@@ -1,5 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/blog/index.php", "destination": "/blog/index.html" },
+    { "source": "/blog/post.php", "destination": "/blog/post.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/", "destination": "/blog/index.html" },
+    { "source": "/admin/login.php", "destination": "/admin/index.html" },
+    { "source": "/admin/index.php", "destination": "/admin/index.html" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" }
+  ]
 }
-

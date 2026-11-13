@@ -1308,11 +1308,17 @@
 
     <!-- Centralized Layout Loader (Header, Drawer, Footer, and Navigation Sync) -->
     <script src="layout.js"></script>
-    <!-- Dynamic Homepage Feed Sync -->
+    <!-- Dynamic Homepage Feed Sync (Compatible with both Vercel Static & PHP) -->
     <script>
         (function() {
-            fetch('blog/api-homepage.php')
-                .then(r => r.json())
+            // Try static JSON first (instant on Vercel), fallback to PHP API on dynamic server
+            const endpoint = 'blog/homepage.json';
+            fetch(endpoint)
+                .then(r => {
+                    if (!r.ok) throw new Error('Static feed not found, fallback to PHP');
+                    return r.json();
+                })
+                .catch(() => fetch('blog/api-homepage.php').then(r => r.json()))
                 .then(data => {
                     if (!data || !data.success) return;
                     if (data.articles && data.articles.length > 0) {
@@ -1339,7 +1345,7 @@
                                         </div>
                                     </div>
                                     <div class="p-5 pt-0">
-                                        <a href="blog/post.php?slug=${encodeURIComponent(art.slug)}"
+                                        <a href="blog/post.html?slug=${encodeURIComponent(art.slug)}"
                                             class="w-full py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs text-center uppercase tracking-wider hover:bg-primary-dark transition-colors block shadow-xs">
                                             Read Article
                                         </a>
@@ -1356,7 +1362,7 @@
                                     <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
                                         ${new Date(n.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })} · ${n.category}
                                     </span>
-                                    <a href="blog/post.php?slug=${encodeURIComponent(n.slug)}"
+                                    <a href="blog/post.html?slug=${encodeURIComponent(n.slug)}"
                                         class="font-bold text-slate-900 text-sm hover:text-primary transition-colors leading-snug block">
                                         ${n.title}
                                     </a>
