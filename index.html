@@ -1308,6 +1308,69 @@
 
     <!-- Centralized Layout Loader (Header, Drawer, Footer, and Navigation Sync) -->
     <script src="layout.js"></script>
+    <!-- Dynamic Homepage Feed Sync -->
+    <script>
+        (function() {
+            fetch('blog/api-homepage.php')
+                .then(r => r.json())
+                .then(data => {
+                    if (!data || !data.success) return;
+                    if (data.articles && data.articles.length > 0) {
+                        const artContainer = document.querySelector('#articles .grid');
+                        if (artContainer) {
+                            artContainer.innerHTML = data.articles.map(art => `
+                                <div class="rounded-[5px] bg-white text-slate-900 border border-slate-200 overflow-hidden shadow-executive flex flex-col justify-between group">
+                                    <div>
+                                        <div class="relative aspect-video overflow-hidden">
+                                            <img src="${art.featured_image || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80'}"
+                                                alt="${art.title}"
+                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <span class="absolute top-2.5 left-2.5 bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-[3px]">
+                                                ${art.category}
+                                            </span>
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold text-slate-950 text-sm sm:text-base leading-snug line-clamp-2">
+                                                ${art.title}
+                                            </h3>
+                                            <p class="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed line-clamp-3">
+                                                ${art.excerpt || ''}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-5 pt-0">
+                                        <a href="blog/post.php?slug=${encodeURIComponent(art.slug)}"
+                                            class="w-full py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs text-center uppercase tracking-wider hover:bg-primary-dark transition-colors block shadow-xs">
+                                            Read Article
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('');
+                        }
+                    }
+                    if (data.news && data.news.length > 0) {
+                        const newsContainer = document.querySelector('#tools-and-news .space-y-3\\.5');
+                        if (newsContainer) {
+                            newsContainer.innerHTML = data.news.map(n => `
+                                <div class="p-4 rounded-[5px] bg-white border border-slate-200 shadow-xs hover:border-primary/40 transition-colors">
+                                    <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
+                                        ${new Date(n.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })} · ${n.category}
+                                    </span>
+                                    <a href="blog/post.php?slug=${encodeURIComponent(n.slug)}"
+                                        class="font-bold text-slate-900 text-sm hover:text-primary transition-colors leading-snug block">
+                                        ${n.title}
+                                    </a>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1 line-clamp-2">
+                                        ${n.excerpt || ''}
+                                    </p>
+                                </div>
+                            `).join('');
+                        }
+                    }
+                })
+                .catch(() => {});
+        })();
+    </script>
 </body>
 
 </html>

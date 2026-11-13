@@ -1,0 +1,1146 @@
+<?php
+require_once __DIR__ . '/blog/db.php';
+$db = get_db_connection();
+
+// 1. Fetch 3 Featured Homepage Articles
+$stmtArticles = $db->query("
+    SELECT * FROM posts 
+    WHERE status = 'published' AND show_on_home = 1 AND home_section = 'articles'
+    ORDER BY home_order ASC, created_at DESC 
+    LIMIT 3
+");
+$homeArticles = $stmtArticles->fetchAll();
+
+if (empty($homeArticles)) {
+    $homeArticles = $db->query("SELECT * FROM posts WHERE status = 'published' AND post_type = 'article' ORDER BY created_at DESC LIMIT 3")->fetchAll();
+}
+
+// 2. Fetch Latest News & Updates
+$stmtNews = $db->query("
+    SELECT * FROM posts 
+    WHERE status = 'published' AND show_on_home = 1 AND home_section = 'news'
+    ORDER BY home_order ASC, created_at DESC 
+    LIMIT 5
+");
+$homeNews = $stmtNews->fetchAll();
+
+if (empty($homeNews)) {
+    $homeNews = $db->query("SELECT * FROM posts WHERE status = 'published' AND post_type = 'news' ORDER BY created_at DESC LIMIT 5")->fetchAll();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>GlobalMed Entry Ltd | Study Medicine, Dentistry &amp; Vet in Europe</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    borderRadius: {
+                        sm: "5px",
+                        DEFAULT: "5px",
+                        md: "5px",
+                        lg: "5px",
+                        xl: "5px",
+                        "2xl": "5px",
+                        "3xl": "5px"
+                    },
+                    colors: {
+                        brand: '#02326f',
+                        ink: '#02326f',
+                        muted: '#516482',
+                        mint: '#12bda9',
+                        accent: '#12bda9',
+                        "accent-dark": "#0d9686",
+                        "accent-light": "#effcfb",
+                        primary: "#02326f",
+                        "primary-dark": "#01214a",
+                        "primary-light": "#EFF6FF",
+                        "surface-muted": "#F8FAFD",
+                        "surface-card": "#FFFFFF",
+                        "border-clean": "#E2E8F0"
+                    },
+                    boxShadow: {
+                        soft: '0 24px 70px rgba(2, 50, 111, .14)',
+                        card: '0 18px 45px rgba(2, 50, 111, .16)',
+                        executive: '0 20px 45px -15px rgba(2, 50, 111, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.8)',
+                        'executive-hover': '0 25px 50px -12px rgba(2, 50, 111, 0.12), 0 0 0 1px rgba(18, 189, 169, 0.4)'
+                    },
+                    textColor: {
+                        "slate-950": "#02326f",
+                        "slate-900": "#02326f",
+                        "slate-600": "#3d4459",
+                        "slate-700": "#3d4459"
+                    },
+                    fontFamily: {
+                        sans: ["Karla", "sans-serif"],
+                        body: ["Karla", "sans-serif"],
+                        heading: ["Rubik", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GlobalMed Entry Ltd" />
+    <meta property="og:title" content="GlobalMed Entry Ltd | Study Medicine, Dentistry & Veterinary in Europe" />
+    <meta property="og:description"
+        content="Leading UK advisory for studying medicine and dentistry abroad in top European universities. GMC-aligned, 100% English-taught programs with comprehensive relocation & entrance support." />
+    <meta property="og:image" content="images/og-image.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="576" />
+    <meta property="og:url" content="https://globalmedentry.com/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GlobalMed Entry Ltd | Study Medicine, Dentistry & Veterinary in Europe" />
+    <meta name="twitter:description"
+        content="Leading UK advisory for studying medicine and dentistry abroad in top European universities. GMC-aligned, 100% English-taught programs with comprehensive relocation & entrance support." />
+    <meta name="twitter:image" content="images/og-image.png" />
+</head>
+
+<body
+    class="bg-[#FCFDFE] font-sans text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+    <!-- Centralized Dynamic Site Header -->
+    <header id="site-header"></header>
+
+    <!-- Centralized Dynamic Mobile Navigation Drawer -->
+    <div id="site-mobile-drawer"></div>
+
+    <main class="w-full pt-[96px] sm:pt-[108px] lg:pt-[140px]">
+        <!-- 1. HERO SECTION: Study Medicine In Europe (StudyMed Europe Hero) - Dark Mode -->
+        <section
+            class="hero-bg relative isolate overflow-hidden pt-6 pb-16 sm:pt-10 sm:pb-24 lg:pt-12 lg:pb-28 text-white"
+            id="home">
+            <!-- Ambient glowing shapes -->
+            <div aria-hidden="true"
+                class="pointer-events-none absolute -right-24 top-24 h-[32rem] w-[32rem] rounded-full bg-[#12bda9]/15 blur-3xl">
+            </div>
+            <div aria-hidden="true"
+                class="pointer-events-none absolute -bottom-40 -left-24 h-96 w-[42rem] rounded-full bg-[#02326f]/70 blur-3xl">
+            </div>
+            <div aria-hidden="true"
+                class="dot-pattern pointer-events-none absolute right-[3.5%] top-[24%] hidden h-28 w-28 opacity-40 lg:block">
+            </div>
+
+            <!-- Geometric Arc & Confetti Patterns (Study in UK Style) -->
+            <div
+                class="absolute -top-6 -left-6 sm:top-2 sm:left-4 w-28 sm:w-36 h-28 sm:h-36 pointer-events-none select-none z-0 opacity-80">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="w-full h-full text-[#12bda9]">
+                    <path d="M10 20 C 10 90, 70 120, 130 110 L 110 80 C 70 85, 45 65, 40 20 Z" fill="currentColor" />
+                </svg>
+            </div>
+            <div class="absolute top-16 left-28 sm:left-44 pointer-events-none hidden sm:block opacity-65">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" class="text-[#12bda9]">
+                    <circle cx="10" cy="12" r="2.5" fill="currentColor" />
+                    <circle cx="34" cy="8" r="3.5" fill="currentColor" />
+                    <circle cx="22" cy="38" r="2" fill="currentColor" />
+                    <circle cx="48" cy="28" r="3" fill="currentColor" />
+                    <circle cx="40" cy="50" r="2.5" fill="currentColor" />
+                </svg>
+            </div>
+
+            <div class="relative mx-auto flex max-w-[1440px] items-center px-5 py-6 sm:px-8 lg:px-12 xl:px-16">
+                <div
+                    class="grid w-full items-center gap-10 sm:gap-12 lg:grid-cols-[1.12fr_.88fr] xl:grid-cols-[1.16fr_.84fr] lg:gap-8 xl:gap-14">
+                    <!-- Left content: Text on bottom for mobile (order-2), left for desktop (lg:order-1) -->
+                    <div class="relative z-10 w-full max-w-none lg:max-w-3xl xl:max-w-4xl order-2 lg:order-1">
+                        <div
+                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#12bda9]/40 bg-[#12bda9]/15 px-4 py-2 text-sm font-semibold text-[#12bda9] shadow-sm backdrop-blur-sm">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
+                                stroke-width="1.8">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="10" cy="7" r="4" />
+                                <path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                            European Medical Admissions 2026
+                        </div>
+
+                        <h1
+                            class="text-5xl font-extrabold leading-[1.02] tracking-[-.04em] text-white sm:text-6xl xl:text-[72px]">
+                            Study Medicine In<br />
+                            <span class="relative inline-block text-white mt-1 pb-1">
+                                Europe<span class="text-[#12bda9]">.</span>
+                                <!-- Hand-drawn pen stroke scribble underline in vibrant teal #12bda9 -->
+                                <svg class="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-3 sm:h-4 text-[#12bda9] overflow-visible pointer-events-none"
+                                    viewBox="0 0 260 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Main sweeping pen stroke under Europe (left to 'p') -->
+                                    <path d="M 2 12.5 C 45 7.5, 100 4.5, 168 8" stroke="currentColor" stroke-width="3.4"
+                                        stroke-linecap="round" />
+                                    <!-- Pen stroke continuation after 'p' descender (under 'e') -->
+                                    <path d="M 183 6 C 205 7.5, 230 9.5, 256 11.5" stroke="currentColor"
+                                        stroke-width="3.4" stroke-linecap="round" />
+                                    <!-- Authentic pen scribble loop under 'o-p' -->
+                                    <path d="M 116 15.5 C 132 15.8, 145 16.5, 156 18" stroke="currentColor"
+                                        stroke-width="2.8" stroke-linecap="round" />
+                                </svg>
+                            </span>
+                        </h1>
+
+                        <p class="mt-6 max-w-2xl text-lg leading-8 text-blue-100/90 sm:text-xl font-normal">
+                            The number 1 UK medical consultancy for studying abroad.
+                            Enquire today for free.
+                        </p>
+
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                            <a href="contact.html#consultation-form"
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#12bda9] px-7 py-4 text-sm font-bold text-[#02326f] shadow-lg shadow-[#12bda9]/30 transition hover:-translate-y-0.5 hover:bg-[#0ea896] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#12bda9]/40">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
+                                    stroke-width="1.8">
+                                    <rect x="3.5" y="5" width="17" height="16" rx="2" />
+                                    <path d="M16 3v4M8 3v4M3.5 10h17M8 14h3" />
+                                </svg>
+                                Free Consultation
+                                <svg aria-hidden="true" viewBox="0 0 24 24"
+                                    class="ml-1 h-5 w-5 fill-none stroke-current" stroke-width="1.8">
+                                    <path d="M5 12h14M13 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <a href="services.html"
+                                class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border-2 border-white/25 bg-white/10 px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-[#12bda9] hover:bg-[#12bda9]/20 focus:outline-none focus:ring-4 focus:ring-white/20 backdrop-blur-sm">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current"
+                                    stroke-width="1.8">
+                                    <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                                    <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+                                </svg>
+                                Our Services &amp; Packages
+                            </a>
+                        </div>
+
+                        <!-- service highlights -->
+                        <div id="services-highlight"
+                            class="mt-9 grid gap-4 border-b border-white/15 pb-7 sm:grid-cols-3 sm:gap-0">
+                            <a href="contact.html#consultation-form"
+                                class="flex items-center gap-3 sm:border-r sm:border-white/15 sm:pr-4 group transition-colors">
+                                <span
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
+                                        stroke-width="1.8">
+                                        <path
+                                            d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 4a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.4Z" />
+                                        <path d="M8 12h8M8 9h5" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">Free
+                                        Consultation</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">No hidden fees</p>
+                                </div>
+                            </a>
+                            <a href="services.html"
+                                class="flex items-center gap-3 sm:border-r sm:border-white/15 sm:px-4 group transition-colors">
+                                <span
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
+                                        stroke-width="1.8">
+                                        <path d="M6 3h9l4 4v14H6z" />
+                                        <path d="M14 3v5h5M9 12h7M9 16h7" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">
+                                        Services &amp; Packages</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">Tailored to your goals</p>
+                                </div>
+                            </a>
+                            <a href="application-process.html"
+                                class="flex items-center gap-3 sm:pl-4 group transition-colors">
+                                <span
+                                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#12bda9] ring-1 ring-white/15 group-hover:scale-105 group-hover:bg-[#12bda9] group-hover:text-[#02326f] transition-all">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current"
+                                        stroke-width="1.8">
+                                        <path d="m2 8 10-5 10 5-10 5L2 8Z" />
+                                        <path d="M6 10v6c3.5 3 8.5 3 12 0v-6M22 8v7" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="font-bold text-white group-hover:text-[#12bda9] transition-colors">
+                                        Application Process</p>
+                                    <p class="mt-0.5 text-sm text-blue-200/80">Simple &amp; guided</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right visual: Hero Image on top for mobile (order-1), right for desktop (lg:order-2) -->
+                    <div
+                        class="relative mx-auto w-full max-w-[420px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] lg:ml-auto flex items-center justify-center order-1 lg:order-2">
+                        <!-- Ambient backlight glow -->
+                        <div aria-hidden="true"
+                            class="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#12bda9]/25 via-blue-500/20 to-transparent blur-3xl pointer-events-none">
+                        </div>
+                        <div aria-hidden="true"
+                            class="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-[#12bda9]/20 blur-2xl pointer-events-none">
+                        </div>
+
+                        <!-- Standalone Cutout Hero Image -->
+                        <div class="relative z-10 w-full flex items-center justify-center">
+                            <img src="images/hero-study-europe.webp" alt="Study Medicine in Europe with GlobalMed Entry"
+                                class="w-full h-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-[1.02]" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OUR ADVISORY MISSION & STANDARDS -->
+        <section class="py-14 sm:py-20 lg:py-24 bg-white" id="mission">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    <!-- Left: Mission Statement & Overview -->
+                    <div class="lg:col-span-7 space-y-5">
+                        <span class="text-xs font-bold uppercase tracking-widest text-primary block">
+                            Clinical Advisory Commitment
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight">
+                            Our Admissions Commitment &amp; Clinical Ethos
+                        </h2>
+
+                        <!-- Green Accent Quote Bar -->
+                        <div class="border-l-4 border-emerald-500 pl-5 py-2.5 my-5 bg-slate-50/80 rounded-r-[5px]">
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed font-medium italic">
+                                “GlobalMed Entry Ltd was founded with a singular, student-first commitment: to provide
+                                transparent, clinically grounded, and dependable pathways into accredited European
+                                medical universities, guiding students from initial diagnostic through to graduation and
+                                UK licensing.”
+                            </p>
+                        </div>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            Our team brings together healthcare education specialists, admissions coordinators, and
+                            academic mentors. We provide honest academic eligibility assessments, rigorous entrance
+                            examination preparation, and comprehensive relocation support with absolute transparency.
+                        </p>
+
+                        <div class="pt-2">
+                            <a href="about.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-sm">
+                                <span>Learn More About Our Advisory</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Video Spotlight Card -->
+                    <div class="lg:col-span-5">
+                        <div
+                            class="relative rounded-[5px] overflow-hidden shadow-executive border border-slate-200/90 group bg-slate-900 aspect-video flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=80"
+                                alt="European Medical Education Advisory Overview"
+                                class="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center text-center p-6">
+                                <div
+                                    class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-blue-600/40 group-hover:scale-110 group-hover:bg-primary-dark transition-all mb-3">
+                                    <span class="material-symbols-outlined text-3xl ml-1">play_arrow</span>
+                                </div>
+                                <span class="text-lg sm:text-xl font-bold text-white tracking-tight drop-shadow-sm">Why
+                                    Study Medicine in Europe.</span>
+                                <span class="text-xs text-blue-200 font-medium mt-1">GlobalMed Entry Ltd · Clinical
+                                    Admissions Advisory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. UNIVERSITIES ACROSS EUROPE (Navy Background) -->
+        <section class="py-16 sm:py-24 bg-[#0F172A] text-white relative overflow-hidden" id="universities">
+            <div class="absolute -top-40 right-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    <!-- Left: Header & Overview -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <span
+                            class="text-blue-400 font-bold text-xs uppercase tracking-widest block">UNIVERSITIES</span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                            Universities Across Europe
+                        </h2>
+                        <p class="text-blue-100/90 text-sm leading-relaxed max-w-md">
+                            We work with accredited medical universities across Europe to provide students with the best
+                            opportunities for studying medicine and dentistry abroad.
+                        </p>
+                        <div class="pt-3">
+                            <a href="courses.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md">
+                                <span>Universities Across Europe</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Country Cards Grid -->
+                    <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇧🇬</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Bulgaria</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇬🇪</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Georgia</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇷🇴</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Romania</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇵🇱</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Poland</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇨🇿</span>
+                            <span class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Czech
+                                Republic</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇺🇦</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Ukraine</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇨🇾</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Cyprus</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇮🇹</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Italy</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇭🇺</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Hungary</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇷🇺</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Russia</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇧🇾</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Belarus</span>
+                        </a>
+                        <a href="courses.html"
+                            class="p-3.5 rounded-[5px] bg-slate-800/80 border border-slate-700 hover:border-blue-400/80 hover:bg-slate-800 transition-colors flex items-center gap-3 shadow-xs group">
+                            <span class="text-2xl">🇱🇻</span>
+                            <span
+                                class="text-xs font-bold text-white group-hover:text-blue-300 transition-colors">Latvia</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. STUDY MEDICINE ABROAD WITH US -->
+        <section class="py-16 sm:py-24 bg-[#FCFDFE] border-b border-slate-200/80" id="study-abroad">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    <!-- Left: Content with Highlights -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight">
+                            Study Medicine Abroad With Us
+                        </h2>
+
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Are you thinking of pursuing a career in <mark
+                                class="bg-blue-50 text-primary px-1.5 py-0.5 rounded-[3px] font-semibold">medicine or
+                                dentistry abroad</mark>? Look no further! GlobalMed Entry Ltd is here to make your
+                            dreams a reality.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            Studying medicine abroad has become an increasingly popular choice for UK and international
+                            students who face intense competition and limited seats in UK medical schools. European
+                            universities offer high-standard medical degrees taught 100% in English, recognized
+                            worldwide including by the GMC (General Medical Council).
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            At GlobalMed Entry Ltd, we provide a complete end-to-end service, helping you from your
+                            initial consultation, university selection, document legalisation, entrance exam
+                            preparation, right through to relocation, student accommodation, and ongoing university
+                            support.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            Our team of experienced medical professionals and educational advisors are committed to
+                            ensuring your journey to becoming a doctor or dentist is as smooth and successful as
+                            possible.
+                        </p>
+
+                        <div class="pt-2">
+                            <a href="application-process.html"
+                                class="inline-flex items-center gap-2 px-6 py-3.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md">
+                                <span>Study In Europe Application</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Medical Study Abroad Visual & Admissions Checklist Box -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div
+                            class="w-full max-w-md rounded-[5px] bg-white border border-slate-200 overflow-hidden shadow-executive">
+                            <!-- Medical School Training Photo -->
+                            <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
+                                    alt="Medical Students in Clinical Hospital Training"
+                                    class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                                </div>
+                                <div
+                                    class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                                    <span
+                                        class="text-xs sm:text-sm font-bold bg-blue-600/90 px-2.5 py-1 rounded-[5px]">Hands-On
+                                        Clinical Training</span>
+                                    <span class="text-xs font-semibold text-emerald-300 flex items-center gap-1">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                        EU Accredited
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 sm:p-7 space-y-4">
+                                <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                                    <div
+                                        class="w-10 h-10 rounded-[5px] bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                        <span class="material-symbols-outlined text-2xl">fact_check</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Admissions &amp;
+                                            Relocation Support</h4>
+                                        <p class="text-xs sm:text-sm text-slate-500">100% Handled By GlobalMed Entry Ltd
+                                            Doctors</p>
+                                    </div>
+                                </div>
+
+                                <ul class="space-y-3 text-sm text-slate-700">
+                                    <li class="flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0 mt-0.5">check_circle</span>
+                                        <span>GMC &amp; WHO Recognized European Medical Faculties</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0 mt-0.5">check_circle</span>
+                                        <span>Certified Legalisation &amp; Ministry of Education Apostille</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0 mt-0.5">check_circle</span>
+                                        <span>Doctor-Led Entrance Exam &amp; Biology Mock Revision</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0 mt-0.5">check_circle</span>
+                                        <span>Airport Meet &amp; Greet + Vetted Private Student Housing</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0 mt-0.5">check_circle</span>
+                                        <span>Full On-Ground Representation Throughout 6 Years</span>
+                                    </li>
+                                </ul>
+
+                                <div class="pt-2">
+                                    <a href="contact.html#consultation-form"
+                                        class="w-full py-3.5 rounded-[5px] bg-primary text-white text-xs sm:text-sm font-bold text-center block uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-xs">
+                                        Apply Now For Free Consultation
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. REAL STUDENT EXPERIENCE (Navy Background) -->
+        <!-- <section class="py-16 sm:py-24 bg-[#0F172A] text-white relative overflow-hidden" id="stories">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                   
+                    <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                            Real Student Experience
+                        </h2>
+                        <p class="text-sm text-blue-100/90 leading-relaxed">
+                            Hear from students who have successfully embarked on their medical journey with GlobalMed
+                            Entry Ltd. Read their testimonials and discover how we have helped them achieve their goals.
+                        </p>
+                        <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
+                            From preparing for entrance exams in London to attending lectures and hospital clinical
+                            rotations in Plovdiv and Sofia, our students share their genuine experiences.
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                            <a href="contact.html#consultation-form"
+                                class="px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-sm">
+                                More Testimonials
+                            </a>
+                            <a href="services.html"
+                                class="px-5 py-2.5 rounded-[5px] bg-white/10 text-white border border-white/20 hover:bg-white/20 font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
+                                Success Stories
+                            </a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="lg:col-span-6 flex justify-center">
+                        <div
+                            class="w-full max-w-md rounded-[5px] bg-white text-slate-800 p-7 sm:p-8 shadow-executive relative">
+                            
+                            <div class="flex items-center gap-1 text-[#00B67A] mb-4">
+                                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                                <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+                            </div>
+
+                            <blockquote
+                                class="text-sm sm:text-base text-slate-700 font-medium leading-relaxed italic mb-6">
+                                “GlobalMed Entry Ltd made navigating European medical admissions straightforward and
+                                transparent. Their entrance exam preparation resources and guidance throughout the
+                                faculty registration process were invaluable.”
+                            </blockquote>
+
+                            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                                    alt="Medical Student Candidate"
+                                    class="w-11 h-11 rounded-full object-cover border-2 border-primary/20">
+                                <div>
+                                    <div class="font-bold text-slate-950 text-sm">Medical Admissions Candidate</div>
+                                    <div class="text-xs text-slate-500">First-Year Medical Student · <a
+                                            href="plovdiv-medical-university.html"
+                                            class="hover:text-primary underline">Plovdiv Medical University</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- 7. WATCH OUR VIDEOS -->
+        <!-- <section class="py-16 sm:py-24 bg-white" id="videos">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight">
+                        Watch Our Videos
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-500 mt-2">
+                        Get an authentic inside look at European medical schools, student apartments, dissection labs,
+                        and campus life.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <div
+                        class="rounded-[5px] overflow-hidden border border-slate-200 bg-slate-900 group shadow-sm flex flex-col justify-between">
+                        <div class="relative aspect-video">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
+                                alt="Study In Bulgaria Video"
+                                class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-primary-dark transition-all">
+                                    <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
+                                </div>
+                            </div>
+                            <span
+                                class="absolute top-2.5 left-2.5 bg-slate-950/80 text-white text-xs font-bold px-2 py-0.5 rounded-[3px]">
+                                🇬🇧 🇧🇬 Bulgaria
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug">Study In Bulgaria -
+                                Student Campus Tour &amp; Interview</h4>
+                            <p class="text-xs text-slate-500 mt-1">Authentic walkthrough with UK students at Plovdiv.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="rounded-[5px] overflow-hidden border border-slate-200 bg-slate-900 group shadow-sm flex flex-col justify-between">
+                        <div class="relative aspect-video">
+                            <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=600&q=80"
+                                alt="European Medical School Life Video"
+                                class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-primary-dark transition-all">
+                                    <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
+                                </div>
+                            </div>
+                            <span
+                                class="absolute top-2.5 left-2.5 bg-slate-950/80 text-white text-xs font-bold px-2 py-0.5 rounded-[3px]">
+                                🇷🇴 🇵🇱 Campus Life
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug">Medical School Life
+                                &amp; Hospital Clinical Rotations</h4>
+                            <p class="text-xs text-slate-500 mt-1">Preclinical lectures, laboratory anatomy, and wards.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="rounded-[5px] overflow-hidden border border-slate-200 bg-slate-900 group shadow-sm flex flex-col justify-between">
+                        <div class="relative aspect-video">
+                            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80"
+                                alt="Returning to the NHS Video"
+                                class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:bg-primary-dark transition-all">
+                                    <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
+                                </div>
+                            </div>
+                            <span
+                                class="absolute top-2.5 left-2.5 bg-slate-950/80 text-white text-xs font-bold px-2 py-0.5 rounded-[3px]">
+                                🇬🇧 NHS Career
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug">Returning to the NHS:
+                                GMC &amp; UKMLA Registration</h4>
+                            <p class="text-xs text-slate-500 mt-1">How European graduates transition straight into
+                                FY1/FY2.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-10">
+                    <a href="services.html"
+                        class="inline-block px-8 py-3 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md">
+                        View All Our Videos
+                    </a>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- 8. THE GLOBALMED ENTRY PROCESS (Executive Royal Navy & Blue Background) -->
+        <section
+            class="py-16 sm:py-24 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#172554] text-white relative overflow-hidden"
+            id="process">
+            <div class="absolute -top-32 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none">
+            </div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-blue-400 font-bold text-xs uppercase tracking-widest block mb-2">HOW IT
+                        WORKS</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                        The GlobalMed Entry Process
+                    </h2>
+                    <p class="text-sm sm:text-base text-blue-100/80 mt-2">
+                        A structured 4-phase framework providing comprehensive doctor-led support from first inquiry to
+                        NHS practice.
+                    </p>
+                </div>
+
+                <!-- 4 Zig-Zag Staggered Steps -->
+                <div class="space-y-8 sm:space-y-10">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-[5px] bg-primary text-white font-black text-4xl sm:text-5xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 border border-blue-400/30">
+                            1
+                        </div>
+                        <div
+                            class="flex-1 bg-white text-slate-900 rounded-[5px] p-6 sm:p-8 shadow-executive text-center md:text-left border border-slate-200/90">
+                            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 mb-2">Admissions Support</h3>
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+                                Experienced advisors specializing in providing the right help to students applying to
+                                study abroad. Complete profile audit, eligibility scoring, and university shortlisting.
+                            </p>
+                            <a href="services.html#phase1"
+                                class="inline-block px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-xs">
+                                Learn More - Phase I
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-8">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-[5px] bg-primary text-white font-black text-4xl sm:text-5xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 border border-blue-400/30">
+                            2
+                        </div>
+                        <div
+                            class="flex-1 bg-white text-slate-900 rounded-[5px] p-6 sm:p-8 shadow-executive text-center md:text-left border border-slate-200/90">
+                            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 mb-2">Relocation Support</h3>
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+                                We know our cities inside out, making sure you are relocated with ease and with comfort.
+                                Legal paperwork, certified translation, airport pickup, and private flat search.
+                            </p>
+                            <a href="services.html#phase2"
+                                class="inline-block px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-xs">
+                                Learn More - Phase II
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-[5px] bg-primary text-white font-black text-4xl sm:text-5xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 border border-blue-400/30">
+                            3
+                        </div>
+                        <div
+                            class="flex-1 bg-white text-slate-900 rounded-[5px] p-6 sm:p-8 shadow-executive text-center md:text-left border border-slate-200/90">
+                            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 mb-2">Ongoing Support</h3>
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+                                Student representatives available 24/7 at each university for any help you need during
+                                the course. Local administrative assistance, medical notes, and study workshops.
+                            </p>
+                            <a href="services.html#phase3"
+                                class="inline-block px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-xs">
+                                Learn More - Phase III
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-8">
+                        <div
+                            class="w-20 h-20 sm:w-24 sm:h-24 rounded-[5px] bg-primary text-white font-black text-4xl sm:text-5xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 border border-blue-400/30">
+                            4
+                        </div>
+                        <div
+                            class="flex-1 bg-white text-slate-900 rounded-[5px] p-6 sm:p-8 shadow-executive text-center md:text-left border border-slate-200/90">
+                            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 mb-2">Alumni Support</h3>
+                            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
+                                Help and support in obtaining your medical or dental license and starting your career in
+                                the UK. Direct guidance for GMC registration, UKMLA prep, and NHS job placements.
+                            </p>
+                            <a href="services.html#phase4"
+                                class="inline-block px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shadow-xs">
+                                Learn More - Phase IV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. WHY GLOBALMED ENTRY LTD? -->
+        <section class="py-16 sm:py-24 bg-white" id="why-us">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    <!-- Left: Content -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight">
+                            Why GlobalMed Entry Ltd?
+                        </h2>
+
+                        <p class="text-sm font-semibold text-primary">
+                            We are not just an education agency — we are a clinical medical advisory firm.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            Every single one of our senior advisors is a practicing clinician or graduate from
+                            accredited European faculties. We have walked the exact path you are embarking upon:
+                            surviving intense preclinical anatomy, mastering clinical hospital rotations, passing
+                            European state exams, and securing coveted GMC registration and NHS training jobs.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            Our registered London headquarters, combined with dedicated on-ground student coordinators
+                            across Bulgaria, guarantees you have reliable, British-standard advocacy wherever you are.
+                        </p>
+
+                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+                            With transparent fees, zero hidden commissions, and comprehensive clinical and regulatory
+                            oversight for every applicant, we are proud to be the UK&apos;s authoritative advisory in
+                            European medical and dental admissions.
+                        </p>
+
+                        <div class="pt-3">
+                            <a href="about.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-all shadow-md">
+                                <span>About GlobalMed Entry</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Doctor Photo -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="rounded-[5px] overflow-hidden shadow-executive border border-slate-200">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                                alt="Doctor Studying GlobalMed Entry" class="w-full h-auto object-cover max-h-[460px]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. STUDY MEDICINE IN EUROPE ARTICLES (Navy Background) -->
+        <section class="py-16 sm:py-24 bg-[#0F172A] text-white relative overflow-hidden" id="articles">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+                    <span class="text-blue-400 font-bold text-xs uppercase tracking-widest block mb-1">STUDY MEDICINE IN
+                        EUROPE</span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                        Articles
+                    </h2>
+                    <p class="text-sm sm:text-base text-blue-100/80 mt-2">
+                        Guidance, entrance examination strategies, and regulatory insights written by doctors.
+                    </p>
+                </div>
+
+                <!-- 3 Article Cards (Dynamically Managed via Admin Panel) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <?php foreach ($homeArticles as $art): ?>
+                        <div class="rounded-[5px] bg-white text-slate-900 border border-slate-200 overflow-hidden shadow-executive flex flex-col justify-between group">
+                            <div>
+                                <div class="relative aspect-video overflow-hidden">
+                                    <img src="<?= htmlspecialchars($art['featured_image'] ?: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80') ?>"
+                                        alt="<?= htmlspecialchars($art['title']) ?>"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <span class="absolute top-2.5 left-2.5 bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-[3px]">
+                                        <?= htmlspecialchars($art['category']) ?>
+                                    </span>
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="font-bold text-slate-950 text-sm sm:text-base leading-snug line-clamp-2">
+                                        <?= htmlspecialchars($art['title']) ?>
+                                    </h3>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed line-clamp-3">
+                                        <?= htmlspecialchars($art['excerpt']) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-5 pt-0">
+                                <a href="blog/post.php?slug=<?= urlencode($art['slug']) ?>"
+                                    class="w-full py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs text-center uppercase tracking-wider hover:bg-primary-dark transition-colors block shadow-xs">
+                                    Read Article
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="blog/index.php" class="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-[5px] bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs uppercase tracking-wider transition-colors">
+                        <span>Browse All Articles &amp; Insights</span>
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. 2-COLUMN SPLIT: "Our Tools To Help You" & "LATEST NEWS & UPDATES" -->
+        <section class="py-16 sm:py-24 bg-[#F8FAFD] border-t border-slate-200/80" id="tools-and-news">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+                    <!-- Left Column: Our Tools To Help You -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-primary text-2xl">build</span>
+                            <h2 class="text-2xl font-extrabold text-slate-950 tracking-tight">Our Tools To Help You</h2>
+                        </div>
+
+                        <!-- Tool 1: Virtual Open Days -->
+                        <div
+                            class="rounded-[5px] bg-[#172554] text-white p-5 sm:p-6 shadow-md border border-blue-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start sm:items-center gap-3.5">
+                                <div
+                                    class="w-12 h-12 rounded-[5px] bg-white/10 text-blue-400 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-2xl">event</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm sm:text-base">Virtual Open Days</h3>
+                                    <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed mt-0.5">
+                                        Register to join our next open day and get a chance to speak to real students
+                                        and graduates from Europe!
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="contact.html#consultation-form"
+                                class="px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shrink-0 text-center shadow-xs">
+                                Register Now
+                            </a>
+                        </div>
+
+                        <!-- Tool 2: Your University Selector -->
+                        <div
+                            class="rounded-[5px] bg-[#172554] text-white p-5 sm:p-6 shadow-md border border-blue-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start sm:items-center gap-3.5">
+                                <div
+                                    class="w-12 h-12 rounded-[5px] bg-white/10 text-blue-300 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-2xl">account_balance</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm sm:text-base">Your University Selector</h3>
+                                    <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed mt-0.5">
+                                        Unsure about which university to pick? Use our free selector app to find the
+                                        right university for you!
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="courses.html"
+                                class="px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shrink-0 text-center shadow-xs">
+                                Find Your University
+                            </a>
+                        </div>
+
+                        <!-- Tool 3: Living Cost Calculator -->
+                        <div
+                            class="rounded-[5px] bg-[#172554] text-white p-5 sm:p-6 shadow-md border border-blue-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start sm:items-center gap-3.5">
+                                <div
+                                    class="w-12 h-12 rounded-[5px] bg-white/10 text-blue-200 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-2xl">currency_pound</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm sm:text-base">Living Cost Calculator</h3>
+                                    <p class="text-sm sm:text-base text-blue-100/90 leading-relaxed mt-0.5">
+                                        Use our living cost calculator to find out how much it costs to live in the
+                                        cities that offer the best medical schools in Europe.
+                                    </p>
+                                </div>
+                            </div>
+                            <a href="courses.html#tuition"
+                                class="px-5 py-2.5 rounded-[5px] bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-dark transition-colors shrink-0 text-center shadow-xs">
+                                Check The Costs
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: LATEST NEWS & UPDATES -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-primary text-2xl">newspaper</span>
+                            <h2 class="text-2xl font-extrabold text-slate-950 tracking-tight">LATEST NEWS &amp; UPDATES
+                            </h2>
+                        </div>
+
+                        <div class="space-y-3.5">
+                            <?php foreach ($homeNews as $n): ?>
+                                <div class="p-4 rounded-[5px] bg-white border border-slate-200 shadow-xs hover:border-primary/40 transition-colors">
+                                    <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
+                                        <?= date('F Y', strtotime($n['created_at'])) ?> · <?= htmlspecialchars($n['category']) ?>
+                                    </span>
+                                    <a href="blog/post.php?slug=<?= urlencode($n['slug']) ?>"
+                                        class="font-bold text-slate-900 text-sm hover:text-primary transition-colors leading-snug block">
+                                        <?= htmlspecialchars($n['title']) ?>
+                                    </a>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1 line-clamp-2">
+                                        <?= htmlspecialchars($n['excerpt']) ?>
+                                    </p>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="pt-2">
+                            <a href="blog/index.php?type=news" class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                                <span>View All Regulatory Updates &amp; News</span>
+                                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. PRE-FOOTER CTA: Thinking About Applying This Year? -->
+        <section class="py-16 sm:py-20 bg-[#172554] text-white text-center relative overflow-hidden" id="cta">
+            <!-- Bold Geometric Donut Curves & Motifs (Study in UK Style) -->
+            <div
+                class="absolute -top-10 right-8 sm:right-24 w-44 sm:w-56 h-44 sm:h-56 pointer-events-none select-none z-0 opacity-70">
+                <svg viewBox="0 0 200 200" fill="none" class="w-full h-full text-[#12bda9]">
+                    <path d="M 30 100 A 70 70 0 0 1 170 100" stroke="currentColor" stroke-width="26"
+                        stroke-linecap="round" />
+                </svg>
+            </div>
+            <div
+                class="absolute -bottom-8 left-6 sm:left-16 w-36 sm:w-48 h-36 sm:h-48 pointer-events-none select-none z-0 opacity-60">
+                <svg viewBox="0 0 160 160" fill="none" class="w-full h-full text-cyan-400">
+                    <circle cx="80" cy="80" r="55" stroke="currentColor" stroke-width="22" stroke-dasharray="110 25"
+                        stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 space-y-4 relative z-10">
+                <div
+                    class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-[5px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-md">
+                    <span
+                        class="material-symbols-outlined text-3xl sm:text-4xl text-blue-300">medical_information</span>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+                    Thinking About Applying This Year?
+                </h2>
+
+                <p class="text-sm sm:text-base text-blue-100 font-normal max-w-xl mx-auto leading-relaxed">
+                    Why not book a FREE consultation with an expert advisor.
+                </p>
+
+                <div class="pt-3">
+                    <a href="contact.html#consultation-form"
+                        class="inline-block px-8 py-3.5 rounded-[5px] bg-white text-primary hover:bg-blue-50 font-bold text-xs uppercase tracking-wider transition-colors shadow-md">
+                        Book Now!
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Centralized Dynamic Site Footer -->
+    <footer id="site-footer"></footer>
+
+    <!-- Centralized Layout Loader (Header, Drawer, Footer, and Navigation Sync) -->
+    <script src="layout.js"></script>
+</body>
+
+</html>

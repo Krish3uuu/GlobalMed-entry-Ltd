@@ -12,13 +12,10 @@
         const search = window.location.search;
         const hash = window.location.hash;
 
-        if (rawPath.endsWith('/index.html')) {
-            let clean = rawPath.slice(0, -10);
-            if (!clean) clean = '/';
-            window.history.replaceState(null, '', clean + search + hash);
-        } else if (rawPath === '/index.html' || rawPath === 'index.html') {
+        // ONLY clean root index.html, never touch subfolders like /blog/ or /admin/
+        if ((rawPath === '/index.html' || rawPath === 'index.html') && !rawPath.includes('/blog') && !rawPath.includes('/admin')) {
             window.history.replaceState(null, '', '/' + search + hash);
-        } else if (rawPath.endsWith('.html')) {
+        } else if (rawPath.endsWith('.html') && !rawPath.includes('/blog') && !rawPath.includes('/admin')) {
             let clean = rawPath.slice(0, -5);
             window.history.replaceState(null, '', clean + search + hash);
         }
@@ -26,12 +23,37 @@
         // Silently bypass in local file:// security sandboxes
     }
 
-    // 1. Detect current page to automatically highlight the active nav item
+    // 1. Calculate dynamic root prefix for both web servers and local file:// protocols
+    function getSiteRoot() {
+        if (window.location.protocol === 'file:') {
+            const p = window.location.pathname.toLowerCase();
+            return (p.includes('/blog/') || p.includes('/admin/')) ? '../' : '';
+        }
+        // Web Server environment (localhost, staging, production domain)
+        const p = window.location.pathname;
+        const subMatch = p.match(/^(.*\/)(blog|admin)(\/.*)?$/i);
+        if (subMatch && subMatch[1]) {
+            return subMatch[1];
+        }
+        const dirMatch = p.match(/^(.*\/)[^\/]*$/);
+        if (dirMatch && dirMatch[1]) {
+            return dirMatch[1];
+        }
+        return '/';
+    }
+
+    const siteRoot = getSiteRoot();
+    const homeUrl = (window.location.protocol === 'file:') ? (siteRoot + 'index.html#home') : (siteRoot + '#home');
+    const logoUrl = siteRoot + 'images/logo.webp';
+
+    // 2. Detect current page to automatically highlight the active nav item
     const currentPath = window.location.pathname.toLowerCase();
+    const isSubdir = currentPath.includes('/blog') || currentPath.includes('/admin');
 
     function isActive(pageName) {
         if (pageName === 'home') {
-            return currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('/index');
+            if (isSubdir) return false;
+            return currentPath.endsWith('index.html') || currentPath.endsWith('index.php') || currentPath.endsWith('/') || currentPath === '' || currentPath.endsWith('/index');
         }
         if (pageName === 'about') {
             return currentPath.endsWith('about.html') || currentPath.endsWith('/about');
@@ -56,9 +78,8 @@
             return currentPath.endsWith('success-stories.html') || currentPath.endsWith('/success-stories') ||
                 currentPath.endsWith('story-details.html') || currentPath.endsWith('/story-details');
         }
-        if (pageName === 'resources') {
-            return currentPath.endsWith('resources.html') || currentPath.endsWith('/resources') ||
-                currentPath.endsWith('resource-details.html') || currentPath.endsWith('/resource-details');
+        if (pageName === 'blog') {
+            return currentPath.includes('/blog') || currentPath.endsWith('resources.html') || currentPath.endsWith('resource-details.html');
         }
         if (pageName === 'contact') {
             return currentPath.endsWith('contact.html') || currentPath.endsWith('/contact');
@@ -80,7 +101,7 @@
         return 'mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-[5px] text-slate-800 hover:bg-blue-50 hover:text-primary font-semibold text-sm transition-colors border border-transparent hover:border-blue-100';
     }
 
-    // 2. Render Header HTML
+    // 3. Render Header HTML
     function getHeaderHTML() {
         return `
         <!-- Minimal Top Trust Bar -->
@@ -115,26 +136,26 @@
         <!-- Executive Navbar Container with Fluid Max-Width & Proper Breathing Room -->
         <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between min-h-[76px] sm:min-h-[88px] py-2 sm:py-3">
             <!-- Brand Logo with Generous Right Margin & Vertical Breathing Room (130px width) -->
-            <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 my-1 group shrink-0" href="index.html#home" aria-label="GlobalMed Entry Ltd Home">
-                <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[125px] sm:w-[130px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+            <a class="flex items-center mr-4 lg:mr-8 2xl:mr-12 my-1 group shrink-0" href="${homeUrl}" aria-label="GlobalMed Entry Ltd Home">
+                <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="w-[125px] sm:w-[130px] h-auto object-contain transition-transform duration-300 group-hover:scale-102" />
             </a>
 
             <!-- Canonical Desktop Navigation Links -->
             <nav class="hidden xl:flex items-center gap-4 2xl:gap-6 text-sm font-semibold text-slate-600">
-                <a class="${navClass('home')}" href="index.html#home">Home</a>
-                <a class="${navClass('about')}" href="about.html">About Us</a>
-                <a class="${navClass('study-uk')}" href="study-in-uk.html">Study in UK</a>
-                <a class="${navClass('courses')}" href="courses.html">Courses &amp; Universities</a>
-                <a class="${navClass('services')}" href="services.html">Our Services</a>
-                <a class="${navClass('process')}" href="application-process.html">Application Process</a>
-                <a class="${navClass('resources')}" href="resources.html">Resources</a>
-                <a class="${navClass('contact')}" href="contact.html">Contact</a>
+                <a class="${navClass('home')}" href="${homeUrl}">Home</a>
+                <a class="${navClass('about')}" href="${siteRoot}about.html">About Us</a>
+                <a class="${navClass('study-uk')}" href="${siteRoot}study-in-uk.html">Study in UK</a>
+                <a class="${navClass('courses')}" href="${siteRoot}courses.html">Courses &amp; Universities</a>
+                <a class="${navClass('services')}" href="${siteRoot}services.html">Our Services</a>
+                <a class="${navClass('process')}" href="${siteRoot}application-process.html">Application Process</a>
+                <a class="${navClass('blog')}" href="${siteRoot}blog/index.php">Blog &amp; News</a>
+                <a class="${navClass('contact')}" href="${siteRoot}contact.html">Contact</a>
             </nav>
 
             <!-- Right CTA Action & Mobile Hamburger Button -->
             <div class="flex items-center gap-3 sm:gap-4 shrink-0">
                 <a class="inline-flex items-center text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-[#02326f]/25 glow-badge-ring whitespace-nowrap active:scale-95"
-                    href="contact.html#consultation-form">
+                    href="${siteRoot}contact.html#consultation-form">
                     Book Consultation
                 </a>
                 <button aria-controls="mobileMenuDrawer" aria-expanded="false" aria-label="Toggle navigation menu"
@@ -147,7 +168,7 @@
         `;
     }
 
-    // 3. Render Mobile Navigation Drawer HTML
+    // 4. Render Mobile Navigation Drawer HTML
     function getMobileDrawerHTML() {
         return `
         <!-- Backdrop Overlay -->
@@ -158,8 +179,8 @@
             id="mobileMenuPanel">
             <!-- Drawer Header -->
             <div class="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
-                <a href="index.html#home" class="flex items-center my-1" aria-label="GlobalMed Entry Ltd Home">
-                    <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="w-[120px] sm:w-[130px] h-auto object-contain" />
+                <a href="${homeUrl}" class="flex items-center my-1" aria-label="GlobalMed Entry Ltd Home">
+                    <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="w-[120px] sm:w-[130px] h-auto object-contain" />
                 </a>
                 <button aria-label="Close navigation menu"
                     class="w-9 h-9 rounded-[5px] text-slate-500 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
@@ -170,56 +191,56 @@
             <!-- Navigation Links (Scrollable) -->
             <div class="px-4 sm:px-5 py-4 overflow-y-auto flex-1 min-h-0 space-y-1">
                 <div class="text-xs font-bold uppercase tracking-widest text-slate-400 px-3 mb-2">Navigation Menu</div>
-                <a class="${mobileNavClass('home')}" href="index.html#home">
+                <a class="${mobileNavClass('home')}" href="${homeUrl}">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">home</span>
                         Home
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('about')}" href="about.html">
+                <a class="${mobileNavClass('about')}" href="${siteRoot}about.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">clinical_notes</span>
                         About Us
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('study-uk')}" href="study-in-uk.html">
+                <a class="${mobileNavClass('study-uk')}" href="${siteRoot}study-in-uk.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">flag</span>
                         Study in the UK
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('courses')}" href="courses.html">
+                <a class="${mobileNavClass('courses')}" href="${siteRoot}courses.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">school</span>
                         Courses &amp; Universities
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('services')}" href="services.html">
+                <a class="${mobileNavClass('services')}" href="${siteRoot}services.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">medical_services</span>
                         Our Services
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('process')}" href="application-process.html">
+                <a class="${mobileNavClass('process')}" href="${siteRoot}application-process.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">alt_route</span>
                         Application Process
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('resources')}" href="resources.html">
+                <a class="${mobileNavClass('blog')}" href="${siteRoot}blog/index.php">
                     <span class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[19px] text-primary">menu_book</span>
-                        Resources
+                        <span class="material-symbols-outlined text-[19px] text-primary">newspaper</span>
+                        Blog &amp; News
                     </span>
                     <span class="material-symbols-outlined text-[15px] text-slate-400">chevron_right</span>
                 </a>
-                <a class="${mobileNavClass('contact')}" href="contact.html">
+                <a class="${mobileNavClass('contact')}" href="${siteRoot}contact.html">
                     <span class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-[19px] text-primary">support_agent</span>
                         Contact
@@ -230,7 +251,7 @@
             <!-- Drawer Footer CTA -->
             <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50/70 shrink-0 space-y-3">
                 <a class="w-full inline-flex items-center justify-center text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-[5px] bg-primary text-white hover:bg-primary-dark transition-all shadow-sm shadow-[#02326f]/25 text-center"
-                    href="contact.html#consultation-form">
+                    href="${siteRoot}contact.html#consultation-form">
                     Book Consultation Assessment
                 </a>
                 <div class="flex items-center justify-center text-xs text-slate-500 font-medium">
@@ -243,14 +264,14 @@
         `;
     }
 
-    // 4. Render Global 5-Column Footer HTML
+    // 5. Render Global 5-Column Footer HTML
     function getFooterHTML() {
         return `
         <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 sm:pb-12 border-b border-slate-100">
                 <div class="lg:col-span-2 space-y-4">
-                    <a href="index.html#home" class="inline-block group" aria-label="GlobalMed Entry Ltd Home">
-                        <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+                    <a href="${homeUrl}" class="inline-block group" aria-label="GlobalMed Entry Ltd Home">
+                        <img src="${logoUrl}" alt="GlobalMed Entry Ltd" class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
                     </a>
                     <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
                         Founded by NHS and European clinical doctors, GlobalMed Entry Ltd is the UK&apos;s authoritative advisory firm for studying medicine and dentistry in accredited European universities.
@@ -268,37 +289,38 @@
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Study Destinations</div>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a class="hover:text-primary transition-colors font-semibold text-primary" href="study-in-uk.html">Study in the UK</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="study-medicine-in-bulgaria.html">Study in Bulgaria</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="plovdiv-medical-university.html">Plovdiv Medical University</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Sofia Medical University</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Pleven Medical University</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="courses.html#universities">Varna Medical University</a></li>
+                        <li><a class="hover:text-primary transition-colors font-semibold text-primary" href="${siteRoot}study-in-uk.html">Study in the UK</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}study-medicine-in-bulgaria.html">Study in Bulgaria</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}plovdiv-medical-university.html">Plovdiv Medical University</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}courses.html#universities">Sofia Medical University</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}courses.html#universities">Pleven Medical University</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}courses.html#universities">Varna Medical University</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Our Services</div>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase I: Admissions Support</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase II: Relocation Support</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase III: Ongoing Support</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="services.html#phases">Phase IV: Alumni Support</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="services.html#packages">Our Premium Package</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="services.html#consultation">Free Consultation</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#phases">Phase I: Admissions Support</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#phases">Phase II: Relocation Support</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#phases">Phase III: Ongoing Support</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#phases">Phase IV: Alumni Support</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#packages">Our Premium Package</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}services.html#consultation">Free Consultation</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <div class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3">Company &amp; Governance</div>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a class="hover:text-primary transition-colors" href="about.html">About Us</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="success-stories.html">Success Stories</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="resources.html">Admissions Resources</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="about.html#leadership">Advisory Directorate</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="about.html#accreditation">GMC &amp; HEE Relations</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="application-process.html">Application Process</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="contact.html">Contact &amp; Offices</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html">About Us</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}success-stories.html">Success Stories</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}resources.html">Admissions Resources</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}blog/index.php">Blog &amp; Knowledge Base</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html#leadership">Advisory Directorate</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}about.html#accreditation">GMC &amp; HEE Relations</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}application-process.html">Application Process</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="${siteRoot}contact.html">Contact &amp; Offices</a></li>
                     </ul>
                 </div>
             </div>
@@ -306,16 +328,17 @@
             <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-400 gap-4 text-center sm:text-left">
                 <div>© 2026 GlobalMed Entry Ltd. Registered in England &amp; Wales.</div>
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
+                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}blog/index.php">Blog &amp; Insights</a>
                     <a class="hover:text-slate-600 transition-colors" href="#">Privacy Policy</a>
                     <a class="hover:text-slate-600 transition-colors" href="#">Terms of Service</a>
-                    <a class="hover:text-slate-600 transition-colors" href="#">GMC Compliance Notes</a>
+                    <a class="hover:text-slate-600 transition-colors" href="${siteRoot}admin/login.php">Editorial Portal</a>
                 </div>
             </div>
         </div>
         `;
     }
 
-    // 5. Injection & Mobile Drawer Interactive Event Binding
+    // 6. Injection & Mobile Drawer Interactive Event Binding
     function initLayout() {
         // Inject Header
         const headerEl = document.getElementById('site-header') || document.getElementById('siteHeader');
@@ -324,12 +347,15 @@
             headerEl.innerHTML = getHeaderHTML();
         }
 
-        // Inject Mobile Drawer
-        const drawerEl = document.getElementById('site-mobile-drawer') || document.getElementById('mobileDrawer') || document.getElementById('siteMobileDrawer');
-        if (drawerEl) {
-            drawerEl.className = 'fixed inset-0 z-[100] xl:hidden transition-all duration-300 pointer-events-none opacity-0 invisible';
-            drawerEl.innerHTML = getMobileDrawerHTML();
+        // Inject Mobile Drawer (auto-create if placeholder not present)
+        let drawerEl = document.getElementById('site-mobile-drawer') || document.getElementById('mobileDrawer') || document.getElementById('siteMobileDrawer');
+        if (!drawerEl) {
+            drawerEl = document.createElement('div');
+            drawerEl.id = 'site-mobile-drawer';
+            document.body.appendChild(drawerEl);
         }
+        drawerEl.className = 'fixed inset-0 z-[100] xl:hidden transition-all duration-300 pointer-events-none opacity-0 invisible';
+        drawerEl.innerHTML = getMobileDrawerHTML();
 
         // Inject Footer
         const footerEl = document.getElementById('site-footer') || document.getElementById('siteFooter');
@@ -348,26 +374,28 @@
 
         function openMenu() {
             if (!drawer || !backdrop || !panel) return;
-            drawer.classList.remove('invisible', 'pointer-events-none', 'opacity-0');
-            drawer.classList.add('opacity-100');
+            drawer.classList.remove('pointer-events-none', 'opacity-0', 'invisible');
+            drawer.classList.add('pointer-events-auto', 'opacity-100', 'visible');
             backdrop.classList.remove('opacity-0');
             backdrop.classList.add('opacity-100');
             panel.classList.remove('translate-x-full');
+            panel.classList.add('translate-x-0');
             document.body.classList.add('overflow-hidden');
             if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
         }
 
         function closeMenu() {
             if (!drawer || !backdrop || !panel) return;
+            panel.classList.remove('translate-x-0');
             panel.classList.add('translate-x-full');
             backdrop.classList.remove('opacity-100');
             backdrop.classList.add('opacity-0');
-            drawer.classList.remove('opacity-100');
-            drawer.classList.add('opacity-0');
             document.body.classList.remove('overflow-hidden');
             if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+
             setTimeout(() => {
-                drawer.classList.add('invisible', 'pointer-events-none');
+                drawer.classList.remove('pointer-events-auto', 'opacity-100', 'visible');
+                drawer.classList.add('pointer-events-none', 'opacity-0', 'invisible');
             }, 300);
         }
 
@@ -376,9 +404,7 @@
         if (backdrop) backdrop.addEventListener('click', closeMenu);
 
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenu();
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         document.addEventListener('keydown', (e) => {
@@ -388,10 +414,10 @@
         });
     }
 
+    // Run on DOM Ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initLayout);
     } else {
         initLayout();
     }
 })();
-
