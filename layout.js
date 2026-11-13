@@ -88,9 +88,9 @@
             <div class="max-w-[1536px] mx-auto flex items-center justify-between text-slate-500 font-medium">
                 <div class="flex items-center gap-6">
                     <a class="flex items-center gap-1.5 hover:text-primary transition-colors tracking-tight font-medium"
-                        href="mailto:inquiry@globalmedentry.com">
+                        href="mailto:info@globalmedentry.com">
                         <span class="material-symbols-outlined text-[15px] text-primary">mail</span>
-                        <span>inquiry@globalmedentry.com</span>
+                        <span>info@globalmedentry.com</span>
                     </a>
                     <a class="flex items-center gap-1.5 hover:text-primary transition-colors tracking-tight font-medium"
                         href="tel:+447345692756">
@@ -101,7 +101,7 @@
                 <div class="flex items-center gap-6 text-xs">
                     <span class="flex items-center gap-1.5">
                         <span class="material-symbols-outlined text-[15px] text-[#12bda9]">verified</span>
-                        <span>UK Registered Company No. 10796193</span>
+                        <span>UK Registered Company</span>
                     </span>
                     <span class="text-slate-300">|</span>
                     <span class="text-slate-700 font-semibold flex items-center gap-1.5">
@@ -250,7 +250,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 sm:pb-12 border-b border-slate-100">
                 <div class="lg:col-span-2 space-y-4">
                     <a href="index.html#home" class="inline-block group" aria-label="GlobalMed Entry Ltd Home">
-                        <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
+                        <img src="images/logo.webp" alt="GlobalMed Entry Ltd" class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-102" />
                     </a>
                     <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
                         Founded by NHS and European clinical doctors, GlobalMed Entry Ltd is the UK&apos;s authoritative advisory firm for studying medicine and dentistry in accredited European universities.
@@ -258,7 +258,7 @@
                     <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-700 pt-1">
                         <span class="flex items-center gap-1.5">
                             <span class="material-symbols-outlined text-[16px] text-[#12bda9]">verified</span>
-                            UK Reg. 10796193
+                            UK Reg
                         </span>
                         <span>•</span>
                         <span>Business address: 66, Paul street  London.EC2A 4NA</span>
@@ -295,7 +295,7 @@
                         <li><a class="hover:text-primary transition-colors" href="about.html">About Us</a></li>
                         <li><a class="hover:text-primary transition-colors" href="success-stories.html">Success Stories</a></li>
                         <li><a class="hover:text-primary transition-colors" href="resources.html">Admissions Resources</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="about.html#leadership">Leadership Clinicians</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="about.html#leadership">Advisory Directorate</a></li>
                         <li><a class="hover:text-primary transition-colors" href="about.html#accreditation">GMC &amp; HEE Relations</a></li>
                         <li><a class="hover:text-primary transition-colors" href="application-process.html">Application Process</a></li>
                         <li><a class="hover:text-primary transition-colors" href="contact.html">Contact &amp; Offices</a></li>
@@ -304,7 +304,7 @@
             </div>
 
             <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-400 gap-4 text-center sm:text-left">
-                <div>© 2025 GlobalMed Entry Ltd. Registered in England &amp; Wales (No. 10796193).</div>
+                <div>© 2026 GlobalMed Entry Ltd. Registered in England &amp; Wales.</div>
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
                     <a class="hover:text-slate-600 transition-colors" href="#">Privacy Policy</a>
                     <a class="hover:text-slate-600 transition-colors" href="#">Terms of Service</a>
